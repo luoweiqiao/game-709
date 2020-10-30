@@ -223,11 +223,19 @@ protected:
 
 	// 设置库存输赢  add by har
     // return  true 触发库存输赢  false 未触发
-	bool SetStockWinLose();
+	bool	SetStockWinLose();
 
 	int     GetWelfareCardType();
 
 	void	CheckPlayerScoreManyLeave();
+
+	// 发送超权用户的牌---游戏开始时
+	bool	OnSendMasterCard();
+
+	// 发送超权用户的牌---刷新牌
+	bool	OnFlushMasterCard();
+
+	bool	OnMasterUserOper(CGamePlayer* pPlayer, vector<BYTE> vecChairID, vector<BYTE> vecCardData);
 
     //游戏变量
 protected:

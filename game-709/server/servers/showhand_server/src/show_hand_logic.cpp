@@ -1681,4 +1681,51 @@ namespace game_show_hand
 		return true;
 	}
 
+	bool CShowHandLogic::GetSubDataCard(BYTE cbSubCardData[][MAX_COUNT], vector<BYTE> & vecRemainCardData)
+	{
+		vecRemainCardData.clear();
+		BYTE cbCardListData[MAX_SHOWHAND_POKER] = { 0 };
+		memcpy(cbCardListData, m_cbCardListData, sizeof(cbCardListData));
+
+		//打乱手牌
+		BYTE cbRandCount = 0, cbPosition = 0;
+		do
+		{
+			cbPosition = g_RandGen.RandRange(0, MAX_SHOWHAND_POKER - cbRandCount - 1);
+			BYTE cbTempSwapCardData = cbCardListData[cbPosition];
+			cbCardListData[cbPosition] = cbCardListData[MAX_SHOWHAND_POKER - cbRandCount - 1];
+			cbCardListData[MAX_SHOWHAND_POKER - cbRandCount - 1] = cbTempSwapCardData;
+
+			cbRandCount++;
+		} while (cbRandCount < MAX_SHOWHAND_POKER);
+
+
+		for (int i = 0; i < MAX_SHOWHAND_POKER; i++)
+		{
+			BYTE cbTempCardData = cbCardListData[i];
+			bool bIsInSubCard = false;
+			for (int i = 0; i < GAME_PLAYER; i++)
+			{
+				for (int j = 0; j < MAX_COUNT; j++)
+				{
+					if (cbSubCardData[i][j] == cbTempCardData)
+					{
+						bIsInSubCard = true;
+						break;
+					}
+				}
+				if (bIsInSubCard)
+				{
+					break;
+				}
+			}
+			if (bIsInSubCard == false)
+			{
+				vecRemainCardData.push_back(cbCardListData[i]);
+			}
+		}
+		return true;
+	}
+
+
 };

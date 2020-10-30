@@ -102,6 +102,9 @@ public:
 
     //洗牌换牌
     void    GetLeftCard(BYTE cbCardBuffer[],BYTE cbBufferCount,vector<uint8>& leftCards);
+
+	//获取剩余牌
+	bool GetSubDataCard(BYTE cbSubCardData[][MAX_COUNT], vector<BYTE> & vecRemainCardData);
     
     
     //控制函数

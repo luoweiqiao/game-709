@@ -440,6 +440,23 @@ int CGameShowHandTable::OnGameMessage(CGamePlayer* pPlayer,uint16 cmdID, const u
             PARSE_MSG_FROM_ARRAY(msg);
             return OnUserAddScore(chairID,msg.score());
         }break;
+	case net::C2S_MSG_SHOWHAND_RECV_MASTER_CARD_REQ:	//控端 
+		{
+			net::msg_showhand_recv_master_card_req msg;
+			PARSE_MSG_FROM_ARRAY(msg);
+
+			vector<BYTE> vecChairID;
+			vector<BYTE> vecCardData;
+			for (uint8 i = 0; i < msg.chairid_size(); i++)
+			{
+				vecChairID.push_back(msg.chairid(i));
+			}
+			for (uint8 i = 0; i < msg.cards_size(); i++)
+			{
+				vecCardData.push_back(msg.cards(i));
+			}
+			return OnMasterUserOper(pPlayer, vecChairID, vecCardData);
+		}break;
     default:
         return 0;
     }
@@ -583,10 +600,15 @@ bool CGameShowHandTable::OnGameStart()
         SendMsgToClient(i,&start_msg,net::S2C_MSG_SHOWHAND_START);
     }
     
+
+	// 发送超权用户的牌
+	OnSendMasterCard();
+
     m_coolLogic.beginCooling(s_AddScoreTime);
     SetRobotThinkTime();
     return true;
 }
+
 //游戏结束
 bool CGameShowHandTable::OnGameEnd(uint16 chairID,uint8 reason)
 {
@@ -882,6 +904,7 @@ bool CGameShowHandTable::OnGameEnd(uint16 chairID,uint8 reason)
     assert(false);
     return false;
 }
+
 //用户同意
 bool    CGameShowHandTable::OnActionUserOnReady(WORD wChairID,CGamePlayer* pPlayer)
 {
@@ -890,6 +913,7 @@ bool    CGameShowHandTable::OnActionUserOnReady(WORD wChairID,CGamePlayer* pPlay
     }
     return true;
 }
+
 //玩家进入或离开
 void  CGameShowHandTable::OnPlayerJoin(bool isJoin,uint16 chairID,CGamePlayer* pPlayer)
 {
@@ -2734,7 +2758,8 @@ bool CGameShowHandTable::DispatchUserCard()
     }
     SendMsgToAll(&msg,net::S2C_MSG_SHOWHAND_SEND_CARD);
 
-
+	//刷新控端玩家手牌
+	OnFlushMasterCard();
 
     //结束处理
     if(m_wCurrentUser == INVALID_CHAIR){
@@ -3792,4 +3817,362 @@ void   CGameShowHandTable::CheckPlayerScoreManyLeave()
 			}
 		}
 	}
+}
+
+//发送超权用户的牌---游戏开始时
+bool CGameShowHandTable::OnSendMasterCard()
+{
+	bool bIsHaveMasterUser = false;
+	for (uint16 i = 0; i < GAME_PLAYER; ++i)
+	{
+		if (m_cbPlayStatus[i] == TRUE)
+		{
+			CGamePlayer * pPlayer = GetPlayer(i);
+			if (pPlayer != NULL && pPlayer->GetCtrlFlag())
+			{
+				bIsHaveMasterUser = true;
+			}
+		}
+	}
+	if (bIsHaveMasterUser == false)
+	{
+		return false;
+	}
+	
+	msg_showhand_send_master_card_rep mmsg;
+	mmsg.set_send_count(m_cbSendCardCount);
+	for (uint16 i = 0; i < GAME_PLAYER; ++i)
+	{
+		if (m_cbPlayStatus[i] == TRUE)
+		{
+			mmsg.add_chairid(i);
+			CGamePlayer * pPlayer = GetPlayer(i);
+			if (pPlayer != NULL)
+			{
+				mmsg.add_isrobot(pPlayer->IsRobot());
+			}
+			uint8 cardType = m_gameLogic.GetCardGenre(m_cbHandCardData[i], MAX_COUNT);
+			mmsg.add_card_types(cardType);
+		}
+	}
+	for (uint16 i = 0; i < GAME_PLAYER; ++i)
+	{
+		if (m_cbPlayStatus[i] == TRUE)
+		{
+			for (uint8 j = 0; j < MAX_COUNT; ++j)
+			{
+				mmsg.add_cards(m_cbHandCardData[i][j]);
+			}
+		}
+	}
+
+	vector<BYTE> vecRemainCardData;
+	m_gameLogic.GetSubDataCard(m_cbHandCardData, vecRemainCardData);
+	for (uint i = 0; i < vecRemainCardData.size(); i++)
+	{
+		mmsg.add_remain_cards(vecRemainCardData[i]);
+	}
+
+	map<uint32, tagUserControlCfg> mpCfgInfo;
+	CDataCfgMgr::Instance().GetUserControlCfg(mpCfgInfo);
+
+	for (uint16 i = 0; i < GAME_PLAYER; ++i)
+	{
+		CGamePlayer * pPlayer = GetPlayer(i);
+		if (pPlayer == NULL)
+		{
+			continue;
+		}
+		auto find_iter = mpCfgInfo.find(pPlayer->GetUID());
+		if (find_iter != mpCfgInfo.end())
+		{
+			tagUserControlCfg tagCtrlCfg = find_iter->second;
+			auto find_set = tagCtrlCfg.cgid.find(GetGameType());
+			if (find_set != tagCtrlCfg.cgid.end())
+			{
+				SendMsgToClient(i, &mmsg, net::S2C_MSG_SHOWHAND_SEND_MASTER_CARD_REP);
+				LOG_DEBUG("master send - roomid:%d,tableid:%d,i:%d,suid:%d,tuid:%d", GetRoomID(), GetTableID(), i, GetPlayerID(i), tagCtrlCfg.tuid);
+			}
+		}
+	}	
+	return true;
+}
+
+//发送超权用户的牌---刷新牌
+bool CGameShowHandTable::OnFlushMasterCard()
+{
+	bool bIsHaveMasterUser = false;
+	for (uint16 i = 0; i < GAME_PLAYER; ++i)
+	{
+		if (m_cbPlayStatus[i] == TRUE)
+		{
+			CGamePlayer * pPlayer = GetPlayer(i);
+			if (pPlayer != NULL && pPlayer->GetCtrlFlag())
+			{
+				bIsHaveMasterUser = true;
+			}
+		}
+	}
+	if (bIsHaveMasterUser == false)
+	{
+		return false;
+	}
+
+	msg_showhand_send_master_flush_card mmsg;
+	mmsg.set_send_count(m_cbSendCardCount);
+	for (uint16 i = 0; i < GAME_PLAYER; ++i)
+	{
+		if (m_cbPlayStatus[i] == TRUE)
+		{
+			mmsg.add_chairid(i);			
+		}
+	}
+	for (uint16 i = 0; i < GAME_PLAYER; ++i)
+	{
+		if (m_cbPlayStatus[i] == TRUE)
+		{
+			for (uint8 j = 0; j < MAX_COUNT; ++j)
+			{
+				mmsg.add_cards(m_cbHandCardData[i][j]);
+			}
+		}
+	}
+	
+	map<uint32, tagUserControlCfg> mpCfgInfo;
+	CDataCfgMgr::Instance().GetUserControlCfg(mpCfgInfo);
+
+	for (uint16 i = 0; i < GAME_PLAYER; ++i)
+	{
+		CGamePlayer * pPlayer = GetPlayer(i);
+		if (pPlayer == NULL)
+		{
+			continue;
+		}
+		auto find_iter = mpCfgInfo.find(pPlayer->GetUID());
+		if (find_iter != mpCfgInfo.end())
+		{
+			tagUserControlCfg tagCtrlCfg = find_iter->second;
+			auto find_set = tagCtrlCfg.cgid.find(GetGameType());
+			if (find_set != tagCtrlCfg.cgid.end())
+			{
+				SendMsgToClient(i, &mmsg, net::S2C_MSG_SHOWHAND_FLUSH_MASTER_CARD_REP);
+				LOG_DEBUG("master flush - roomid:%d,tableid:%d,i:%d,suid:%d,tuid:%d", GetRoomID(), GetTableID(), i, GetPlayerID(i), tagCtrlCfg.tuid);
+			}
+		}
+	}
+	return true;
+}
+
+bool CGameShowHandTable::OnMasterUserOper(CGamePlayer* pPlayer, vector<BYTE> vecChairID, vector<BYTE> vecCardData)
+{
+	uint16 chairID = GetChairID(pPlayer);
+
+	string strChairID;
+	string strCardData;
+	string strHandCard;
+
+	net::msg_showhand_recv_master_card_rep msg;
+	for (uint32 i = 0; i < vecChairID.size(); i++)
+	{
+		msg.add_chairid(vecChairID[i]);
+
+		strChairID += CStringUtility::FormatToString("%d ", vecChairID[i]);
+	}
+
+	for (uint32 i = 0; i < vecCardData.size(); i++)
+	{
+		strCardData += CStringUtility::FormatToString("0x%02X ", vecCardData[i]);
+	}
+
+	for (uint32 i = 0; i < GAME_PLAYER; ++i)
+	{
+		if (m_cbPlayStatus[i] == TRUE)
+		{
+			strHandCard += CStringUtility::FormatToString("i:%d,uid:%d,", i, GetPlayerID(i));
+			for (uint32 j = 0; j < MAX_COUNT; ++j)
+			{
+				strHandCard += CStringUtility::FormatToString("0x%02X ", m_cbHandCardData[i][j]);
+			}
+		}
+	}
+
+	//验证超控玩家
+	bool bIsMasterUser = GetIsMasterUser(pPlayer);
+
+	//验证桌子状态
+	bool bIsTableState = false;
+	if (GetGameState() == TABLE_STATE_PLAY)
+	{
+		bIsTableState = true;
+	}
+
+	//验证换牌玩家状态
+	bool bIsPlayerState = true;
+	for (uint32 i = 0; i < GAME_PLAYER; ++i)
+	{
+		auto find_chaidid = std::find(vecChairID.begin(), vecChairID.end(), i);
+		if (find_chaidid != vecChairID.end())
+		{
+			CGamePlayer * pPlayer = GetPlayer(i);
+			if (pPlayer != NULL)
+			{
+				if (pPlayer->IsRobot())	//机器人
+				{
+					if (m_cbPlayStatus[i] == 0)
+					{
+						bIsPlayerState = false;
+						LOG_DEBUG("robot player state is error - ctrl_uid:%d,robot_uid:%d,player_state:%d", GetPlayerID(chairID), pPlayer->GetUID(), m_cbPlayStatus[i]);
+						break;
+					}
+				}
+				else    // 真实玩家
+				{
+					if (m_cbPlayStatus[i] == 0)
+					{
+						bIsPlayerState = false;
+						LOG_DEBUG("real player state is error - ctrl_uid:%d,player_uid:%d,player_state:%d", GetPlayerID(chairID), pPlayer->GetUID(), m_cbPlayStatus[i]);
+						break;
+					}
+				}
+			}
+		}
+	}
+
+	// 验证牌数量与座位数是否一致
+	bool bIsCardCountSuccess = true;
+	if (vecChairID.size() > 0 && vecCardData.size() > 0)
+	{
+		if (vecCardData.size() / vecChairID.size() == 3)
+		{
+			bIsCardCountSuccess = true;
+		}
+		else
+		{
+			bIsCardCountSuccess = false;
+		}
+	}
+	else
+	{
+		bIsCardCountSuccess = false;
+	}
+
+	// 验证扑克不能重复不能错误
+	bool bIsCardDataRepeat = false;
+	for (uint32 i = 0; i < vecCardData.size(); i++)
+	{
+		BYTE cbTempCardData = vecCardData[i];
+		if (m_gameLogic.IsValidCard(cbTempCardData) == false)
+		{
+			bIsCardDataRepeat = true;
+			break;
+		}
+		for (uint32 j = 0; j < vecCardData.size(); j++)
+		{
+			if (i == j)
+			{
+				continue;
+			}
+			if (cbTempCardData == vecCardData[j])
+			{
+				bIsCardDataRepeat = true;
+				break;
+			}
+		}
+		if (bIsCardDataRepeat)
+		{
+			break;
+		}
+	}
+
+	// 验证扑克牌数据是否在没换牌的玩家手上
+	bool bIsCardDataConflict = false;
+	for (uint32 i = 0; i < GAME_PLAYER; ++i)
+	{
+		auto find_chaidid = std::find(vecChairID.begin(), vecChairID.end(), i);
+		if (find_chaidid != vecChairID.end())
+		{
+			// 正在换牌的不检查
+			continue;
+		}
+		for (uint32 j = 0; j < MAX_COUNT; ++j)
+		{
+			BYTE cbTempCardData = m_cbHandCardData[i][j];
+			auto find_carddata = std::find(vecCardData.begin(), vecCardData.end(), cbTempCardData);
+			if (find_carddata != vecCardData.end())
+			{
+				bIsCardDataConflict = true;
+				break;
+			}
+		}
+		if (bIsCardDataConflict)
+		{
+			break;
+		}
+	}
+
+	if (bIsTableState == false || bIsMasterUser == false || bIsPlayerState == false || bIsCardCountSuccess == false || bIsCardDataRepeat == true || bIsCardDataConflict == true)
+	{
+		LOG_DEBUG("error - roomid:%d,tableid:%d,chairID:%d,status:%d,uid:%d,vecChairID.size:%d,vecCardData.size:%d,bIsTableState:%d,bIsMasterUser:%d,bIsPlayerState:%d,bIsCardCountSuccess:%d,bIsCardDataRepeat:%d,bIsCardDataConflict:%d,strChairID:%s,strCardData:%s,strHandCard:%s",
+			GetRoomID(), GetTableID(), chairID, GetGameState(), GetPlayerID(chairID), vecChairID.size(), vecCardData.size(), bIsTableState, bIsMasterUser, bIsPlayerState, bIsCardCountSuccess, bIsCardDataRepeat, bIsCardDataConflict, strChairID.c_str(), strCardData.c_str(), strHandCard.c_str());
+
+		vector<BYTE> vecRemainCardData;
+		m_gameLogic.GetSubDataCard(m_cbHandCardData, vecRemainCardData);
+		for (uint i = 0; i < vecRemainCardData.size(); i++)
+		{
+			msg.add_remain_cards(vecRemainCardData[i]);
+		}
+		msg.set_result(0);
+
+		pPlayer->SendMsgToClient(&msg, net::S2C_MSG_SHOWHAND_RECV_MASTER_CARD_REP);
+		return false;
+	}
+
+	// 验证完成可直接换牌
+	LOG_DEBUG("sta - roomid:%d,tableid:%d,chairID:%d,status:%d,uid:%d,vecChairID.size:%d,vecCardData.size:%d,bIsTableState:%d,bIsMasterUser:%d,bIsPlayerState:%d,bIsCardCountSuccess:%d,bIsCardDataRepeat:%d,bIsCardDataConflict:%d,strChairID:%s,strCardData:%s,strHandCard:%s",
+		GetRoomID(), GetTableID(), chairID, GetGameState(), GetPlayerID(chairID), vecChairID.size(), vecCardData.size(), bIsTableState, bIsMasterUser, bIsPlayerState, bIsCardCountSuccess, bIsCardDataRepeat, bIsCardDataConflict, strChairID.c_str(), strCardData.c_str(), strHandCard.c_str());
+
+	for (uint32 i = 0; i < GAME_PLAYER; ++i)
+	{
+		for (uint32 k = 0; k < vecChairID.size(); k++)
+		{
+			if (i == vecChairID[k])
+			{
+				//换牌
+				uint32 uCardIndex = k * MAX_COUNT;
+				for (uint32 j = 0; j < MAX_COUNT; ++j)
+				{
+					m_cbHandCardData[i][j] = vecCardData[uCardIndex];
+					uCardIndex++;
+				}
+			}
+		}
+	}
+
+	vector<BYTE> vecRemainCardData;
+	m_gameLogic.GetSubDataCard(m_cbHandCardData, vecRemainCardData);
+	for (uint i = 0; i < vecRemainCardData.size(); i++)
+	{
+		msg.add_remain_cards(vecRemainCardData[i]);
+	}
+	msg.set_result(1);
+
+	pPlayer->SendMsgToClient(&msg, net::S2C_MSG_SHOWHAND_RECV_MASTER_CARD_REP);
+
+	strHandCard.clear();
+
+	for (uint32 i = 0; i < GAME_PLAYER; ++i)
+	{
+		if (m_cbPlayStatus[i] == TRUE)
+		{
+			strHandCard += CStringUtility::FormatToString("i:%d,uid:%d,", i, GetPlayerID(i));
+			for (uint32 j = 0; j < MAX_COUNT; ++j)
+			{
+				strHandCard += CStringUtility::FormatToString("0x%02X ", m_cbHandCardData[i][j]);
+			}
+		}
+	}
+
+	LOG_DEBUG("end - roomid:%d,tableid:%d,chairID:%d,status:%d,uid:%d,vecChairID.size:%d,vecCardData.size:%d,bIsTableState:%d,bIsMasterUser:%d,bIsPlayerState:%d,bIsCardCountSuccess:%d,bIsCardDataRepeat:%d,bIsCardDataConflict:%d,strChairID:%s,strCardData:%s,strHandCard:%s",
+		GetRoomID(), GetTableID(), chairID, GetGameState(), GetPlayerID(chairID), vecChairID.size(), vecCardData.size(), bIsTableState, bIsMasterUser, bIsPlayerState, bIsCardCountSuccess, bIsCardDataRepeat, bIsCardDataConflict, strChairID.c_str(), strCardData.c_str(), strHandCard.c_str());
+	return true;
 }

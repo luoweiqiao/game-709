@@ -4019,7 +4019,11 @@ bool CGameTable::IsMasterGame()
 		case net::GAME_CATE_ZAJINHUA:
 		{
 			return true;
-		}		
+		}	
+		case net::GAME_CATE_SHOWHAND:
+		{
+			return true;
+		}
 		default:
 		{
 			return false;

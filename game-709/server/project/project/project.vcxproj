@@ -74,7 +74,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>D:\66game\game-709\game-709\server\servers\common\src;D:\66game\game-709\game-709\server\server_frame\include;$(IncludePath)</IncludePath>
+    <IncludePath>E:\work\game-709\game-709\server\servers\common\src;E:\work\game-709\game-709\server\server_frame\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>

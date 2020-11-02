@@ -4012,14 +4012,19 @@ bool CGameTable::IsMasterGame()
 {
 	switch (GetGameType())
 	{
-	case net::GAME_CATE_NIUNIU:
-	{
-		return true;
-	}break;
-	default:
-	{
-		return false;
-	}break;
+		case net::GAME_CATE_NIUNIU:
+		{
+			return true;
+		}		
+		case net::GAME_CATE_ZAJINHUA:
+		{
+			return true;
+		}		
+		default:
+		{
+			return false;
+		}
+		break;
 	}
 	return false;
 }

@@ -39,6 +39,7 @@ public:
 	bool	SetBaseInfo(stPlayerBaseInfo& info);	
     bool    SetAccountInfo(stAccountInfo& info);
     bool    SetGameInfo(uint16 gameType,const stGameBaseInfo& info);
+	bool    IsGameInfoLoad(uint16 gameType) { return m_loadGameState[gameType]; }
     
     bool    IsLoadData(uint8 dataType);
     void    SetLoadState(uint8 dataType,uint8 state);

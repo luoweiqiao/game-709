@@ -395,8 +395,8 @@ enum  CLIENT_MSG_ID
 	S2C_MSG_SHOWHAND_GAME_END					= 3307;// 游戏结束
 	S2C_MSG_SHOWHAND_SEND_MASTER_CARD_REP		= 3310;// 发超级权限用户的牌---游戏开始时
 	S2C_MSG_SHOWHAND_FLUSH_MASTER_CARD_REP		= 3311;// 发超级权限用户的牌---游戏过程时
-	C2S_MSG_SHOWHAND_RECV_MASTER_CARD_REQ		= 3312;// 接收超级权限用户的牌
-	S2C_MSG_SHOWHAND_RECV_MASTER_CARD_REP		= 3313;// 接收超级权限用户的牌
+	C2S_MSG_SHOWHAND_RECV_MASTER_CARD_REQ		= 3312;// 接收超级权限用户的修改请求
+	S2C_MSG_SHOWHAND_RECV_MASTER_CARD_REP		= 3313;// 返回超级权限用户的修改结果
 
 //--------------百牛游戏消息-----------------------------------------
 	S2C_MSG_BAINIU_GAME_FREE_INFO				= 3400;// 游戏信息

@@ -486,15 +486,27 @@ int  CHandleClientMsg::handle_msg_get_game_data(NetworkObject* pNetObj, const ui
 		return 0;
 	
 	LOG_DEBUG("获得游戏数据:uid:%d,game_type:%d", pPlayer->GetUID(), game_type);
-	for (uint32 i = 1; i < net::GAME_CATE_MAX_TYPE; ++i)
+	/*for (uint32 i = 1; i < net::GAME_CATE_MAX_TYPE; ++i)
 	{
 		if (!CCommonLogic::IsOpenGame(i))
-		{			
+		{
 			continue;
 		}
 		CDBMysqlMgr::Instance().AsyncLoadGameData(pPlayer->GetUID(), i);
-	}
+	}*/
 
+	if (CCommonLogic::IsOpenGame(game_type))
+	{
+		if (pPlayer->IsGameInfoLoad(game_type))
+		{
+			pPlayer->UpdateGameInfo2Client(game_type);
+		}
+		else
+		{
+			CDBMysqlMgr::Instance().AsyncLoadGameData(pPlayer->GetUID(), game_type);
+		}		
+	}
+	
 	return 0;
 }
 

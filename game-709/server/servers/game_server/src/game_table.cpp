@@ -182,47 +182,56 @@ bool    CGameTable::EnterTable(CGamePlayer* pPlayer)
 			}
 		}
 	}
-    if(NeedSitDown())
-	{//需要手动坐下站起
-        pPlayer->SetTable(this);
-        LOG_DEBUG("IsNeedSitDown enter table - roomid:%d--tableid:%d,uid:%d,player_num:%d",
-			m_pHostRoom->GetRoomID(), GetTableID(), pPlayer->GetUID(), GetPlayerNum());
-        
-		SendTableInfoToClient(pPlayer);
-        OnPlayerJoin(true,0,pPlayer);
-		
-		InitPlayerBairenCoint(pPlayer);
-		//CalculateDeity();
-        return true;
-    }
-	else
-	{//自动坐下
-        for(uint8 i=0;i<m_vecPlayers.size();++i)
-        {
-            if(m_vecPlayers[i].pPlayer == NULL)
-            {
-                m_vecPlayers[i].pPlayer    = pPlayer;
-                m_vecPlayers[i].readyState = 0;
-                m_vecPlayers[i].uid        = pPlayer->GetUID();
-                m_vecPlayers[i].readyTime  = getSysTime();
-                
-                pPlayer->SetTable(this);
-                LOG_DEBUG("AtNeedSitDown enter table：room_id:%d--table_id:%d,uid:%d,IsAutoReady:%d,player_num:%d",
-					m_pHostRoom->GetRoomID(), GetTableID(), pPlayer->GetUID(), pPlayer->IsAutoReady(), GetPlayerNum());
-                
-				SendTableInfoToClient(pPlayer);
-                OnPlayerJoin(true,i,pPlayer);
-				
-                if(pPlayer->IsAutoReady())
+
+	//判断超控玩家是否需要加入旁观列表
+	if (GetIsMasterUser(pPlayer) && IsCtrlPlayerNeedAddLook())
+	{
+		m_ctrlUserList.push_back(pPlayer);
+	}
+	else 
+	{
+		if (NeedSitDown())
+		{
+			//需要手动坐下站起
+			pPlayer->SetTable(this);
+			LOG_DEBUG("IsNeedSitDown enter table - roomid:%d--tableid:%d,uid:%d,player_num:%d",
+				m_pHostRoom->GetRoomID(), GetTableID(), pPlayer->GetUID(), GetPlayerNum());
+
+			SendTableInfoToClient(pPlayer);
+			OnPlayerJoin(true, 0, pPlayer);
+
+			InitPlayerBairenCoint(pPlayer);
+			//CalculateDeity();
+			return true;
+		}
+		else
+		{
+			//自动坐下
+			for (uint8 i = 0; i < m_vecPlayers.size(); ++i)
+			{
+				if (m_vecPlayers[i].pPlayer == NULL)
 				{
-                    PlayerReady(pPlayer);
-                }
-				
-                return true;
-            }
-        }
-    }
-	
+					m_vecPlayers[i].pPlayer = pPlayer;
+					m_vecPlayers[i].readyState = 0;
+					m_vecPlayers[i].uid = pPlayer->GetUID();
+					m_vecPlayers[i].readyTime = getSysTime();
+
+					pPlayer->SetTable(this);
+					LOG_DEBUG("AtNeedSitDown enter table：room_id:%d--table_id:%d,uid:%d,IsAutoReady:%d,player_num:%d",
+						m_pHostRoom->GetRoomID(), GetTableID(), pPlayer->GetUID(), pPlayer->IsAutoReady(), GetPlayerNum());
+
+					SendTableInfoToClient(pPlayer);
+					OnPlayerJoin(true, i, pPlayer);
+
+					if (pPlayer->IsAutoReady())
+					{
+						PlayerReady(pPlayer);
+					}
+					return true;
+				}
+			}
+		}
+	}	
     return false;
 }
 
@@ -257,6 +266,20 @@ bool    CGameTable::LeaveTable(CGamePlayer* pPlayer,bool bNotify)
 	//增加对于百人场精准控制的处理
 	OnBrcControlPlayerLeaveTable(pPlayer);
 	LeaveMasterUser(pPlayer);
+
+	//超控玩家退出
+	if (GetIsMasterUser(pPlayer) && IsCtrlPlayerNeedAddLook())
+	{
+		//存在判断
+		vector<CGamePlayer*>::iterator iter = m_ctrlUserList.begin();
+		for (; iter != m_ctrlUserList.end(); iter++)
+		{
+			if ((*iter)->GetUID() == pPlayer->GetUID())
+			{
+				m_ctrlUserList.erase(iter);
+			}			
+		}		
+	}
 
     if(NeedSitDown())
     {   //需要手动坐下站起
@@ -503,6 +526,20 @@ bool    CGameTable::NeedSitDown()
         
     return false;
 }
+
+bool    CGameTable::IsCtrlPlayerNeedAddLook()
+{
+	uint16 gameType = m_pHostRoom->GetGameType();
+	switch (gameType)
+	{
+	case net::GAME_CATE_SHOWHAND:	
+		return true;
+	default:
+		return false;
+	}
+	return false;
+}
+
 bool    CGameTable::PlayerReady(CGamePlayer* pPlayer)
 {
 	if (GetGameState() != TABLE_STATE_FREE)

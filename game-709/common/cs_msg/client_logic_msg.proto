@@ -512,6 +512,7 @@ message msg_master_join_table_req
 message msg_master_join_table_rep
 {
 	optional uint32 result		= 1;// 超级权限进入桌子 	
+	optional uint32 tuid		= 2;// 跟踪玩家ID 
 }
 
 // 查看桌子信息

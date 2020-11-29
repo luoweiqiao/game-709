@@ -8030,17 +8030,27 @@ class msg_master_join_table_rep : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 result() const;
   inline void set_result(::google::protobuf::uint32 value);
 
+  // optional uint32 tuid = 2;
+  inline bool has_tuid() const;
+  inline void clear_tuid();
+  static const int kTuidFieldNumber = 2;
+  inline ::google::protobuf::uint32 tuid() const;
+  inline void set_tuid(::google::protobuf::uint32 value);
+
   // @@protoc_insertion_point(class_scope:net.msg_master_join_table_rep)
  private:
   inline void set_has_result();
   inline void clear_has_result();
+  inline void set_has_tuid();
+  inline void clear_has_tuid();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::uint32 result_;
+  ::google::protobuf::uint32 tuid_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
 
   friend void  protobuf_AddDesc_client_5flogic_5fmsg_2eproto();
   friend void protobuf_AssignDesc_client_5flogic_5fmsg_2eproto();
@@ -18886,6 +18896,28 @@ inline ::google::protobuf::uint32 msg_master_join_table_rep::result() const {
 inline void msg_master_join_table_rep::set_result(::google::protobuf::uint32 value) {
   set_has_result();
   result_ = value;
+}
+
+// optional uint32 tuid = 2;
+inline bool msg_master_join_table_rep::has_tuid() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void msg_master_join_table_rep::set_has_tuid() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void msg_master_join_table_rep::clear_has_tuid() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void msg_master_join_table_rep::clear_tuid() {
+  tuid_ = 0u;
+  clear_has_tuid();
+}
+inline ::google::protobuf::uint32 msg_master_join_table_rep::tuid() const {
+  return tuid_;
+}
+inline void msg_master_join_table_rep::set_tuid(::google::protobuf::uint32 value) {
+  set_has_tuid();
+  tuid_ = value;
 }
 
 // -------------------------------------------------------------------

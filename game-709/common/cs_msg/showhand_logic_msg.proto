@@ -134,6 +134,7 @@ message msg_showhand_recv_master_card_rep
 	optional uint32 result  			= 1;
 	repeated uint32 chairid				= 2;
 	repeated uint32 remain_cards		= 3; 			//剩余扑克
+	optional uint32 send_count 			= 4; 			//已经发送扑克数量
 }
 
 //-----------------梭哈游戏消息-----------------------------------

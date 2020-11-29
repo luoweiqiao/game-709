@@ -322,6 +322,7 @@ public:
     virtual bool    CanSitDown(CGamePlayer* pPlayer,uint16 chairID);
     virtual bool    CanStandUp(CGamePlayer* pPlayer);
     virtual bool    NeedSitDown();
+	virtual bool    IsCtrlPlayerNeedAddLook();
     virtual void    SetRobotEnterCool(uint32 time){ m_robotEnterCooling.beginCooling(time); }
 
     virtual bool    PlayerReady(CGamePlayer* pPlayer);
@@ -677,39 +678,42 @@ protected:
 	std::shared_ptr<std::map<uint32, std::map<BYTE, int64>>> m_spFrontPlayerJettonInfo;
 
 	map<uint32, int64> m_mpFirstEnterScore;
-	int m_ctrl_welfare; // 这一局游戏是否受福利控制 0 不控制 1 控制
+	int m_ctrl_welfare;												//这一局游戏是否受福利控制 0 不控制 1 控制
 
-    vector<tagAWPlayerInfo>      m_aw_ctrl_player_list; //活跃福利---记录当前局符合活跃玩家的列表，并按照亏损值从大到小排序 --- 在各子类游戏的活跃控制函数中调用
-    set<uint32>                  m_curr_bet_user;       //活跃福利---百人游戏表示当前局所有下注的玩家列表 对战游戏表示当前局所有玩家列表
-    uint32                       m_aw_ctrl_uid;         //活跃福利---当前局所控的玩家ID
-	int							 m_iGameCount;
+    vector<tagAWPlayerInfo> m_aw_ctrl_player_list;					//活跃福利---记录当前局符合活跃玩家的列表，并按照亏损值从大到小排序 --- 在各子类游戏的活跃控制函数中调用
+    set<uint32>             m_curr_bet_user;						//活跃福利---百人游戏表示当前局所有下注的玩家列表 对战游戏表示当前局所有玩家列表
+    uint32                  m_aw_ctrl_uid;							//活跃福利---当前局所控的玩家ID
+	int						m_iGameCount;
 
-	uint32                       m_nrw_ctrl_uid;        //新注册玩家福利---当前局所控的玩家ID
-	uint32                       m_nrw_status;          //新注册玩家福利---当前局所控玩家的状态，用于记录日志时，进行判断
+	uint32                  m_nrw_ctrl_uid;							//新注册玩家福利---当前局所控的玩家ID
+	uint32                  m_nrw_status;							//新注册玩家福利---当前局所控玩家的状态，用于记录日志时，进行判断
 
-	uint16 m_maxChairNum = 0; // 最大椅子数
+	uint16 m_maxChairNum = 0;										//最大椅子数
 
 	//百人场精准控制
-	set<CGamePlayer*>    m_setControlPlayers;       // 控制玩家列表---保存所有在控制界面
-	int8                 m_control_number;			// 控制局数
-	uint8				 m_req_control_area[BRC_MAX_CONTROL_AREA];	// 请求控制区域
-	uint8				 m_real_control_area[BRC_MAX_CONTROL_AREA];	// 游戏结束时实际控制区域
-	uint32				 m_real_control_uid;		// 实际控制玩家ID---多个玩家控制的情况下，取最后一个玩家的控制结果
-	map<uint32, tagPlayerResultInfo>	m_mpPlayerResultInfo;	//所有玩家的在当前游戏的输赢结果信息
+	set<CGamePlayer*>		m_setControlPlayers;					//控制玩家列表---保存所有在控制界面
+	int8					m_control_number;						//控制局数
+	uint8					m_req_control_area[BRC_MAX_CONTROL_AREA];		//请求控制区域
+	uint8					m_real_control_area[BRC_MAX_CONTROL_AREA];		//游戏结束时实际控制区域
+	uint32					m_real_control_uid;						//实际控制玩家ID---多个玩家控制的情况下，取最后一个玩家的控制结果
+	map<uint32, tagPlayerResultInfo>	m_mpPlayerResultInfo;		//所有玩家的在当前游戏的输赢结果信息
 
-	vector<CGamePlayer*>			m_ApplyUserArray;			//申请上庄玩家列表
-	map<uint32, uint8>              m_mpApplyUserInfo;          //是否自动补币
-	CGamePlayer*					m_pCurBanker = NULL;				//当前庄家
-	bool                            m_needLeaveBanker;          //离开庄位
-	map<uint32, int64>              m_ApplyUserScore;           //申请带入积分
+	vector<CGamePlayer*>	m_ApplyUserArray;						//申请上庄玩家列表
+	map<uint32, uint8>      m_mpApplyUserInfo;						//是否自动补币
+	CGamePlayer*			m_pCurBanker = NULL;					//当前庄家
+	bool                    m_needLeaveBanker;						//离开庄位
+	map<uint32, int64>      m_ApplyUserScore;						//申请带入积分
 
-	uint8				m_brc_table_status;			//百人场游戏状态
-	uint32				m_brc_table_status_time;	//百人场游戏状态对应的倒计时
-	set<uint32>			m_tableCtrlPlayers;			// 控制玩家列表---进入桌子
+	uint8					m_brc_table_status;						//百人场游戏状态
+	uint32					m_brc_table_status_time;				//百人场游戏状态对应的倒计时
+	set<uint32>				m_tableCtrlPlayers;						//控制玩家列表---进入桌子
 
-	bool				m_lucky_flag;				//当前局是否触发幸运值
-	set<uint32>			m_set_ctrl_lucky_uid;		//当前局触发幸运值的玩家列表
-	bool m_isAllRobotOrPlayerJetton = true; // 是否全部为玩家或机器人下注，针对库存系统
+	bool					m_lucky_flag;							//当前局是否触发幸运值
+	set<uint32>				m_set_ctrl_lucky_uid;					//当前局触发幸运值的玩家列表
+	bool					m_isAllRobotOrPlayerJetton = true;		//是否全部为玩家或机器人下注，针对库存系统
+
+	//超控玩家列表（不能坐下玩牌）---目前只有梭哈用到
+	vector<CGamePlayer*>	m_ctrlUserList;							//超控玩家列表
 };
 
 #endif //__GAME_TABLE_H__

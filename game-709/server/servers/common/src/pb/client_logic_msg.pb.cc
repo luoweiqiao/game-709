@@ -1831,8 +1831,9 @@ void protobuf_AssignDesc_client_5flogic_5fmsg_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(msg_master_join_table_req));
   msg_master_join_table_rep_descriptor_ = file->message_type(85);
-  static const int msg_master_join_table_rep_offsets_[1] = {
+  static const int msg_master_join_table_rep_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(msg_master_join_table_rep, result_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(msg_master_join_table_rep, tuid_),
   };
   msg_master_join_table_rep_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -3685,136 +3686,136 @@ void protobuf_AddDesc_client_5flogic_5fmsg_2eproto() {
     "oom_rep\022\016\n\006result\030\001 \001(\r\"+\n\027msg_fast_join"
     "_table_req\022\020\n\010table_id\030\001 \001(\r\")\n\027msg_fast"
     "_join_table_rep\022\016\n\006result\030\001 \001(\r\"-\n\031msg_m"
-    "aster_join_table_req\022\020\n\010table_id\030\001 \001(\r\"+"
+    "aster_join_table_req\022\020\n\010table_id\030\001 \001(\r\"9"
     "\n\031msg_master_join_table_rep\022\016\n\006result\030\001 "
-    "\001(\r\":\n\030msg_query_table_list_req\022\017\n\007start"
-    "id\030\001 \001(\r\022\r\n\005endid\030\002 \001(\r\"S\n\030msg_query_tab"
-    "le_list_rep\022$\n\006tables\030\001 \003(\0132\024.net.table_"
-    "face_info\022\021\n\ttable_num\030\002 \001(\r\"R\n\032msg_noti"
-    "fy_player_join_rep\022\022\n\njoin_leave\030\001 \001(\r\022 "
-    "\n\006player\030\002 \001(\0132\020.net.looker_info\"O\n\030msg_"
-    "looker_list_info_rep\022!\n\007lookers\030\001 \003(\0132\020."
-    "net.looker_info\022\020\n\010is_reset\030\002 \001(\r\"<\n\027msg"
-    "_sitdown_standup_req\022\017\n\007oper_id\030\001 \001(\r\022\020\n"
-    "\010chair_id\030\002 \001(\r\"L\n\027msg_sitdown_standup_r"
-    "ep\022\017\n\007oper_id\030\001 \001(\r\022\020\n\010chair_id\030\002 \001(\r\022\016\n"
-    "\006result\030\003 \001(\r\"\\\n\022msg_items_user_req\022\r\n\005m"
-    "euid\030\001 \001(\r\022\022\n\nbechair_id\030\002 \001(\r\022\017\n\007item_i"
-    "d\030\003 \001(\r\022\022\n\nitem_count\030\004 \001(\r\"a\n\022msg_items"
-    "_user_rep\022\022\n\nmechair_id\030\001 \001(\r\022\022\n\nbechair"
-    "_id\030\002 \001(\r\022\017\n\007item_id\030\003 \001(\r\022\022\n\nitem_count"
-    "\030\004 \001(\r\"M\n\027msg_ingame_update_score\022\013\n\003uid"
-    "\030\001 \001(\r\022\021\n\tgame_type\030\002 \001(\r\022\022\n\ndiff_score\030"
-    "\003 \001(\003\"o\n\027vip_recharge_wechatinfo\022\016\n\006sort"
-    "id\030\001 \001(\r\022\r\n\005title\030\002 \001(\014\022\017\n\007account\030\003 \001(\014"
-    "\022\022\n\nlow_amount\030\004 \001(\r\022\020\n\010pay_type\030\005 \003(\005\"\""
-    "\n msg_notify_vip_recharge_show_req\"Z\n\034ms"
-    "g_notify_vip_recharge_show\022\016\n\006status\030\001 \001"
+    "\001(\r\022\014\n\004tuid\030\002 \001(\r\":\n\030msg_query_table_lis"
+    "t_req\022\017\n\007startid\030\001 \001(\r\022\r\n\005endid\030\002 \001(\r\"S\n"
+    "\030msg_query_table_list_rep\022$\n\006tables\030\001 \003("
+    "\0132\024.net.table_face_info\022\021\n\ttable_num\030\002 \001"
+    "(\r\"R\n\032msg_notify_player_join_rep\022\022\n\njoin"
+    "_leave\030\001 \001(\r\022 \n\006player\030\002 \001(\0132\020.net.looke"
+    "r_info\"O\n\030msg_looker_list_info_rep\022!\n\007lo"
+    "okers\030\001 \003(\0132\020.net.looker_info\022\020\n\010is_rese"
+    "t\030\002 \001(\r\"<\n\027msg_sitdown_standup_req\022\017\n\007op"
+    "er_id\030\001 \001(\r\022\020\n\010chair_id\030\002 \001(\r\"L\n\027msg_sit"
+    "down_standup_rep\022\017\n\007oper_id\030\001 \001(\r\022\020\n\010cha"
+    "ir_id\030\002 \001(\r\022\016\n\006result\030\003 \001(\r\"\\\n\022msg_items"
+    "_user_req\022\r\n\005meuid\030\001 \001(\r\022\022\n\nbechair_id\030\002"
+    " \001(\r\022\017\n\007item_id\030\003 \001(\r\022\022\n\nitem_count\030\004 \001("
+    "\r\"a\n\022msg_items_user_rep\022\022\n\nmechair_id\030\001 "
+    "\001(\r\022\022\n\nbechair_id\030\002 \001(\r\022\017\n\007item_id\030\003 \001(\r"
+    "\022\022\n\nitem_count\030\004 \001(\r\"M\n\027msg_ingame_updat"
+    "e_score\022\013\n\003uid\030\001 \001(\r\022\021\n\tgame_type\030\002 \001(\r\022"
+    "\022\n\ndiff_score\030\003 \001(\003\"o\n\027vip_recharge_wech"
+    "atinfo\022\016\n\006sortid\030\001 \001(\r\022\r\n\005title\030\002 \001(\014\022\017\n"
+    "\007account\030\003 \001(\014\022\022\n\nlow_amount\030\004 \001(\r\022\020\n\010pa"
+    "y_type\030\005 \003(\005\"\"\n msg_notify_vip_recharge_"
+    "show_req\"Z\n\034msg_notify_vip_recharge_show"
+    "\022\016\n\006status\030\001 \001(\r\022*\n\004info\030\002 \003(\0132\034.net.vip"
+    "_recharge_wechatinfo\"&\n$msg_notify_union"
+    "payrecharge_show_req\"6\n$msg_notify_union"
+    "payrecharge_show_rep\022\016\n\006status\030\001 \001(\r\"\'\n%"
+    "msg_notify_wechatpayrecharge_show_req\"7\n"
+    "%msg_notify_wechatpayrecharge_show_rep\022\016"
+    "\n\006status\030\001 \001(\r\"$\n\"msg_notify_alipayrecha"
+    "rge_show_req\"4\n\"msg_notify_alipayrecharg"
+    "e_show_rep\022\016\n\006status\030\001 \001(\r\"&\n$msg_notify"
+    "_otherpayrecharge_show_req\"6\n$msg_notify"
+    "_otherpayrecharge_show_rep\022\016\n\006status\030\001 \001"
+    "(\r\"#\n!msg_notify_qqpayrecharge_show_req\""
+    "3\n!msg_notify_qqpayrecharge_show_rep\022\016\n\006"
+    "status\030\001 \001(\r\"+\n)msg_notify_wechatscanpay"
+    "recharge_show_req\";\n)msg_notify_wechatsc"
+    "anpayrecharge_show_rep\022\016\n\006status\030\001 \001(\r\"#"
+    "\n!msg_notify_jdpayrecharge_show_req\"3\n!m"
+    "sg_notify_jdpayrecharge_show_rep\022\016\n\006stat"
+    "us\030\001 \001(\r\"&\n$msg_notify_applepayrecharge_"
+    "show_req\"6\n$msg_notify_applepayrecharge_"
+    "show_rep\022\016\n\006status\030\001 \001(\r\"+\n)msg_notify_l"
+    "arge_ali_payrecharge_show_req\";\n)msg_not"
+    "ify_large_ali_payrecharge_show_rep\022\016\n\006st"
+    "atus\030\001 \001(\r\"|\n\025exclusive_alipay_info\022\017\n\007a"
+    "ccount\030\001 \001(\014\022\014\n\004name\030\002 \001(\014\022\r\n\005title\030\003 \001("
+    "\014\022\017\n\007min_pay\030\004 \001(\005\022\017\n\007max_pay\030\005 \001(\005\022\023\n\013l"
+    "ower_float\030\006 \001(\005\"e\n)msg_notify_exclusive"
+    "_alipay_recharge_show\022\016\n\006status\030\001 \001(\r\022(\n"
+    "\004info\030\002 \003(\0132\032.net.exclusive_alipay_info\""
+    "/\n-msg_notify_exclusive_alipay_recharge_"
+    "show_req\"+\n)msg_notify_fixed_alipay_rech"
+    "arge_show_req\";\n)msg_notify_fixed_alipay"
+    "_recharge_show_rep\022\016\n\006status\030\001 \001(\r\"+\n)ms"
+    "g_notify_fixed_wechat_recharge_show_req\""
+    ";\n)msg_notify_fixed_wechat_recharge_show"
+    "_rep\022\016\n\006status\030\001 \001(\r\"-\n+msg_notify_fixed"
+    "_unionpay_recharge_show_req\"=\n+msg_notif"
+    "y_fixed_unionpay_recharge_show_rep\022\016\n\006st"
+    "atus\030\001 \001(\r\".\n,msg_notify_exclusive_flash"
+    "_recharge_show_req\"j\n,msg_notify_exclusi"
+    "ve_flash_recharge_show_rep\022\016\n\006status\030\001 \001"
     "(\r\022*\n\004info\030\002 \003(\0132\034.net.vip_recharge_wech"
-    "atinfo\"&\n$msg_notify_unionpayrecharge_sh"
-    "ow_req\"6\n$msg_notify_unionpayrecharge_sh"
-    "ow_rep\022\016\n\006status\030\001 \001(\r\"\'\n%msg_notify_wec"
-    "hatpayrecharge_show_req\"7\n%msg_notify_we"
-    "chatpayrecharge_show_rep\022\016\n\006status\030\001 \001(\r"
-    "\"$\n\"msg_notify_alipayrecharge_show_req\"4"
-    "\n\"msg_notify_alipayrecharge_show_rep\022\016\n\006"
-    "status\030\001 \001(\r\"&\n$msg_notify_otherpayrecha"
-    "rge_show_req\"6\n$msg_notify_otherpayrecha"
-    "rge_show_rep\022\016\n\006status\030\001 \001(\r\"#\n!msg_noti"
-    "fy_qqpayrecharge_show_req\"3\n!msg_notify_"
-    "qqpayrecharge_show_rep\022\016\n\006status\030\001 \001(\r\"+"
-    "\n)msg_notify_wechatscanpayrecharge_show_"
-    "req\";\n)msg_notify_wechatscanpayrecharge_"
-    "show_rep\022\016\n\006status\030\001 \001(\r\"#\n!msg_notify_j"
-    "dpayrecharge_show_req\"3\n!msg_notify_jdpa"
-    "yrecharge_show_rep\022\016\n\006status\030\001 \001(\r\"&\n$ms"
-    "g_notify_applepayrecharge_show_req\"6\n$ms"
-    "g_notify_applepayrecharge_show_rep\022\016\n\006st"
-    "atus\030\001 \001(\r\"+\n)msg_notify_large_ali_payre"
-    "charge_show_req\";\n)msg_notify_large_ali_"
-    "payrecharge_show_rep\022\016\n\006status\030\001 \001(\r\"|\n\025"
-    "exclusive_alipay_info\022\017\n\007account\030\001 \001(\014\022\014"
-    "\n\004name\030\002 \001(\014\022\r\n\005title\030\003 \001(\014\022\017\n\007min_pay\030\004"
-    " \001(\005\022\017\n\007max_pay\030\005 \001(\005\022\023\n\013lower_float\030\006 \001"
-    "(\005\"e\n)msg_notify_exclusive_alipay_rechar"
-    "ge_show\022\016\n\006status\030\001 \001(\r\022(\n\004info\030\002 \003(\0132\032."
-    "net.exclusive_alipay_info\"/\n-msg_notify_"
-    "exclusive_alipay_recharge_show_req\"+\n)ms"
-    "g_notify_fixed_alipay_recharge_show_req\""
-    ";\n)msg_notify_fixed_alipay_recharge_show"
-    "_rep\022\016\n\006status\030\001 \001(\r\"+\n)msg_notify_fixed"
-    "_wechat_recharge_show_req\";\n)msg_notify_"
-    "fixed_wechat_recharge_show_rep\022\016\n\006status"
-    "\030\001 \001(\r\"-\n+msg_notify_fixed_unionpay_rech"
-    "arge_show_req\"=\n+msg_notify_fixed_unionp"
-    "ay_recharge_show_rep\022\016\n\006status\030\001 \001(\r\".\n,"
-    "msg_notify_exclusive_flash_recharge_show"
-    "_req\"j\n,msg_notify_exclusive_flash_recha"
-    "rge_show_rep\022\016\n\006status\030\001 \001(\r\022*\n\004info\030\002 \003"
-    "(\0132\034.net.vip_recharge_wechatinfo\"1\n\022bair"
-    "en_jetton_info\022\014\n\004area\030\001 \001(\r\022\r\n\005score\030\002 "
-    "\001(\003\"P\n\'msg_continuous_pressure_jetton_in"
-    "fo_rep\022%\n\004info\030\001 \003(\0132\027.net.bairen_jetton"
-    "_info\"R\n)msg_player_continuous_pressure_"
-    "jetton_req\022%\n\004info\030\001 \003(\0132\027.net.bairen_je"
-    "tton_info\";\n)msg_player_continuous_press"
-    "ure_jetton_rep\022\016\n\006result\030\001 \001(\r\"\201\003\n\021msg_g"
-    "ame_play_log\022,\n\006bainiu\030\001 \001(\0132\034.net.msg_b"
-    "ainiu_play_log_rep\0220\n\010baccarat\030\002 \001(\0132\036.n"
-    "et.msg_baccarat_play_log_rep\022,\n\006paijiu\030\003"
-    " \001(\0132\034.net.msg_paijiu_play_log_rep\022(\n\004di"
-    "ce\030\004 \001(\0132\032.net.msg_dice_play_log_rep\022&\n\003"
-    "war\030\005 \001(\0132\031.net.msg_war_play_log_rep\022*\n\005"
-    "fight\030\006 \001(\0132\033.net.msg_fight_play_log_rep"
-    "\0220\n\010twoeight\030\007 \001(\0132\036.net.msg_twoeight_pl"
-    "ay_log_rep\022.\n\007carcity\030\010 \001(\0132\035.net.msg_ca"
-    "rcity_play_log_rep\"\027\n\025msg_game_play_log_"
-    "req\"\213\001\n\025msg_game_play_log_rep\022\020\n\010gametyp"
-    "e\030\001 \001(\r\022\016\n\006roomid\030\002 \001(\r\022\021\n\tgamestate\030\003 \001"
-    "(\r\022\023\n\013remain_time\030\004 \001(\r\022(\n\010play_log\030\005 \001("
-    "\0132\026.net.msg_game_play_log\"\227\001\n\025msg_chat_i"
-    "nfo_forward\022\016\n\006fromid\030\001 \001(\r\022\014\n\004toid\030\002 \003("
-    "\r\022\016\n\006online\030\003 \003(\005\022\021\n\tmessagStr\030\004 \001(\014\022\020\n\010"
-    "fromname\030\005 \001(\014\022\016\n\006toname\030\006 \003(\014\022\014\n\004time\030\007"
-    " \001(\004\022\r\n\005mtype\030\010 \001(\005\"I\n$msg_brc_control_u"
-    "ser_enter_table_req\022\017\n\007game_id\030\001 \001(\r\022\020\n\010"
-    "table_id\030\002 \001(\r\"S\n$msg_brc_control_user_e"
-    "nter_table_rep\022\016\n\006result\030\001 \001(\r\022\014\n\004area\030\002"
-    " \003(\r\022\r\n\005times\030\003 \001(\r\"I\n$msg_brc_control_u"
-    "ser_leave_table_req\022\017\n\007game_id\030\001 \001(\r\022\020\n\010"
-    "table_id\030\002 \001(\r\"6\n$msg_brc_control_user_l"
-    "eave_table_rep\022\016\n\006result\030\001 \001(\r\"5\n&msg_br"
-    "c_control_force_leave_banker_req\022\013\n\003uid\030"
-    "\001 \001(\r\"E\n&msg_brc_control_force_leave_ban"
-    "ker_rep\022\013\n\003uid\030\001 \001(\r\022\016\n\006result\030\002 \001(\r\"I\n\035"
-    "msg_brc_control_area_info_req\022\013\n\003uid\030\001 \001"
-    "(\r\022\014\n\004area\030\002 \003(\r\022\r\n\005times\030\003 \001(\r\"L\n\035msg_b"
-    "rc_control_area_info_rep\022\016\n\006result\030\001 \001(\r"
-    "\022\014\n\004area\030\002 \003(\r\022\r\n\005times\030\003 \001(\r\"9\n$msg_brc"
-    "_control_total_robot_bet_info\022\021\n\tarea_in"
-    "fo\030\001 \003(\003\":\n%msg_brc_control_total_player"
-    "_bet_info\022\021\n\tarea_info\030\001 \003(\003\"\320\001\n\033brc_con"
-    "trol_player_bet_info\022\013\n\003uid\030\001 \001(\r\022\021\n\tare"
-    "a_info\030\002 \003(\003\022\021\n\ttotal_bet\030\003 \001(\003\022\024\n\014curr_"
-    "day_win\030\004 \001(\003\022\022\n\nwin_number\030\005 \001(\r\022\023\n\013los"
-    "e_number\030\006 \001(\r\022\021\n\ttotal_win\030\007 \001(\003\022\014\n\004coi"
-    "n\030\010 \001(\003\022\014\n\004name\030\t \001(\014\022\020\n\010ismaster\030\n \001(\r\""
-    "c\n&msg_brc_control_single_player_bet_inf"
-    "o\0229\n\017player_bet_info\030\001 \001(\0132 .net.brc_con"
-    "trol_player_bet_info\"`\n#msg_brc_control_"
-    "all_player_bet_info\0229\n\017player_bet_list\030\001"
-    " \003(\0132 .net.brc_control_player_bet_info\"N"
-    "\n\034brc_control_player_coin_info\022\013\n\003uid\030\001 "
-    "\001(\r\022\014\n\004coin\030\002 \001(\003\022\023\n\013player_type\030\003 \001(\r\"\217"
-    "\001\n!msg_brc_control_apple_banker_list\0224\n\t"
-    "bank_info\030\001 \001(\0132!.net.brc_control_player"
-    "_coin_info\0224\n\tuser_info\030\002 \003(\0132!.net.brc_"
-    "control_player_coin_info\"\?\n\035msg_brc_cont"
-    "rol_game_end_info\022\013\n\003uid\030\001 \001(\r\022\021\n\tarea_i"
-    "nfo\030\002 \003(\r\"@\n msg_brc_control_game_status"
-    "_info\022\016\n\006status\030\001 \001(\r\022\014\n\004time\030\002 \001(\r\">\n\037m"
-    "sg_brc_control_flush_area_info\022\014\n\004area\030\001"
-    " \003(\r\022\r\n\005times\030\002 \001(\r", 10499);
+    "atinfo\"1\n\022bairen_jetton_info\022\014\n\004area\030\001 \001"
+    "(\r\022\r\n\005score\030\002 \001(\003\"P\n\'msg_continuous_pres"
+    "sure_jetton_info_rep\022%\n\004info\030\001 \003(\0132\027.net"
+    ".bairen_jetton_info\"R\n)msg_player_contin"
+    "uous_pressure_jetton_req\022%\n\004info\030\001 \003(\0132\027"
+    ".net.bairen_jetton_info\";\n)msg_player_co"
+    "ntinuous_pressure_jetton_rep\022\016\n\006result\030\001"
+    " \001(\r\"\201\003\n\021msg_game_play_log\022,\n\006bainiu\030\001 \001"
+    "(\0132\034.net.msg_bainiu_play_log_rep\0220\n\010bacc"
+    "arat\030\002 \001(\0132\036.net.msg_baccarat_play_log_r"
+    "ep\022,\n\006paijiu\030\003 \001(\0132\034.net.msg_paijiu_play"
+    "_log_rep\022(\n\004dice\030\004 \001(\0132\032.net.msg_dice_pl"
+    "ay_log_rep\022&\n\003war\030\005 \001(\0132\031.net.msg_war_pl"
+    "ay_log_rep\022*\n\005fight\030\006 \001(\0132\033.net.msg_figh"
+    "t_play_log_rep\0220\n\010twoeight\030\007 \001(\0132\036.net.m"
+    "sg_twoeight_play_log_rep\022.\n\007carcity\030\010 \001("
+    "\0132\035.net.msg_carcity_play_log_rep\"\027\n\025msg_"
+    "game_play_log_req\"\213\001\n\025msg_game_play_log_"
+    "rep\022\020\n\010gametype\030\001 \001(\r\022\016\n\006roomid\030\002 \001(\r\022\021\n"
+    "\tgamestate\030\003 \001(\r\022\023\n\013remain_time\030\004 \001(\r\022(\n"
+    "\010play_log\030\005 \001(\0132\026.net.msg_game_play_log\""
+    "\227\001\n\025msg_chat_info_forward\022\016\n\006fromid\030\001 \001("
+    "\r\022\014\n\004toid\030\002 \003(\r\022\016\n\006online\030\003 \003(\005\022\021\n\tmessa"
+    "gStr\030\004 \001(\014\022\020\n\010fromname\030\005 \001(\014\022\016\n\006toname\030\006"
+    " \003(\014\022\014\n\004time\030\007 \001(\004\022\r\n\005mtype\030\010 \001(\005\"I\n$msg"
+    "_brc_control_user_enter_table_req\022\017\n\007gam"
+    "e_id\030\001 \001(\r\022\020\n\010table_id\030\002 \001(\r\"S\n$msg_brc_"
+    "control_user_enter_table_rep\022\016\n\006result\030\001"
+    " \001(\r\022\014\n\004area\030\002 \003(\r\022\r\n\005times\030\003 \001(\r\"I\n$msg"
+    "_brc_control_user_leave_table_req\022\017\n\007gam"
+    "e_id\030\001 \001(\r\022\020\n\010table_id\030\002 \001(\r\"6\n$msg_brc_"
+    "control_user_leave_table_rep\022\016\n\006result\030\001"
+    " \001(\r\"5\n&msg_brc_control_force_leave_bank"
+    "er_req\022\013\n\003uid\030\001 \001(\r\"E\n&msg_brc_control_f"
+    "orce_leave_banker_rep\022\013\n\003uid\030\001 \001(\r\022\016\n\006re"
+    "sult\030\002 \001(\r\"I\n\035msg_brc_control_area_info_"
+    "req\022\013\n\003uid\030\001 \001(\r\022\014\n\004area\030\002 \003(\r\022\r\n\005times\030"
+    "\003 \001(\r\"L\n\035msg_brc_control_area_info_rep\022\016"
+    "\n\006result\030\001 \001(\r\022\014\n\004area\030\002 \003(\r\022\r\n\005times\030\003 "
+    "\001(\r\"9\n$msg_brc_control_total_robot_bet_i"
+    "nfo\022\021\n\tarea_info\030\001 \003(\003\":\n%msg_brc_contro"
+    "l_total_player_bet_info\022\021\n\tarea_info\030\001 \003"
+    "(\003\"\320\001\n\033brc_control_player_bet_info\022\013\n\003ui"
+    "d\030\001 \001(\r\022\021\n\tarea_info\030\002 \003(\003\022\021\n\ttotal_bet\030"
+    "\003 \001(\003\022\024\n\014curr_day_win\030\004 \001(\003\022\022\n\nwin_numbe"
+    "r\030\005 \001(\r\022\023\n\013lose_number\030\006 \001(\r\022\021\n\ttotal_wi"
+    "n\030\007 \001(\003\022\014\n\004coin\030\010 \001(\003\022\014\n\004name\030\t \001(\014\022\020\n\010i"
+    "smaster\030\n \001(\r\"c\n&msg_brc_control_single_"
+    "player_bet_info\0229\n\017player_bet_info\030\001 \001(\013"
+    "2 .net.brc_control_player_bet_info\"`\n#ms"
+    "g_brc_control_all_player_bet_info\0229\n\017pla"
+    "yer_bet_list\030\001 \003(\0132 .net.brc_control_pla"
+    "yer_bet_info\"N\n\034brc_control_player_coin_"
+    "info\022\013\n\003uid\030\001 \001(\r\022\014\n\004coin\030\002 \001(\003\022\023\n\013playe"
+    "r_type\030\003 \001(\r\"\217\001\n!msg_brc_control_apple_b"
+    "anker_list\0224\n\tbank_info\030\001 \001(\0132!.net.brc_"
+    "control_player_coin_info\0224\n\tuser_info\030\002 "
+    "\003(\0132!.net.brc_control_player_coin_info\"\?"
+    "\n\035msg_brc_control_game_end_info\022\013\n\003uid\030\001"
+    " \001(\r\022\021\n\tarea_info\030\002 \003(\r\"@\n msg_brc_contr"
+    "ol_game_status_info\022\016\n\006status\030\001 \001(\r\022\014\n\004t"
+    "ime\030\002 \001(\r\">\n\037msg_brc_control_flush_area_"
+    "info\022\014\n\004area\030\001 \003(\r\022\r\n\005times\030\002 \001(\r", 10513);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "client_logic_msg.proto", &protobuf_RegisterTypes);
   msg_heart_test::default_instance_ = new msg_heart_test();
@@ -24629,6 +24630,7 @@ void msg_master_join_table_req::Swap(msg_master_join_table_req* other) {
 
 #ifndef _MSC_VER
 const int msg_master_join_table_rep::kResultFieldNumber;
+const int msg_master_join_table_rep::kTuidFieldNumber;
 #endif  // !_MSC_VER
 
 msg_master_join_table_rep::msg_master_join_table_rep()
@@ -24648,6 +24650,7 @@ msg_master_join_table_rep::msg_master_join_table_rep(const msg_master_join_table
 void msg_master_join_table_rep::SharedCtor() {
   _cached_size_ = 0;
   result_ = 0u;
+  tuid_ = 0u;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -24684,6 +24687,7 @@ msg_master_join_table_rep* msg_master_join_table_rep::New() const {
 void msg_master_join_table_rep::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     result_ = 0u;
+    tuid_ = 0u;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -24703,6 +24707,22 @@ bool msg_master_join_table_rep::MergePartialFromCodedStream(
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &result_)));
           set_has_result();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(16)) goto parse_tuid;
+        break;
+      }
+
+      // optional uint32 tuid = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_tuid:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &tuid_)));
+          set_has_tuid();
         } else {
           goto handle_uninterpreted;
         }
@@ -24733,6 +24753,11 @@ void msg_master_join_table_rep::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->result(), output);
   }
 
+  // optional uint32 tuid = 2;
+  if (has_tuid()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->tuid(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -24744,6 +24769,11 @@ void msg_master_join_table_rep::SerializeWithCachedSizes(
   // optional uint32 result = 1;
   if (has_result()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->result(), target);
+  }
+
+  // optional uint32 tuid = 2;
+  if (has_tuid()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->tuid(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -24762,6 +24792,13 @@ int msg_master_join_table_rep::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
           this->result());
+    }
+
+    // optional uint32 tuid = 2;
+    if (has_tuid()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->tuid());
     }
 
   }
@@ -24794,6 +24831,9 @@ void msg_master_join_table_rep::MergeFrom(const msg_master_join_table_rep& from)
     if (from.has_result()) {
       set_result(from.result());
     }
+    if (from.has_tuid()) {
+      set_tuid(from.tuid());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -24818,6 +24858,7 @@ bool msg_master_join_table_rep::IsInitialized() const {
 void msg_master_join_table_rep::Swap(msg_master_join_table_rep* other) {
   if (other != this) {
     std::swap(result_, other->result_);
+    std::swap(tuid_, other->tuid_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

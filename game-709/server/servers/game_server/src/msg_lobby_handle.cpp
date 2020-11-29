@@ -1484,6 +1484,7 @@ int  CHandleLobbyMsg::handle_msg_master_join_table(NetworkObject* pNetObj, const
 		auto find_set = tagCtrlCfg.cgid.find(gametype);
 		if (find_set != tagCtrlCfg.cgid.end())
 		{
+			rep.set_tuid(tagCtrlCfg.tuid);
 			pTagPlayer = (CGamePlayer*)CPlayerMgr::Instance().GetPlayer(tagCtrlCfg.tuid);
 			if (pTagPlayer != NULL)
 			{

@@ -1490,19 +1490,29 @@ class msg_showhand_recv_master_card_rep : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
       mutable_remain_cards();
 
+  // optional uint32 send_count = 4;
+  inline bool has_send_count() const;
+  inline void clear_send_count();
+  static const int kSendCountFieldNumber = 4;
+  inline ::google::protobuf::uint32 send_count() const;
+  inline void set_send_count(::google::protobuf::uint32 value);
+
   // @@protoc_insertion_point(class_scope:net.msg_showhand_recv_master_card_rep)
  private:
   inline void set_has_result();
   inline void clear_has_result();
+  inline void set_has_send_count();
+  inline void clear_has_send_count();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::RepeatedField< ::google::protobuf::uint32 > chairid_;
-  ::google::protobuf::RepeatedField< ::google::protobuf::uint32 > remain_cards_;
   ::google::protobuf::uint32 result_;
+  ::google::protobuf::uint32 send_count_;
+  ::google::protobuf::RepeatedField< ::google::protobuf::uint32 > remain_cards_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
 
   friend void  protobuf_AddDesc_showhand_5flogic_5fmsg_2eproto();
   friend void protobuf_AssignDesc_showhand_5flogic_5fmsg_2eproto();
@@ -2795,6 +2805,28 @@ msg_showhand_recv_master_card_rep::remain_cards() const {
 inline ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
 msg_showhand_recv_master_card_rep::mutable_remain_cards() {
   return &remain_cards_;
+}
+
+// optional uint32 send_count = 4;
+inline bool msg_showhand_recv_master_card_rep::has_send_count() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void msg_showhand_recv_master_card_rep::set_has_send_count() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void msg_showhand_recv_master_card_rep::clear_has_send_count() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void msg_showhand_recv_master_card_rep::clear_send_count() {
+  send_count_ = 0u;
+  clear_has_send_count();
+}
+inline ::google::protobuf::uint32 msg_showhand_recv_master_card_rep::send_count() const {
+  return send_count_;
+}
+inline void msg_showhand_recv_master_card_rep::set_send_count(::google::protobuf::uint32 value) {
+  set_has_send_count();
+  send_count_ = value;
 }
 
 

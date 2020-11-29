@@ -271,10 +271,11 @@ void protobuf_AssignDesc_showhand_5flogic_5fmsg_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(msg_showhand_recv_master_card_req));
   msg_showhand_recv_master_card_rep_descriptor_ = file->message_type(11);
-  static const int msg_showhand_recv_master_card_rep_offsets_[3] = {
+  static const int msg_showhand_recv_master_card_rep_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(msg_showhand_recv_master_card_rep, result_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(msg_showhand_recv_master_card_rep, chairid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(msg_showhand_recv_master_card_rep, remain_cards_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(msg_showhand_recv_master_card_rep, send_count_),
   };
   msg_showhand_recv_master_card_rep_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -401,9 +402,10 @@ void protobuf_AddDesc_showhand_5flogic_5fmsg_2eproto() {
     "lush_card\022\017\n\007chairid\030\001 \003(\r\022\r\n\005cards\030\002 \003("
     "\r\022\022\n\nsend_count\030\003 \001(\r\"C\n!msg_showhand_re"
     "cv_master_card_req\022\017\n\007chairid\030\001 \003(\r\022\r\n\005c"
-    "ards\030\002 \003(\r\"Z\n!msg_showhand_recv_master_c"
+    "ards\030\002 \003(\r\"n\n!msg_showhand_recv_master_c"
     "ard_rep\022\016\n\006result\030\001 \001(\r\022\017\n\007chairid\030\002 \003(\r"
-    "\022\024\n\014remain_cards\030\003 \003(\r", 1622);
+    "\022\024\n\014remain_cards\030\003 \003(\r\022\022\n\nsend_count\030\004 \001"
+    "(\r", 1642);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "showhand_logic_msg.proto", &protobuf_RegisterTypes);
   msg_showhand_game_info_rep::default_instance_ = new msg_showhand_game_info_rep();
@@ -4420,6 +4422,7 @@ void msg_showhand_recv_master_card_req::Swap(msg_showhand_recv_master_card_req* 
 const int msg_showhand_recv_master_card_rep::kResultFieldNumber;
 const int msg_showhand_recv_master_card_rep::kChairidFieldNumber;
 const int msg_showhand_recv_master_card_rep::kRemainCardsFieldNumber;
+const int msg_showhand_recv_master_card_rep::kSendCountFieldNumber;
 #endif  // !_MSC_VER
 
 msg_showhand_recv_master_card_rep::msg_showhand_recv_master_card_rep()
@@ -4439,6 +4442,7 @@ msg_showhand_recv_master_card_rep::msg_showhand_recv_master_card_rep(const msg_s
 void msg_showhand_recv_master_card_rep::SharedCtor() {
   _cached_size_ = 0;
   result_ = 0u;
+  send_count_ = 0u;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -4475,6 +4479,7 @@ msg_showhand_recv_master_card_rep* msg_showhand_recv_master_card_rep::New() cons
 void msg_showhand_recv_master_card_rep::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     result_ = 0u;
+    send_count_ = 0u;
   }
   chairid_.Clear();
   remain_cards_.Clear();
@@ -4543,6 +4548,22 @@ bool msg_showhand_recv_master_card_rep::MergePartialFromCodedStream(
           goto handle_uninterpreted;
         }
         if (input->ExpectTag(24)) goto parse_remain_cards;
+        if (input->ExpectTag(32)) goto parse_send_count;
+        break;
+      }
+
+      // optional uint32 send_count = 4;
+      case 4: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_send_count:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &send_count_)));
+          set_has_send_count();
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -4582,6 +4603,11 @@ void msg_showhand_recv_master_card_rep::SerializeWithCachedSizes(
       3, this->remain_cards(i), output);
   }
 
+  // optional uint32 send_count = 4;
+  if (has_send_count()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(4, this->send_count(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -4607,6 +4633,11 @@ void msg_showhand_recv_master_card_rep::SerializeWithCachedSizes(
       WriteUInt32ToArray(3, this->remain_cards(i), target);
   }
 
+  // optional uint32 send_count = 4;
+  if (has_send_count()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(4, this->send_count(), target);
+  }
+
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -4623,6 +4654,13 @@ int msg_showhand_recv_master_card_rep::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
           this->result());
+    }
+
+    // optional uint32 send_count = 4;
+    if (has_send_count()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->send_count());
     }
 
   }
@@ -4677,6 +4715,9 @@ void msg_showhand_recv_master_card_rep::MergeFrom(const msg_showhand_recv_master
     if (from.has_result()) {
       set_result(from.result());
     }
+    if (from.has_send_count()) {
+      set_send_count(from.send_count());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -4703,6 +4744,7 @@ void msg_showhand_recv_master_card_rep::Swap(msg_showhand_recv_master_card_rep* 
     std::swap(result_, other->result_);
     chairid_.Swap(&other->chairid_);
     remain_cards_.Swap(&other->remain_cards_);
+    std::swap(send_count_, other->send_count_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

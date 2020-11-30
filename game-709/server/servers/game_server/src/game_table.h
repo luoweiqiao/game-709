@@ -357,6 +357,7 @@ public:
     virtual uint16  GetChairID(CGamePlayer* pPlayer);
     virtual uint16  GetRandFreeChairID();
 
+	virtual void    SendMsgToCtrlPlayer(const google::protobuf::Message* msg, uint16 msg_type);
     virtual void    SendMsgToLooker(const google::protobuf::Message* msg,uint16 msg_type);
     virtual void    SendMsgToPlayer(const google::protobuf::Message* msg,uint16 msg_type);
     virtual void    SendMsgToAll(const google::protobuf::Message* msg,uint16 msg_type);
@@ -713,7 +714,7 @@ protected:
 	bool					m_isAllRobotOrPlayerJetton = true;		//是否全部为玩家或机器人下注，针对库存系统
 
 	//超控玩家列表（不能坐下玩牌）---目前只有梭哈用到
-	vector<CGamePlayer*>	m_ctrlUserList;							//超控玩家列表
+	map<uint32, CGamePlayer*>	m_ctrlUserList;							//超控玩家列表
 };
 
 #endif //__GAME_TABLE_H__

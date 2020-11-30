@@ -10,9 +10,11 @@
 // 游戏内消息
 int  CHandleImpleMsg::handle_msg_gameing_oper(NetworkObject* pNetObj, const uint8* pkt_buf, uint16 buf_len,PACKETHEAD* head)
 {
-    //LOG_DEBUG("游戏内部消息:uid:%d--msg:%d",head->uin,head->cmd);
+    LOG_DEBUG("游戏内部消息:uid:%d--msg:%d",head->uin,head->cmd);
     CGamePlayer* pGamePlayer = GetGamePlayer(head);
-    if(pGamePlayer == NULL) {
+    if(pGamePlayer == NULL) 
+	{
+		LOG_ERROR("pGamePlayer is null. 游戏内部消息:uid:%d--msg:%d", head->uin, head->cmd);
         return 0;
     }
     CGameTable* pGameTable = pGamePlayer->GetTable();
@@ -20,5 +22,9 @@ int  CHandleImpleMsg::handle_msg_gameing_oper(NetworkObject* pNetObj, const uint
     {
         pGameTable->OnGameMessage(pGamePlayer,head->cmd,pkt_buf,buf_len);
     }
+	else
+	{
+		LOG_ERROR("pGameTable is null. 游戏内部消息:uid:%d--msg:%d", head->uin, head->cmd);
+	}
     return 0;
 }

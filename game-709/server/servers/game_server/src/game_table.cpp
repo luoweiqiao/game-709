@@ -186,7 +186,15 @@ bool    CGameTable::EnterTable(CGamePlayer* pPlayer)
 	//判断超控玩家是否需要加入旁观列表
 	if (GetIsMasterUser(pPlayer) && IsCtrlPlayerNeedAddLook())
 	{
-		m_ctrlUserList.push_back(pPlayer);
+		m_ctrlUserList[pPlayer->GetUID()] = pPlayer;
+		LOG_DEBUG("push ctrl player list success. table - roomid:%d--tableid:%d,uid:%d,player_num:%d",
+			m_pHostRoom->GetRoomID(), GetTableID(), pPlayer->GetUID(), GetPlayerNum());
+
+		SendTableInfoToClient(pPlayer);
+		OnPlayerJoin(true, 0, pPlayer);
+		pPlayer->SetTable(this);
+
+		return true;
 	}
 	else 
 	{
@@ -271,13 +279,10 @@ bool    CGameTable::LeaveTable(CGamePlayer* pPlayer,bool bNotify)
 	if (GetIsMasterUser(pPlayer) && IsCtrlPlayerNeedAddLook())
 	{
 		//存在判断
-		vector<CGamePlayer*>::iterator iter = m_ctrlUserList.begin();
-		for (; iter != m_ctrlUserList.end(); iter++)
-		{
-			if ((*iter)->GetUID() == pPlayer->GetUID())
-			{
-				m_ctrlUserList.erase(iter);
-			}			
+		map<uint32, CGamePlayer*>::iterator iter = m_ctrlUserList.find(pPlayer->GetUID());
+		if(iter != m_ctrlUserList.end())
+		{			
+			m_ctrlUserList.erase(iter);						
 		}		
 	}
 
@@ -966,10 +971,10 @@ uint16  CGameTable::GetRandFreeChairID()
     }       
     return 0xFF;
 }
-void    CGameTable::SendMsgToLooker(const google::protobuf::Message* msg,uint16 msg_type)
+void    CGameTable::SendMsgToCtrlPlayer(const google::protobuf::Message* msg,uint16 msg_type)
 {
-    map<uint32,CGamePlayer*>::iterator it = m_mpLookers.begin();
-    for(;it != m_mpLookers.end();++it)
+    map<uint32,CGamePlayer*>::iterator it = m_ctrlUserList.begin();
+    for(;it != m_ctrlUserList.end();++it)
     {
         CGamePlayer* pPlayer = it->second;
 		if (pPlayer != NULL)
@@ -977,6 +982,18 @@ void    CGameTable::SendMsgToLooker(const google::protobuf::Message* msg,uint16 
 			pPlayer->SendMsgToClient(msg, msg_type);
 		}
     }
+}
+void    CGameTable::SendMsgToLooker(const google::protobuf::Message* msg, uint16 msg_type)
+{
+	map<uint32, CGamePlayer*>::iterator it = m_mpLookers.begin();
+	for (; it != m_mpLookers.end(); ++it)
+	{
+		CGamePlayer* pPlayer = it->second;
+		if (pPlayer != NULL)
+		{
+			pPlayer->SendMsgToClient(msg, msg_type);
+		}
+	}
 }
 void    CGameTable::SendMsgToPlayer(const google::protobuf::Message* msg,uint16 msg_type)
 {
@@ -992,6 +1009,7 @@ void    CGameTable::SendMsgToAll(const google::protobuf::Message* msg,uint16 msg
 {
     SendMsgToPlayer(msg,msg_type);
     SendMsgToLooker(msg,msg_type);
+	SendMsgToCtrlPlayer(msg, msg_type);
 }
 void    CGameTable::SendMsgToClient(uint16 chairID,const google::protobuf::Message* msg,uint16 msg_type)
 {
@@ -2004,13 +2022,20 @@ void    CGameTable::OnPlayerJoin(bool isJoin,uint16 chairID,CGamePlayer* pPlayer
 		if (isJoin)
 		{
 			m_tableCtrlPlayers.insert(pPlayer->GetUID());
+			m_ctrlUserList[pPlayer->GetUID()] = pPlayer;
+			LOG_DEBUG("add ctrl user list - roomid:%d,tableid:%d,uid:%d,size:%d", m_pHostRoom->GetRoomID(), GetTableID(), uid, m_ctrlUserList.size());
 		}
 		else
 		{
 			m_tableCtrlPlayers.erase(m_tableCtrlPlayers.find(pPlayer->GetUID()));
-		}
+			map<uint32, CGamePlayer*>::iterator iter = m_ctrlUserList.find(pPlayer->GetUID());
+			if (iter != m_ctrlUserList.end())
+			{
+				m_ctrlUserList.erase(iter);
+				LOG_DEBUG("delete ctrl user list - roomid:%d,tableid:%d,uid:%d,size:%d", m_pHostRoom->GetRoomID(), GetTableID(), uid, m_ctrlUserList.size());
+			}
+		}		
 	}
-
 }
 // 发送场景信息(断线重连)
 void    CGameTable::SendGameScene(CGamePlayer* pPlayer)

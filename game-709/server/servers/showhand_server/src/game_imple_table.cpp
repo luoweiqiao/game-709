@@ -918,6 +918,12 @@ void  CGameShowHandTable::OnPlayerJoin(bool isJoin,uint16 chairID,CGamePlayer* p
     CGameTable::OnPlayerJoin(isJoin,chairID,pPlayer);
 
     //m_coolRobot.beginCooling(3000);
+	if (pPlayer->GetCtrlFlag())
+	{
+		OnSendMasterCard();
+		return;
+	}
+
     m_lHistoryScore[chairID] = 0;
     m_isOnlyRobot = true;
     for(uint8 i=0;i<GAME_PLAYER;++i)
@@ -935,6 +941,7 @@ void  CGameShowHandTable::OnPlayerJoin(bool isJoin,uint16 chairID,CGamePlayer* p
     }
 	SetRobotThinkTime();
 }
+
 // 发送场景信息(断线重连)
 void    CGameShowHandTable::SendGameScene(CGamePlayer* pPlayer)
 {
@@ -3864,12 +3871,10 @@ bool CGameShowHandTable::OnSendMasterCard()
 		mmsg.add_remain_cards(vecRemainCardData[i]);
 	}
 
-	map<uint32, tagUserControlCfg> mpCfgInfo;
-	CDataCfgMgr::Instance().GetUserControlCfg(mpCfgInfo);
-
-	for (uint16 i = 0; i < m_ctrlUserList.size(); ++i)
+	map<uint32, CGamePlayer*>::iterator iter = m_ctrlUserList.begin();
+	for (; iter!= m_ctrlUserList.end(); iter++)
 	{
-		CGamePlayer * pPlayer = m_ctrlUserList[i];
+		CGamePlayer * pPlayer = iter->second;
 		if (pPlayer == NULL)
 		{
 			continue;
@@ -3912,9 +3917,10 @@ bool CGameShowHandTable::OnFlushMasterCard()
 	map<uint32, tagUserControlCfg> mpCfgInfo;
 	CDataCfgMgr::Instance().GetUserControlCfg(mpCfgInfo);
 
-	for (uint16 i = 0; i < m_ctrlUserList.size(); ++i)
+	map<uint32, CGamePlayer*>::iterator iter = m_ctrlUserList.begin();
+	for (; iter != m_ctrlUserList.end(); iter++)
 	{
-		CGamePlayer * pPlayer = m_ctrlUserList[i];
+		CGamePlayer * pPlayer = iter->second;
 		if (pPlayer == NULL)
 		{
 			continue;
@@ -3927,8 +3933,10 @@ bool CGameShowHandTable::OnFlushMasterCard()
 
 bool CGameShowHandTable::OnMasterUserOper(CGamePlayer* pCtrlPlayer, vector<BYTE> vecChairID, vector<BYTE> vecCardData)
 {
+	LOG_DEBUG("OnMasterUserOper roomid:%d,tableid:%d", GetRoomID(), GetTableID());
 	if (pCtrlPlayer == NULL)
 	{
+		LOG_DEBUG("the pCtrlPlayer is null. roomid:%d,tableid:%d", GetRoomID(), GetTableID());
 		return false;
 	}
 

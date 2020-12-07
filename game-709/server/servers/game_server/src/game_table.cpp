@@ -2022,8 +2022,8 @@ void    CGameTable::OnPlayerJoin(bool isJoin,uint16 chairID,CGamePlayer* pPlayer
 		if (isJoin)
 		{
 			m_tableCtrlPlayers.insert(pPlayer->GetUID());
-			m_ctrlUserList[pPlayer->GetUID()] = pPlayer;
-			LOG_DEBUG("add ctrl user list - roomid:%d,tableid:%d,uid:%d,size:%d", m_pHostRoom->GetRoomID(), GetTableID(), uid, m_ctrlUserList.size());
+			//m_ctrlUserList[pPlayer->GetUID()] = pPlayer;
+			//LOG_DEBUG("add ctrl user list - roomid:%d,tableid:%d,uid:%d,size:%d", m_pHostRoom->GetRoomID(), GetTableID(), uid, m_ctrlUserList.size());
 		}
 		else
 		{

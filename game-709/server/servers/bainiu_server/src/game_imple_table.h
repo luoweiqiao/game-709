@@ -404,8 +404,15 @@ public:
 	void   OnBrcFlushSendAllPlayerInfo();								//刷新在线所有真实玩家信息---玩家进入/退出桌子时调用
 	bool   SetControlBankerScore(bool isWin);							//设置庄家总体为赢/输 通过参数控制
 	
+	bool   SetMultipleAreaCardTypeMsg(CGamePlayer* pPlayer, net::msg_bainiu_control_cardtype_req & msg);
+
 	//当申请上庄玩家被强制下庄后，需要通知该上庄玩家
 	void  OnNotityForceApplyUser(CGamePlayer* pPlayer);
+
+	bool   OnBrcMultipleAreaCardType();				//百人场多区域控制牌型
+
+private:
+	map<uint32, uint32>			    m_mpContralAreaCardTypeList;		//控制区域具体牌型列表
 };
 
 #endif //SERVER_GAME_IMPLE_TABLE_H

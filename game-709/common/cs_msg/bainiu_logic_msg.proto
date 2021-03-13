@@ -144,7 +144,18 @@ message msg_bainiu_play_log_rep
 	repeated bainiu_play_log logs = 1;//游戏记录	
 }
 
+// 控制区域具体牌型的请求
+message msg_bainiu_control_cardtype_req
+{
+	repeated  uint32 control_area_list		= 1;   	//对应区域列表	
+	repeated  uint32 control_cardtype_list	= 2;   	//对应牌型列表
+}
 
+// 控制区域具体牌型的返回
+message msg_bainiu_control_cardtype_rep
+{
+	optional uint32 result = 1;						// 0 失败 1 成功	
+}
 
 //-----------------百牛游戏消息----------------------------------------------------------------
 

@@ -418,6 +418,9 @@ enum  CLIENT_MSG_ID
 	S2C_MSG_BAINIU_PLAY_LOG						= 3418;// 游戏记录
 	C2S_MSG_BAINIU_CONTINUOUS_PRESSURE_REQ	    = 3419;// 继续下注
 	S2C_MSG_BAINIU_CONTINUOUS_PRESSURE_REP	    = 3420;// 继续下注
+	C2S_MSG_BAINIU_CONTROL_CARDTYPE_REQ	    	= 3421;// 控制区域牌型请求
+	S2C_MSG_BAINIU_CONTROL_CARDTYPE_REP	    	= 3422;// 控制区域牌型返回
+	
 
 //--------------德州游戏消息-------------------------------------------	
 	S2C_MSG_TEXAS_GAME_FREE_INFO				= 3500;// 游戏信息

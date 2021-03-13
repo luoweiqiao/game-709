@@ -63,6 +63,95 @@ void CNiuNiuLogic::RandCardListEx(BYTE cbCardBuffer[], BYTE cbBufferCount)
 	delete[] cbCardData;
 }
 
+bool CNiuNiuLogic::SetMultipleAreaCardType(uint8 cbTableCardArray[][5], map<uint32, uint32> &cfg_area_info)
+{
+	bool ret = true;
+
+	//先混乱原始牌
+	BYTE cbAllCardData[CARD_COUNT];	//所有牌	
+	RandCardList(cbAllCardData, CARD_COUNT);
+
+	BYTE cbPlayerCardData[5];		//五张牌
+	BYTE cbFindNumber = 0;			//已经找到的数量
+	BYTE cbCfgNumber = cfg_area_info.size();	//配置的区域个数
+	uint16 times = 0;				//循环次数
+	do 
+	{
+		RandCardListEx(cbAllCardData, CARD_COUNT - cbFindNumber * 5);
+
+		//遍历所有牌
+		for (int i = 0; i < CARD_COUNT - 5 - (cbFindNumber * 5);)
+		{
+			//每次取5张连续的牌
+			memcpy(cbPlayerCardData, cbAllCardData + i, 5);
+
+			//获取当前5张牌的牌型
+			BYTE card_type = GetCardType(cbPlayerCardData, 5);
+
+			bool isFind = false;
+			map<uint32, uint32>::iterator iter = cfg_area_info.begin();
+			for (; iter != cfg_area_info.end();)
+			{
+				BYTE cfg_area_id = iter->first;
+				BYTE cfg_card_type = iter->second;
+				if (card_type == cfg_card_type)
+				{
+					//匹配成功，则设置相应位置的牌
+					memcpy(cbTableCardArray[cfg_area_id], cbPlayerCardData, 5);
+
+					//将匹配成功的牌置换到总牌的后面
+					memcpy(cbAllCardData+i*sizeof(BYTE), cbAllCardData+sizeof(BYTE)* (CARD_COUNT - 5 - 1 - (cbFindNumber * 5)), 5);
+					memcpy(cbAllCardData+sizeof(BYTE)*(CARD_COUNT - 5 - 1 - (cbFindNumber * 5)), cbPlayerCardData, 5);
+					isFind = true;
+					cbFindNumber++;
+
+					iter = cfg_area_info.erase(iter);
+				}
+				else
+				{
+					iter++;
+				}
+			}
+
+			//如果找到，则重新从当前位置进行查找
+			if (!isFind)
+			{
+				i++;
+			}			
+		}
+
+		//循环次数
+		times++;
+	} while (times < 100 && cbFindNumber < cbCfgNumber);
+
+	//判断是否找到所有的配置区域
+	uint16 number = 0;
+	if (times >= 100)
+	{
+		uint16 number = 0;
+		map<uint32, uint32>::iterator iter = cfg_area_info.begin();
+		for (; iter != cfg_area_info.end();iter++)
+		{
+			BYTE cfg_area_id = iter->first;
+			BYTE cfg_card_type = iter->second;
+			memcpy(cbTableCardArray[cfg_area_id], cbAllCardData+ sizeof(BYTE)*(number * 5), 5);
+		}
+		ret = false;
+	}
+
+	//设置没有配置的区域	
+	for (int k = 0; k < 5; k++)
+	{
+		map<uint32, uint32>::iterator iter = cfg_area_info.find(k);
+		if (iter == cfg_area_info.end())
+		{
+			memcpy(cbTableCardArray[k], cbAllCardData+ sizeof(BYTE)*(number*5), 5);
+			number++;
+		}
+	}
+	return ret;
+}
+
 int CNiuNiuLogic::RetType(int itype)
 {
 	itype = itype%10;

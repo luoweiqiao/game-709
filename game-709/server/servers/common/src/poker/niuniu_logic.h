@@ -123,6 +123,8 @@ public:
 	BYTE GetCardLogicValue(BYTE cbCardData);
 
 	BYTE GetCardNewValue(BYTE cbCardData);
+
+	bool SetMultipleAreaCardType(uint8 cbTableCardArray[][5], map<uint32, uint32> &cfg_area_info);
 };
 
 //////////////////////////////////////////////////////////////////////////

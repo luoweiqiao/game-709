@@ -562,6 +562,13 @@ int CGameBaiNiuTable::OnGameMessage(CGamePlayer* pPlayer,uint16 cmdID, const uin
 
 			return SetMultipleAreaCardTypeMsg(pPlayer, msg);
 		}break;
+	case net::C2S_MSG_BAINIU_CANCEL_CONTROL_CARDTYPE_REQ://
+		{
+			net::msg_bainiu_control_cardtype_req msg;
+			PARSE_MSG_FROM_ARRAY(msg);
+
+			return CancelMultipleAreaCardTypeMsg(pPlayer);
+		}break;
     default:
         return 0;
     }
@@ -5603,4 +5610,42 @@ bool CGameBaiNiuTable::OnBrcMultipleAreaCardType()
 	LOG_DEBUG("set BrcMultipleAreaCardType ret:%d", ret);
 
 	return ret;
+}
+
+//百人场精准控制---取消控制多区域具体牌型
+bool CGameBaiNiuTable::CancelMultipleAreaCardTypeMsg(CGamePlayer *pPlayer)
+{
+	if (pPlayer == NULL)
+	{
+		LOG_ERROR("PLAYER IS NULL");
+		return false;
+	}
+
+	LOG_DEBUG("brc cancel control Multiple area cardtype info. control uid:%d ", pPlayer->GetUID());
+
+	uint8 result = RESULT_CODE_SUCCESS;
+
+	//判断是否有控制权限
+	if (!pPlayer->GetCtrlFlag())
+	{
+		LOG_DEBUG("brc cancel control Multiple area cardtype the curr uid:%d is not allow operator info.", pPlayer->GetUID());
+		result = RESULT_CODE_FAIL;
+	}
+
+	//判断当前是否处于下注阶段
+	if (GetGameState() != TABLE_STATE_NIUNIU_PLACE_JETTON)
+	{
+		LOG_DEBUG("brc cancel control Multiple area cardtype the table is not bet status. state:%d", GetGameState());
+	}
+
+	m_control_number = 0;
+	m_real_control_uid = pPlayer->GetUID();
+	memset(m_req_control_area, 0x0, sizeof(m_req_control_area));
+	m_mpContralAreaCardTypeList.clear();
+	
+	//返回结果消息
+	net::msg_bainiu_cancel_control_cardtype_rep rep;
+	rep.set_result(result);
+	pPlayer->SendMsgToClient(&rep, net::S2C_MSG_BAINIU_CANCEL_CONTROL_CARDTYPE_REP);
+	return true;
 }

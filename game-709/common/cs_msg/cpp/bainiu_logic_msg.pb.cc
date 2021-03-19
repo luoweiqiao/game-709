@@ -80,6 +80,12 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* msg_bainiu_control_cardtype_rep_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   msg_bainiu_control_cardtype_rep_reflection_ = NULL;
+const ::google::protobuf::Descriptor* msg_bainiu_cancel_control_cardtype_req_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  msg_bainiu_cancel_control_cardtype_req_reflection_ = NULL;
+const ::google::protobuf::Descriptor* msg_bainiu_cancel_control_cardtype_rep_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  msg_bainiu_cancel_control_cardtype_rep_reflection_ = NULL;
 
 }  // namespace
 
@@ -440,6 +446,36 @@ void protobuf_AssignDesc_bainiu_5flogic_5fmsg_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(msg_bainiu_control_cardtype_rep));
+  msg_bainiu_cancel_control_cardtype_req_descriptor_ = file->message_type(20);
+  static const int msg_bainiu_cancel_control_cardtype_req_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(msg_bainiu_cancel_control_cardtype_req, uit_),
+  };
+  msg_bainiu_cancel_control_cardtype_req_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      msg_bainiu_cancel_control_cardtype_req_descriptor_,
+      msg_bainiu_cancel_control_cardtype_req::default_instance_,
+      msg_bainiu_cancel_control_cardtype_req_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(msg_bainiu_cancel_control_cardtype_req, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(msg_bainiu_cancel_control_cardtype_req, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(msg_bainiu_cancel_control_cardtype_req));
+  msg_bainiu_cancel_control_cardtype_rep_descriptor_ = file->message_type(21);
+  static const int msg_bainiu_cancel_control_cardtype_rep_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(msg_bainiu_cancel_control_cardtype_rep, result_),
+  };
+  msg_bainiu_cancel_control_cardtype_rep_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      msg_bainiu_cancel_control_cardtype_rep_descriptor_,
+      msg_bainiu_cancel_control_cardtype_rep::default_instance_,
+      msg_bainiu_cancel_control_cardtype_rep_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(msg_bainiu_cancel_control_cardtype_rep, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(msg_bainiu_cancel_control_cardtype_rep, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(msg_bainiu_cancel_control_cardtype_rep));
 }
 
 namespace {
@@ -492,6 +528,10 @@ void protobuf_RegisterTypes(const ::std::string&) {
     msg_bainiu_control_cardtype_req_descriptor_, &msg_bainiu_control_cardtype_req::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     msg_bainiu_control_cardtype_rep_descriptor_, &msg_bainiu_control_cardtype_rep::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    msg_bainiu_cancel_control_cardtype_req_descriptor_, &msg_bainiu_cancel_control_cardtype_req::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    msg_bainiu_cancel_control_cardtype_rep_descriptor_, &msg_bainiu_cancel_control_cardtype_rep::default_instance());
 }
 
 }  // namespace
@@ -537,6 +577,10 @@ void protobuf_ShutdownFile_bainiu_5flogic_5fmsg_2eproto() {
   delete msg_bainiu_control_cardtype_req_reflection_;
   delete msg_bainiu_control_cardtype_rep::default_instance_;
   delete msg_bainiu_control_cardtype_rep_reflection_;
+  delete msg_bainiu_cancel_control_cardtype_req::default_instance_;
+  delete msg_bainiu_cancel_control_cardtype_req_reflection_;
+  delete msg_bainiu_cancel_control_cardtype_rep::default_instance_;
+  delete msg_bainiu_cancel_control_cardtype_rep_reflection_;
 }
 
 void protobuf_AddDesc_bainiu_5flogic_5fmsg_2eproto() {
@@ -603,7 +647,10 @@ void protobuf_AddDesc_bainiu_5flogic_5fmsg_2eproto() {
     "iniu_play_log\"[\n\037msg_bainiu_control_card"
     "type_req\022\031\n\021control_area_list\030\001 \003(\r\022\035\n\025c"
     "ontrol_cardtype_list\030\002 \003(\r\"1\n\037msg_bainiu"
-    "_control_cardtype_rep\022\016\n\006result\030\001 \001(\r", 2237);
+    "_control_cardtype_rep\022\016\n\006result\030\001 \001(\r\"5\n"
+    "&msg_bainiu_cancel_control_cardtype_req\022"
+    "\013\n\003uit\030\001 \001(\r\"8\n&msg_bainiu_cancel_contro"
+    "l_cardtype_rep\022\016\n\006result\030\001 \001(\r", 2350);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "bainiu_logic_msg.proto", &protobuf_RegisterTypes);
   msg_bainiu_game_info_free_rep::default_instance_ = new msg_bainiu_game_info_free_rep();
@@ -626,6 +673,8 @@ void protobuf_AddDesc_bainiu_5flogic_5fmsg_2eproto() {
   msg_bainiu_play_log_rep::default_instance_ = new msg_bainiu_play_log_rep();
   msg_bainiu_control_cardtype_req::default_instance_ = new msg_bainiu_control_cardtype_req();
   msg_bainiu_control_cardtype_rep::default_instance_ = new msg_bainiu_control_cardtype_rep();
+  msg_bainiu_cancel_control_cardtype_req::default_instance_ = new msg_bainiu_cancel_control_cardtype_req();
+  msg_bainiu_cancel_control_cardtype_rep::default_instance_ = new msg_bainiu_cancel_control_cardtype_rep();
   msg_bainiu_game_info_free_rep::default_instance_->InitAsDefaultInstance();
   msg_bainiu_game_info_play_rep::default_instance_->InitAsDefaultInstance();
   msg_bainiu_start_rep::default_instance_->InitAsDefaultInstance();
@@ -646,6 +695,8 @@ void protobuf_AddDesc_bainiu_5flogic_5fmsg_2eproto() {
   msg_bainiu_play_log_rep::default_instance_->InitAsDefaultInstance();
   msg_bainiu_control_cardtype_req::default_instance_->InitAsDefaultInstance();
   msg_bainiu_control_cardtype_rep::default_instance_->InitAsDefaultInstance();
+  msg_bainiu_cancel_control_cardtype_req::default_instance_->InitAsDefaultInstance();
+  msg_bainiu_cancel_control_cardtype_rep::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_bainiu_5flogic_5fmsg_2eproto);
 }
 
@@ -6901,6 +6952,422 @@ void msg_bainiu_control_cardtype_rep::Swap(msg_bainiu_control_cardtype_rep* othe
   ::google::protobuf::Metadata metadata;
   metadata.descriptor = msg_bainiu_control_cardtype_rep_descriptor_;
   metadata.reflection = msg_bainiu_control_cardtype_rep_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int msg_bainiu_cancel_control_cardtype_req::kUitFieldNumber;
+#endif  // !_MSC_VER
+
+msg_bainiu_cancel_control_cardtype_req::msg_bainiu_cancel_control_cardtype_req()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void msg_bainiu_cancel_control_cardtype_req::InitAsDefaultInstance() {
+}
+
+msg_bainiu_cancel_control_cardtype_req::msg_bainiu_cancel_control_cardtype_req(const msg_bainiu_cancel_control_cardtype_req& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void msg_bainiu_cancel_control_cardtype_req::SharedCtor() {
+  _cached_size_ = 0;
+  uit_ = 0u;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+msg_bainiu_cancel_control_cardtype_req::~msg_bainiu_cancel_control_cardtype_req() {
+  SharedDtor();
+}
+
+void msg_bainiu_cancel_control_cardtype_req::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void msg_bainiu_cancel_control_cardtype_req::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* msg_bainiu_cancel_control_cardtype_req::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return msg_bainiu_cancel_control_cardtype_req_descriptor_;
+}
+
+const msg_bainiu_cancel_control_cardtype_req& msg_bainiu_cancel_control_cardtype_req::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_bainiu_5flogic_5fmsg_2eproto();
+  return *default_instance_;
+}
+
+msg_bainiu_cancel_control_cardtype_req* msg_bainiu_cancel_control_cardtype_req::default_instance_ = NULL;
+
+msg_bainiu_cancel_control_cardtype_req* msg_bainiu_cancel_control_cardtype_req::New() const {
+  return new msg_bainiu_cancel_control_cardtype_req;
+}
+
+void msg_bainiu_cancel_control_cardtype_req::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    uit_ = 0u;
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool msg_bainiu_cancel_control_cardtype_req::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional uint32 uit = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &uit_)));
+          set_has_uit();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void msg_bainiu_cancel_control_cardtype_req::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // optional uint32 uit = 1;
+  if (has_uit()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->uit(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* msg_bainiu_cancel_control_cardtype_req::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // optional uint32 uit = 1;
+  if (has_uit()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->uit(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int msg_bainiu_cancel_control_cardtype_req::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional uint32 uit = 1;
+    if (has_uit()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->uit());
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void msg_bainiu_cancel_control_cardtype_req::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const msg_bainiu_cancel_control_cardtype_req* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const msg_bainiu_cancel_control_cardtype_req*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void msg_bainiu_cancel_control_cardtype_req::MergeFrom(const msg_bainiu_cancel_control_cardtype_req& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_uit()) {
+      set_uit(from.uit());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void msg_bainiu_cancel_control_cardtype_req::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void msg_bainiu_cancel_control_cardtype_req::CopyFrom(const msg_bainiu_cancel_control_cardtype_req& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool msg_bainiu_cancel_control_cardtype_req::IsInitialized() const {
+
+  return true;
+}
+
+void msg_bainiu_cancel_control_cardtype_req::Swap(msg_bainiu_cancel_control_cardtype_req* other) {
+  if (other != this) {
+    std::swap(uit_, other->uit_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata msg_bainiu_cancel_control_cardtype_req::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = msg_bainiu_cancel_control_cardtype_req_descriptor_;
+  metadata.reflection = msg_bainiu_cancel_control_cardtype_req_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int msg_bainiu_cancel_control_cardtype_rep::kResultFieldNumber;
+#endif  // !_MSC_VER
+
+msg_bainiu_cancel_control_cardtype_rep::msg_bainiu_cancel_control_cardtype_rep()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void msg_bainiu_cancel_control_cardtype_rep::InitAsDefaultInstance() {
+}
+
+msg_bainiu_cancel_control_cardtype_rep::msg_bainiu_cancel_control_cardtype_rep(const msg_bainiu_cancel_control_cardtype_rep& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void msg_bainiu_cancel_control_cardtype_rep::SharedCtor() {
+  _cached_size_ = 0;
+  result_ = 0u;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+msg_bainiu_cancel_control_cardtype_rep::~msg_bainiu_cancel_control_cardtype_rep() {
+  SharedDtor();
+}
+
+void msg_bainiu_cancel_control_cardtype_rep::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void msg_bainiu_cancel_control_cardtype_rep::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* msg_bainiu_cancel_control_cardtype_rep::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return msg_bainiu_cancel_control_cardtype_rep_descriptor_;
+}
+
+const msg_bainiu_cancel_control_cardtype_rep& msg_bainiu_cancel_control_cardtype_rep::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_bainiu_5flogic_5fmsg_2eproto();
+  return *default_instance_;
+}
+
+msg_bainiu_cancel_control_cardtype_rep* msg_bainiu_cancel_control_cardtype_rep::default_instance_ = NULL;
+
+msg_bainiu_cancel_control_cardtype_rep* msg_bainiu_cancel_control_cardtype_rep::New() const {
+  return new msg_bainiu_cancel_control_cardtype_rep;
+}
+
+void msg_bainiu_cancel_control_cardtype_rep::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    result_ = 0u;
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool msg_bainiu_cancel_control_cardtype_rep::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional uint32 result = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &result_)));
+          set_has_result();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void msg_bainiu_cancel_control_cardtype_rep::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // optional uint32 result = 1;
+  if (has_result()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->result(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* msg_bainiu_cancel_control_cardtype_rep::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // optional uint32 result = 1;
+  if (has_result()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->result(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int msg_bainiu_cancel_control_cardtype_rep::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional uint32 result = 1;
+    if (has_result()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->result());
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void msg_bainiu_cancel_control_cardtype_rep::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const msg_bainiu_cancel_control_cardtype_rep* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const msg_bainiu_cancel_control_cardtype_rep*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void msg_bainiu_cancel_control_cardtype_rep::MergeFrom(const msg_bainiu_cancel_control_cardtype_rep& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_result()) {
+      set_result(from.result());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void msg_bainiu_cancel_control_cardtype_rep::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void msg_bainiu_cancel_control_cardtype_rep::CopyFrom(const msg_bainiu_cancel_control_cardtype_rep& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool msg_bainiu_cancel_control_cardtype_rep::IsInitialized() const {
+
+  return true;
+}
+
+void msg_bainiu_cancel_control_cardtype_rep::Swap(msg_bainiu_cancel_control_cardtype_rep* other) {
+  if (other != this) {
+    std::swap(result_, other->result_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata msg_bainiu_cancel_control_cardtype_rep::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = msg_bainiu_cancel_control_cardtype_rep_descriptor_;
+  metadata.reflection = msg_bainiu_cancel_control_cardtype_rep_reflection_;
   return metadata;
 }
 

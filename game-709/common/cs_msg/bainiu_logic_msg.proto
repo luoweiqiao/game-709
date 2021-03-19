@@ -157,6 +157,18 @@ message msg_bainiu_control_cardtype_rep
 	optional uint32 result = 1;						// 0 失败 1 成功	
 }
 
+// 取消控制区域具体牌型的请求
+message msg_bainiu_cancel_control_cardtype_req
+{
+	optional uint32 uit		= 1;   					//对应玩家ID		
+}
+
+// 取消控制区域具体牌型的返回
+message msg_bainiu_cancel_control_cardtype_rep
+{
+	optional uint32 result = 1;						// 0 失败 1 成功	
+}
+
 //-----------------百牛游戏消息----------------------------------------------------------------
 
 

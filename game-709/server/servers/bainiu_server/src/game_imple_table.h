@@ -405,6 +405,7 @@ public:
 	bool   SetControlBankerScore(bool isWin);							//设置庄家总体为赢/输 通过参数控制
 	
 	bool   SetMultipleAreaCardTypeMsg(CGamePlayer* pPlayer, net::msg_bainiu_control_cardtype_req & msg);
+	bool   CancelMultipleAreaCardTypeMsg(CGamePlayer* pPlayer);
 
 	//当申请上庄玩家被强制下庄后，需要通知该上庄玩家
 	void  OnNotityForceApplyUser(CGamePlayer* pPlayer);

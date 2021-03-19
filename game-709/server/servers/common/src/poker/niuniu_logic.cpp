@@ -71,6 +71,14 @@ bool CNiuNiuLogic::SetMultipleAreaCardType(uint8 cbTableCardArray[][5], map<uint
 	BYTE cbAllCardData[CARD_COUNT];	//所有牌	
 	RandCardList(cbAllCardData, CARD_COUNT);
 
+	BYTE cbCfgAreaData[5];			//配置的区域值为1，没有配置的区域为0
+	map<uint32, uint32>::iterator iter = cfg_area_info.begin();
+	for (; iter != cfg_area_info.end();iter++)
+	{
+		BYTE cfg_area_id = iter->first;
+		cbCfgAreaData[cfg_area_id] = 1;
+	}
+
 	BYTE cbPlayerCardData[5];		//五张牌
 	BYTE cbFindNumber = 0;			//已经找到的数量
 	BYTE cbCfgNumber = cfg_area_info.size();	//配置的区域个数
@@ -94,6 +102,9 @@ bool CNiuNiuLogic::SetMultipleAreaCardType(uint8 cbTableCardArray[][5], map<uint
 			{
 				BYTE cfg_area_id = iter->first;
 				BYTE cfg_card_type = iter->second;
+				
+				//LOG_DEBUG("111 brc control Multiple area cardtype area_id:%d cardtype_id:%d.", cfg_area_id, cfg_card_type);
+
 				if (card_type == cfg_card_type)
 				{
 					//匹配成功，则设置相应位置的牌
@@ -104,6 +115,8 @@ bool CNiuNiuLogic::SetMultipleAreaCardType(uint8 cbTableCardArray[][5], map<uint
 					memcpy(cbAllCardData+sizeof(BYTE)*(CARD_COUNT - 5 - 1 - (cbFindNumber * 5)), cbPlayerCardData, 5);
 					isFind = true;
 					cbFindNumber++;
+
+					//LOG_DEBUG("222 card value:0x%02X 0x%02X 0x%02X 0x%02X 0x%02X", cbPlayerCardData[0], cbPlayerCardData[1], cbPlayerCardData[2], cbPlayerCardData[3], cbPlayerCardData[4]);
 
 					iter = cfg_area_info.erase(iter);
 				}
@@ -122,7 +135,7 @@ bool CNiuNiuLogic::SetMultipleAreaCardType(uint8 cbTableCardArray[][5], map<uint
 
 		//循环次数
 		times++;
-	} while (times < 100 && cbFindNumber < cbCfgNumber);
+	} while (times < 1000 && cbFindNumber < cbCfgNumber);
 
 	//判断是否找到所有的配置区域
 	uint16 number = 0;
@@ -134,17 +147,21 @@ bool CNiuNiuLogic::SetMultipleAreaCardType(uint8 cbTableCardArray[][5], map<uint
 		{
 			BYTE cfg_area_id = iter->first;
 			BYTE cfg_card_type = iter->second;
+
+			//LOG_DEBUG("333 brc control Multiple area cardtype area_id:%d cardtype_id:%d.", cfg_area_id, cfg_card_type);
+
 			memcpy(cbTableCardArray[cfg_area_id], cbAllCardData+ sizeof(BYTE)*(number * 5), 5);
+			number++;
 		}
 		ret = false;
 	}
 
 	//设置没有配置的区域	
 	for (int k = 0; k < 5; k++)
-	{
-		map<uint32, uint32>::iterator iter = cfg_area_info.find(k);
-		if (iter == cfg_area_info.end())
+	{		
+		if (cbCfgAreaData[k]==0)
 		{
+			//LOG_DEBUG("444 brc control Multiple area cardtype area_id:%d", k);
 			memcpy(cbTableCardArray[k], cbAllCardData+ sizeof(BYTE)*(number*5), 5);
 			number++;
 		}

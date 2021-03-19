@@ -420,6 +420,8 @@ enum  CLIENT_MSG_ID
 	S2C_MSG_BAINIU_CONTINUOUS_PRESSURE_REP	    = 3420;// 继续下注
 	C2S_MSG_BAINIU_CONTROL_CARDTYPE_REQ	    	= 3421;// 控制区域牌型请求
 	S2C_MSG_BAINIU_CONTROL_CARDTYPE_REP	    	= 3422;// 控制区域牌型返回
+	C2S_MSG_BAINIU_CANCEL_CONTROL_CARDTYPE_REQ	= 3423;// 取消控制区域牌型请求
+	S2C_MSG_BAINIU_CANCEL_CONTROL_CARDTYPE_REP	= 3424;// 取消控制区域牌型返回
 	
 
 //--------------德州游戏消息-------------------------------------------	

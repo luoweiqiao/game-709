@@ -55,6 +55,8 @@ class bainiu_play_log;
 class msg_bainiu_play_log_rep;
 class msg_bainiu_control_cardtype_req;
 class msg_bainiu_control_cardtype_rep;
+class msg_bainiu_cancel_control_cardtype_req;
+class msg_bainiu_cancel_control_cardtype_rep;
 
 // ===================================================================
 
@@ -2241,6 +2243,170 @@ class msg_bainiu_control_cardtype_rep : public ::google::protobuf::Message {
   void InitAsDefaultInstance();
   static msg_bainiu_control_cardtype_rep* default_instance_;
 };
+// -------------------------------------------------------------------
+
+class msg_bainiu_cancel_control_cardtype_req : public ::google::protobuf::Message {
+ public:
+  msg_bainiu_cancel_control_cardtype_req();
+  virtual ~msg_bainiu_cancel_control_cardtype_req();
+
+  msg_bainiu_cancel_control_cardtype_req(const msg_bainiu_cancel_control_cardtype_req& from);
+
+  inline msg_bainiu_cancel_control_cardtype_req& operator=(const msg_bainiu_cancel_control_cardtype_req& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const msg_bainiu_cancel_control_cardtype_req& default_instance();
+
+  void Swap(msg_bainiu_cancel_control_cardtype_req* other);
+
+  // implements Message ----------------------------------------------
+
+  msg_bainiu_cancel_control_cardtype_req* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const msg_bainiu_cancel_control_cardtype_req& from);
+  void MergeFrom(const msg_bainiu_cancel_control_cardtype_req& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint32 uit = 1;
+  inline bool has_uit() const;
+  inline void clear_uit();
+  static const int kUitFieldNumber = 1;
+  inline ::google::protobuf::uint32 uit() const;
+  inline void set_uit(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:net.msg_bainiu_cancel_control_cardtype_req)
+ private:
+  inline void set_has_uit();
+  inline void clear_has_uit();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 uit_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_bainiu_5flogic_5fmsg_2eproto();
+  friend void protobuf_AssignDesc_bainiu_5flogic_5fmsg_2eproto();
+  friend void protobuf_ShutdownFile_bainiu_5flogic_5fmsg_2eproto();
+
+  void InitAsDefaultInstance();
+  static msg_bainiu_cancel_control_cardtype_req* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class msg_bainiu_cancel_control_cardtype_rep : public ::google::protobuf::Message {
+ public:
+  msg_bainiu_cancel_control_cardtype_rep();
+  virtual ~msg_bainiu_cancel_control_cardtype_rep();
+
+  msg_bainiu_cancel_control_cardtype_rep(const msg_bainiu_cancel_control_cardtype_rep& from);
+
+  inline msg_bainiu_cancel_control_cardtype_rep& operator=(const msg_bainiu_cancel_control_cardtype_rep& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const msg_bainiu_cancel_control_cardtype_rep& default_instance();
+
+  void Swap(msg_bainiu_cancel_control_cardtype_rep* other);
+
+  // implements Message ----------------------------------------------
+
+  msg_bainiu_cancel_control_cardtype_rep* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const msg_bainiu_cancel_control_cardtype_rep& from);
+  void MergeFrom(const msg_bainiu_cancel_control_cardtype_rep& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint32 result = 1;
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::uint32 result() const;
+  inline void set_result(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:net.msg_bainiu_cancel_control_cardtype_rep)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 result_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_bainiu_5flogic_5fmsg_2eproto();
+  friend void protobuf_AssignDesc_bainiu_5flogic_5fmsg_2eproto();
+  friend void protobuf_ShutdownFile_bainiu_5flogic_5fmsg_2eproto();
+
+  void InitAsDefaultInstance();
+  static msg_bainiu_cancel_control_cardtype_rep* default_instance_;
+};
 // ===================================================================
 
 
@@ -3905,6 +4071,58 @@ inline ::google::protobuf::uint32 msg_bainiu_control_cardtype_rep::result() cons
   return result_;
 }
 inline void msg_bainiu_control_cardtype_rep::set_result(::google::protobuf::uint32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// msg_bainiu_cancel_control_cardtype_req
+
+// optional uint32 uit = 1;
+inline bool msg_bainiu_cancel_control_cardtype_req::has_uit() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void msg_bainiu_cancel_control_cardtype_req::set_has_uit() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void msg_bainiu_cancel_control_cardtype_req::clear_has_uit() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void msg_bainiu_cancel_control_cardtype_req::clear_uit() {
+  uit_ = 0u;
+  clear_has_uit();
+}
+inline ::google::protobuf::uint32 msg_bainiu_cancel_control_cardtype_req::uit() const {
+  return uit_;
+}
+inline void msg_bainiu_cancel_control_cardtype_req::set_uit(::google::protobuf::uint32 value) {
+  set_has_uit();
+  uit_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// msg_bainiu_cancel_control_cardtype_rep
+
+// optional uint32 result = 1;
+inline bool msg_bainiu_cancel_control_cardtype_rep::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void msg_bainiu_cancel_control_cardtype_rep::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void msg_bainiu_cancel_control_cardtype_rep::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void msg_bainiu_cancel_control_cardtype_rep::clear_result() {
+  result_ = 0u;
+  clear_has_result();
+}
+inline ::google::protobuf::uint32 msg_bainiu_cancel_control_cardtype_rep::result() const {
+  return result_;
+}
+inline void msg_bainiu_cancel_control_cardtype_rep::set_result(::google::protobuf::uint32 value) {
   set_has_result();
   result_ = value;
 }

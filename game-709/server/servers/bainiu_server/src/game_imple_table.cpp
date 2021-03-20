@@ -1056,8 +1056,9 @@ void    CGameBaiNiuTable::SendGameScene(CGamePlayer* pPlayer)
     }
     SendLookerListToClient(pPlayer);
     SendApplyUser(pPlayer);
-	SendFrontJettonInfo(pPlayer);
+	SendFrontJettonInfo(pPlayer);	
 }
+
 int64    CGameBaiNiuTable::CalcPlayerInfo(uint32 uid,int64 winScore, int64 OnlywinScore,bool isBanker)
 {
     //if(winScore == 0)
@@ -5151,6 +5152,12 @@ bool CGameBaiNiuTable::OnBrcControlEnterControlInterface(CGamePlayer* pPlayer)
 		//发送申请上庄玩家列表
 		OnBrcControlFlushAppleList();
 
+		//判断是否需要回放百人场多区域控制配置
+		if (m_mpContralAreaCardTypeList.size() > 0)
+		{
+			SendReplayMultipleAreaCardTypeMsg(pPlayer);
+		}
+
 		return true;
 	}
 	return false;
@@ -5648,4 +5655,21 @@ bool CGameBaiNiuTable::CancelMultipleAreaCardTypeMsg(CGamePlayer *pPlayer)
 	rep.set_result(result);
 	pPlayer->SendMsgToClient(&rep, net::S2C_MSG_BAINIU_CANCEL_CONTROL_CARDTYPE_REP);
 	return true;
+}
+
+void CGameBaiNiuTable::SendReplayMultipleAreaCardTypeMsg(CGamePlayer* pPlayer)
+{
+	LOG_DEBUG("brc replay control Multiple area cardtype. size:%d", m_mpContralAreaCardTypeList.size());
+
+	//返回结果消息
+	net::msg_bainiu_replay_control_cardtype_req rep;
+	map<uint32, uint32>::iterator iter = m_mpContralAreaCardTypeList.begin();
+	for (; iter != m_mpContralAreaCardTypeList.end(); iter++)
+	{
+		BYTE cfg_area_id = iter->first;
+		BYTE cfg_card_type = iter->second;
+		rep.add_control_area_list(cfg_area_id);
+		rep.add_control_cardtype_list(cfg_card_type);
+	}	
+	pPlayer->SendMsgToClient(&rep, net::S2C_MSG_BAINIU_REPLAY_CONTROL_CARDTYPE_REP);
 }

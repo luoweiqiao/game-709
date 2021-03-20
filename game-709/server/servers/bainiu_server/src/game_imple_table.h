@@ -406,6 +406,7 @@ public:
 	
 	bool   SetMultipleAreaCardTypeMsg(CGamePlayer* pPlayer, net::msg_bainiu_control_cardtype_req & msg);
 	bool   CancelMultipleAreaCardTypeMsg(CGamePlayer* pPlayer);
+	void   SendReplayMultipleAreaCardTypeMsg(CGamePlayer* pPlayer);
 
 	//当申请上庄玩家被强制下庄后，需要通知该上庄玩家
 	void  OnNotityForceApplyUser(CGamePlayer* pPlayer);

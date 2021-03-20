@@ -169,6 +169,13 @@ message msg_bainiu_cancel_control_cardtype_rep
 	optional uint32 result = 1;						// 0 失败 1 成功	
 }
 
+// 回放控制区域具体牌型的请求---断线重连的情况下使用
+message msg_bainiu_replay_control_cardtype_req
+{
+	repeated  uint32 control_area_list		= 1;   	//对应区域列表	
+	repeated  uint32 control_cardtype_list	= 2;   	//对应牌型列表
+}
+
 //-----------------百牛游戏消息----------------------------------------------------------------
 
 

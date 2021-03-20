@@ -422,6 +422,7 @@ enum  CLIENT_MSG_ID
 	S2C_MSG_BAINIU_CONTROL_CARDTYPE_REP	    	= 3422;// 控制区域牌型返回
 	C2S_MSG_BAINIU_CANCEL_CONTROL_CARDTYPE_REQ	= 3423;// 取消控制区域牌型请求
 	S2C_MSG_BAINIU_CANCEL_CONTROL_CARDTYPE_REP	= 3424;// 取消控制区域牌型返回
+	S2C_MSG_BAINIU_REPLAY_CONTROL_CARDTYPE_REP	= 3425;// 回放控制区域牌型---断线重连的情况下使用
 	
 
 //--------------德州游戏消息-------------------------------------------	

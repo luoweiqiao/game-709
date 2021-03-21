@@ -271,6 +271,15 @@
     <Filter Include="release\fishing_server\config">
       <UniqueIdentifier>{f651c5ca-da37-400c-ad96-4a40200ac8c4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="servers\sangangdou_server">
+      <UniqueIdentifier>{d5c60669-e644-4477-bec3-ee725f219c87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="servers\sangangdou_server\build">
+      <UniqueIdentifier>{440e3fa8-10ce-4ad2-9c86-8187e038971c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="servers\sangangdou_server\src">
+      <UniqueIdentifier>{e119e32d-a8cc-4ec1-8000-daf8bed54905}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\..\servers\baccarat_server\build\CMakeLists.txt">
@@ -341,6 +350,9 @@
     </Text>
     <Text Include="..\..\servers\fishing_server\build\CMakeLists.txt">
       <Filter>servers\fishing_server\build</Filter>
+    </Text>
+    <Text Include="..\..\servers\sangangdou_server\build\CMakeLists.txt">
+      <Filter>servers\sangangdou_server\build</Filter>
     </Text>
   </ItemGroup>
   <ItemGroup>
@@ -529,6 +541,9 @@
     </None>
     <None Include="..\..\release\fishing_server\config\zidanSet.json">
       <Filter>release\fishing_server\config</Filter>
+    </None>
+    <None Include="..\..\servers\sangangdou_server\build\rebuild.sh">
+      <Filter>servers\sangangdou_server\build</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -1161,6 +1176,21 @@
     </ClCompile>
     <ClCompile Include="..\..\servers\common\src\pb\war_logic_msg.pb.cc">
       <Filter>servers\common\src\pb</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\servers\sangangdou_server\src\game_imple_table.cpp">
+      <Filter>servers\sangangdou_server\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\servers\sangangdou_server\src\game_server.cpp">
+      <Filter>servers\sangangdou_server\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\servers\sangangdou_server\src\msg_imple_handle.cpp">
+      <Filter>servers\sangangdou_server\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\servers\sangangdou_server\src\robot_oper_mgr.cpp">
+      <Filter>servers\sangangdou_server\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\servers\sangangdou_server\src\sangongdou_logic.cpp">
+      <Filter>servers\sangangdou_server\src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2006,6 +2036,18 @@
     </ClInclude>
     <ClInclude Include="..\..\servers\common\src\pb\war_logic_msg.pb.h">
       <Filter>servers\common\src\pb</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\servers\sangangdou_server\src\game_imple_table.h">
+      <Filter>servers\sangangdou_server\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\servers\sangangdou_server\src\msg_imple_handle.h">
+      <Filter>servers\sangangdou_server\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\servers\sangangdou_server\src\robot_oper_mgr.h">
+      <Filter>servers\sangangdou_server\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\servers\sangangdou_server\src\sangongdou_logic.h">
+      <Filter>servers\sangangdou_server\src</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

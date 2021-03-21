@@ -2535,7 +2535,7 @@ void protobuf_AssignDesc_client_5flogic_5fmsg_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(msg_player_continuous_pressure_jetton_rep));
   msg_game_play_log_descriptor_ = file->message_type(131);
-  static const int msg_game_play_log_offsets_[8] = {
+  static const int msg_game_play_log_offsets_[9] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(msg_game_play_log, bainiu_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(msg_game_play_log, baccarat_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(msg_game_play_log, paijiu_),
@@ -2544,6 +2544,7 @@ void protobuf_AssignDesc_client_5flogic_5fmsg_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(msg_game_play_log, fight_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(msg_game_play_log, twoeight_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(msg_game_play_log, carcity_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(msg_game_play_log, sangongdou_),
   };
   msg_game_play_log_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -3552,6 +3553,7 @@ void protobuf_AddDesc_client_5flogic_5fmsg_2eproto() {
   ::net::protobuf_AddDesc_fight_5flogic_5fmsg_2eproto();
   ::net::protobuf_AddDesc_twoeight_5flogic_5fmsg_2eproto();
   ::net::protobuf_AddDesc_carcity_5flogic_5fmsg_2eproto();
+  ::net::protobuf_AddDesc_sangongdou_5flogic_5fmsg_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\026client_logic_msg.proto\022\003net\032\025base_msg_"
     "struct.proto\032\020error_code.proto\032\026bainiu_l"
@@ -3559,263 +3561,265 @@ void protobuf_AddDesc_client_5flogic_5fmsg_2eproto() {
     "\032\026paijiu_logic_msg.proto\032\024dice_logic_msg"
     ".proto\032\023war_logic_msg.proto\032\025fight_logic"
     "_msg.proto\032\030twoeight_logic_msg.proto\032\027ca"
-    "rcity_logic_msg.proto\"\"\n\016msg_heart_test\022"
-    "\020\n\010svr_time\030\001 \001(\r\"]\n\rmsg_login_req\022\013\n\003ui"
-    "d\030\001 \001(\r\022\013\n\003key\030\002 \001(\014\022\020\n\010deviceid\030\003 \001(\014\022\014"
-    "\n\004city\030\004 \001(\014\022\022\n\ncheck_code\030\005 \001(\014\"4\n\rmsg_"
-    "login_rep\022\016\n\006result\030\001 \001(\r\022\023\n\013server_time"
-    "\030\002 \001(\r\"&\n\024msg_notify_leave_rep\022\016\n\006result"
-    "\030\001 \001(\r\"$\n\022msg_enter_game_rep\022\016\n\006result\030\001"
-    " \001(\r\"8\n\023msg_player_data_rep\022!\n\tbase_data"
-    "\030\001 \001(\0132\016.net.base_info\"v\n\024msg_update_acc"
-    "_value\022\017\n\007diamond\030\001 \001(\003\022\014\n\004coin\030\002 \001(\003\022\r\n"
-    "\005score\030\003 \001(\003\022\r\n\005ingot\030\004 \001(\003\022\016\n\006cvalue\030\005 "
-    "\001(\003\022\021\n\tsafe_coin\030\006 \001(\003\"\212\001\n\025msg_update_ba"
-    "se_value\022\024\n\014safeboxstate\030\001 \001(\r\022\016\n\006clogin"
-    "\030\002 \001(\r\022\021\n\tweeklogin\030\003 \001(\r\022\016\n\006reward\030\004 \001("
-    "\r\022\020\n\010bankrupt\030\005 \001(\r\022\026\n\016day_game_count\030\006 "
-    "\001(\r\"<\n\023msg_send_base_value\022\016\n\006clogin\030\001 \001"
-    "(\r\022\025\n\rclogin_reward\030\002 \003(\r\"9\n\024msg_update_"
-    "land_info\022!\n\tland_data\030\001 \001(\0132\016.net.land_"
-    "info\"*\n\025msg_get_game_info_req\022\021\n\tgame_ty"
-    "pe\030\001 \001(\r\"9\n\024msg_update_game_info\022!\n\004data"
-    "\030\001 \001(\0132\023.net.game_data_info\"&\n\021msg_svrs_"
-    "info_req\022\021\n\tgame_type\030\001 \001(\r\"a\n\021msg_svrs_"
-    "info_rep\022\033\n\004svrs\030\001 \003(\0132\r.net.svr_info\022\021\n"
-    "\tcur_svrid\030\002 \001(\r\022\034\n\003num\030\003 \003(\0132\017.net.play"
-    "er_num\"&\n\025msg_enter_gamesvr_req\022\r\n\005svrid"
-    "\030\001 \001(\r\"I\n\025msg_enter_gamesvr_rep\022\016\n\006resul"
-    "t\030\001 \001(\r\022\r\n\005svrid\030\002 \001(\r\022\021\n\tctrl_flag\030\003 \001("
-    "\r\",\n\035msg_control_player_back_lobby\022\013\n\003ui"
-    "d\030\001 \001(\r\"\'\n\025msg_login_safebox_req\022\016\n\006pass"
-    "wd\030\001 \001(\014\"\'\n\025msg_login_safebox_rep\022\016\n\006res"
-    "ult\030\001 \001(\r\">\n\032msg_change_safebox_pwd_req\022"
-    "\017\n\007old_pwd\030\001 \001(\014\022\017\n\007new_pwd\030\002 \001(\014\",\n\032msg"
-    "_change_safebox_pwd_rep\022\016\n\006result\030\001 \001(\r\""
-    ")\n\024msg_take_safebox_req\022\021\n\ttake_coin\030\001 \001"
-    "(\003\"9\n\024msg_take_safebox_rep\022\021\n\ttake_coin\030"
-    "\001 \001(\003\022\016\n\006result\030\002 \001(\r\"L\n\024msg_give_safebo"
-    "x_req\022\020\n\010give_uid\030\001 \001(\r\022\021\n\tgive_coin\030\002 \001"
-    "(\003\022\017\n\007own_uid\030\003 \001(\r\"K\n\024msg_give_safebox_"
-    "rep\022\020\n\010give_uid\030\001 \001(\r\022\021\n\tgive_coin\030\002 \001(\003"
-    "\022\016\n\006result\030\003 \001(\r\"$\n\025msg_php_broadcast_re"
-    "p\022\013\n\003msg\030\001 \001(\014\"\'\n\030msg_system_broadcast_r"
-    "ep\022\013\n\003msg\030\001 \001(\014\"\?\n\030msg_send_all_mission_"
-    "rep\022#\n\010missions\030\001 \003(\0132\021.net.mission_data"
-    "\":\n\024msg_send_mission_rep\022\"\n\007mission\030\001 \001("
-    "\0132\021.net.mission_data\")\n\031msg_get_mission_"
-    "prize_req\022\014\n\004msid\030\001 \001(\r\"q\n\031msg_get_missi"
-    "on_prize_rep\022\016\n\006result\030\001 \001(\r\022\"\n\007mission\030"
-    "\002 \001(\0132\021.net.mission_data\022 \n\010baseinfo\030\003 \001"
-    "(\0132\016.net.base_info\"7\n!msg_get_login_vip_"
-    "reward_info_req\022\022\n\nhelp_count\030\001 \001(\r\"M\n!m"
-    "sg_get_login_vip_reward_info_rep\022\023\n\013rewa"
-    "rd_coin\030\001 \003(\r\022\023\n\013reward_flag\030\002 \001(\r\"8\n\"ms"
-    "g_get_login_vip_reward_total_req\022\022\n\nhelp"
-    "_count\030\001 \001(\r\"8\n\"msg_get_login_vip_reward"
-    "_total_rep\022\022\n\ntotal_coin\030\001 \003(\r\"/\n\030msg_ge"
-    "t_login_reward_req\022\023\n\013reward_flag\030\001 \001(\r\""
-    "T\n\030msg_get_login_reward_rep\022\023\n\013reward_fl"
-    "ag\030\001 \001(\r\022\016\n\006result\030\002 \001(\r\022\023\n\013reward_coin\030"
-    "\003 \001(\r\"/\n\031msg_get_bankrupt_help_req\022\022\n\nhe"
-    "lp_count\030\001 \001(\r\"Z\n\031msg_get_bankrupt_help_"
-    "rep\022\016\n\006result\030\001 \001(\r\022\026\n\016bankrupt_count\030\002 "
-    "\001(\r\022\025\n\rbankrupt_coin\030\003 \001(\r\"/\n\031msg_get_ba"
-    "nkrupt_info_req\022\022\n\nhelp_count\030\001 \001(\r\"d\n\031m"
-    "sg_get_bankrupt_info_rep\022\014\n\004base\030\001 \001(\r\022\021"
-    "\n\tlast_coin\030\002 \001(\r\022\022\n\nlast_count\030\003 \001(\r\022\022\n"
-    "\naward_coin\030\004 \001(\r\"D\n\026msg_exchange_score_"
-    "req\022\025\n\rexchange_type\030\001 \001(\r\022\023\n\013exchange_i"
-    "d\030\002 \001(\r\"T\n\026msg_exchange_score_rep\022\025\n\rexc"
-    "hange_type\030\001 \001(\r\022\023\n\013exchange_id\030\002 \001(\r\022\016\n"
-    "\006result\030\003 \001(\r\"&\n\027msg_speak_broadcast_req"
-    "\022\013\n\003msg\030\001 \001(\014\"J\n\027msg_speak_broadcast_rep"
-    "\022\017\n\007send_id\030\001 \001(\r\022\021\n\tsend_name\030\002 \001(\014\022\013\n\003"
-    "msg\030\003 \001(\014\")\n\025msg_get_history_speak\022\020\n\010ge"
-    "t_time\030\001 \001(\r\"D\n\026msg_send_history_speak\022*"
-    "\n\004msgs\030\001 \003(\0132\034.net.msg_speak_broadcast_r"
-    "ep\"4\n\022msg_speak_oper_rep\022\016\n\006result\030\001 \001(\r"
-    "\022\016\n\006cdtime\030\002 \001(\r\"\025\n\023msg_get_server_info\""
-    "V\n\013server_info\022\r\n\005svrid\030\001 \001(\r\022\022\n\nplayer_"
-    "num\030\002 \001(\r\022\021\n\trobot_num\030\003 \001(\r\022\021\n\tgame_typ"
-    "e\030\004 \001(\r\"9\n\024msg_send_server_info\022!\n\007serve"
-    "rs\030\001 \003(\0132\020.net.server_info\"\'\n\022msg_rooms_"
-    "info_req\022\021\n\tgame_type\030\001 \001(\r\"G\n\022msg_rooms"
-    "_info_rep\022\035\n\005rooms\030\001 \003(\0132\016.net.room_info"
-    "\022\022\n\ncur_roomid\030\002 \001(\r\"!\n\022msg_back_lobby_r"
-    "eq\022\013\n\003uid\030\001 \001(\r\"$\n\022msg_back_lobby_rep\022\016\n"
-    "\006result\030\001 \001(\r\"%\n\024msg_goto_gamesvr_req\022\r\n"
-    "\005svrid\030\001 \001(\r\"5\n\024msg_goto_gamesvr_rep\022\016\n\006"
-    "result\030\001 \001(\r\022\r\n\005svrid\030\002 \001(\r\"%\n\022msg_enter"
-    "_room_req\022\017\n\007room_id\030\001 \001(\r\":\n!msg_enter_"
-    "novice_welfare_room_req\022\025\n\rmaxjettonrate"
-    "\030\001 \001(\005\"U\n\022msg_enter_room_rep\022\016\n\006result\030\001"
-    " \001(\r\022\034\n\004room\030\002 \001(\0132\016.net.room_info\022\021\n\tcu"
-    "r_table\030\003 \001(\r\"/\n\031msg_notify_leave_room_r"
-    "ep\022\022\n\nleave_type\030\001 \001(\r\":\n\022msg_table_list"
-    "_req\022\020\n\010table_id\030\001 \001(\r\022\022\n\nseach_type\030\002 \001"
-    "(\r\":\n\022msg_table_list_rep\022$\n\006tables\030\001 \003(\013"
-    "2\024.net.table_face_info\"\245\001\n\024msg_create_ta"
-    "ble_req\022\022\n\ntable_name\030\001 \001(\014\022\016\n\006passwd\030\002 "
-    "\001(\014\022\014\n\004deal\030\003 \001(\r\022\022\n\nbase_score\030\004 \001(\003\022\017\n"
-    "\007is_show\030\005 \001(\r\022\020\n\010fee_type\030\006 \001(\r\022\021\n\tfee_"
-    "value\030\007 \001(\003\022\021\n\topen_days\030\010 \001(\r\"8\n\024msg_cr"
-    "eate_table_rep\022\016\n\006result\030\001 \001(\r\022\020\n\010table_"
-    "id\030\002 \001(\r\";\n\023msg_renew_table_req\022\020\n\010table"
-    "_id\030\001 \001(\r\022\022\n\nrenew_days\030\002 \001(\r\"K\n\023msg_ren"
-    "ew_table_rep\022\020\n\010table_id\030\001 \001(\r\022\022\n\nrenew_"
-    "days\030\002 \001(\r\022\016\n\006result\030\003 \001(\r\"\'\n\023msg_leave_"
-    "table_req\022\020\n\010table_id\030\001 \001(\r\"%\n\023msg_leave"
-    "_table_rep\022\016\n\006result\030\001 \001(\r\"7\n\023msg_enter_"
-    "table_req\022\020\n\010table_id\030\001 \001(\r\022\016\n\006passwd\030\002 "
-    "\001(\014\"7\n\023msg_enter_table_rep\022\020\n\010table_id\030\001"
-    " \001(\r\022\016\n\006result\030\002 \001(\r\">\n\022msg_table_info_r"
-    "ep\022(\n\ntable_info\030\001 \001(\0132\024.net.table_face_"
-    "info\"4\n\021msg_seat_info_rep\022\037\n\007players\030\001 \003"
-    "(\0132\016.net.seat_info\"$\n\023msg_table_ready_re"
-    "q\022\r\n\005ready\030\001 \001(\r\":\n\023msg_table_ready_rep\022"
-    "\016\n\006readys\030\001 \003(\r\022\023\n\013auto_states\030\002 \003(\r\"&\n\022"
-    "msg_table_chat_req\022\020\n\010chat_msg\030\001 \001(\014\"3\n\022"
-    "msg_table_chat_rep\022\013\n\003uid\030\001 \001(\r\022\020\n\010chat_"
-    "msg\030\002 \001(\014\"+\n\026msg_table_set_auto_req\022\021\n\ta"
-    "uto_type\030\001 \001(\r\"<\n\026msg_table_set_auto_rep"
-    "\022\016\n\006result\030\001 \001(\r\022\022\n\nauto_state\030\002 \001(\r\"7\n\026"
-    "msg_fast_join_room_req\022\014\n\004deal\030\001 \001(\r\022\017\n\007"
-    "consume\030\002 \001(\r\".\n\034msg_fast_join_by_room_i"
-    "d_req\022\016\n\006roomid\030\001 \001(\r\"(\n\026msg_fast_join_r"
-    "oom_rep\022\016\n\006result\030\001 \001(\r\"+\n\027msg_fast_join"
-    "_table_req\022\020\n\010table_id\030\001 \001(\r\")\n\027msg_fast"
-    "_join_table_rep\022\016\n\006result\030\001 \001(\r\"-\n\031msg_m"
-    "aster_join_table_req\022\020\n\010table_id\030\001 \001(\r\"9"
-    "\n\031msg_master_join_table_rep\022\016\n\006result\030\001 "
-    "\001(\r\022\014\n\004tuid\030\002 \001(\r\":\n\030msg_query_table_lis"
-    "t_req\022\017\n\007startid\030\001 \001(\r\022\r\n\005endid\030\002 \001(\r\"S\n"
-    "\030msg_query_table_list_rep\022$\n\006tables\030\001 \003("
-    "\0132\024.net.table_face_info\022\021\n\ttable_num\030\002 \001"
-    "(\r\"R\n\032msg_notify_player_join_rep\022\022\n\njoin"
-    "_leave\030\001 \001(\r\022 \n\006player\030\002 \001(\0132\020.net.looke"
-    "r_info\"O\n\030msg_looker_list_info_rep\022!\n\007lo"
-    "okers\030\001 \003(\0132\020.net.looker_info\022\020\n\010is_rese"
-    "t\030\002 \001(\r\"<\n\027msg_sitdown_standup_req\022\017\n\007op"
-    "er_id\030\001 \001(\r\022\020\n\010chair_id\030\002 \001(\r\"L\n\027msg_sit"
-    "down_standup_rep\022\017\n\007oper_id\030\001 \001(\r\022\020\n\010cha"
-    "ir_id\030\002 \001(\r\022\016\n\006result\030\003 \001(\r\"\\\n\022msg_items"
-    "_user_req\022\r\n\005meuid\030\001 \001(\r\022\022\n\nbechair_id\030\002"
-    " \001(\r\022\017\n\007item_id\030\003 \001(\r\022\022\n\nitem_count\030\004 \001("
-    "\r\"a\n\022msg_items_user_rep\022\022\n\nmechair_id\030\001 "
-    "\001(\r\022\022\n\nbechair_id\030\002 \001(\r\022\017\n\007item_id\030\003 \001(\r"
-    "\022\022\n\nitem_count\030\004 \001(\r\"M\n\027msg_ingame_updat"
-    "e_score\022\013\n\003uid\030\001 \001(\r\022\021\n\tgame_type\030\002 \001(\r\022"
-    "\022\n\ndiff_score\030\003 \001(\003\"o\n\027vip_recharge_wech"
-    "atinfo\022\016\n\006sortid\030\001 \001(\r\022\r\n\005title\030\002 \001(\014\022\017\n"
-    "\007account\030\003 \001(\014\022\022\n\nlow_amount\030\004 \001(\r\022\020\n\010pa"
-    "y_type\030\005 \003(\005\"\"\n msg_notify_vip_recharge_"
-    "show_req\"Z\n\034msg_notify_vip_recharge_show"
-    "\022\016\n\006status\030\001 \001(\r\022*\n\004info\030\002 \003(\0132\034.net.vip"
-    "_recharge_wechatinfo\"&\n$msg_notify_union"
-    "payrecharge_show_req\"6\n$msg_notify_union"
-    "payrecharge_show_rep\022\016\n\006status\030\001 \001(\r\"\'\n%"
-    "msg_notify_wechatpayrecharge_show_req\"7\n"
-    "%msg_notify_wechatpayrecharge_show_rep\022\016"
-    "\n\006status\030\001 \001(\r\"$\n\"msg_notify_alipayrecha"
-    "rge_show_req\"4\n\"msg_notify_alipayrecharg"
-    "e_show_rep\022\016\n\006status\030\001 \001(\r\"&\n$msg_notify"
-    "_otherpayrecharge_show_req\"6\n$msg_notify"
-    "_otherpayrecharge_show_rep\022\016\n\006status\030\001 \001"
-    "(\r\"#\n!msg_notify_qqpayrecharge_show_req\""
-    "3\n!msg_notify_qqpayrecharge_show_rep\022\016\n\006"
-    "status\030\001 \001(\r\"+\n)msg_notify_wechatscanpay"
-    "recharge_show_req\";\n)msg_notify_wechatsc"
-    "anpayrecharge_show_rep\022\016\n\006status\030\001 \001(\r\"#"
-    "\n!msg_notify_jdpayrecharge_show_req\"3\n!m"
-    "sg_notify_jdpayrecharge_show_rep\022\016\n\006stat"
-    "us\030\001 \001(\r\"&\n$msg_notify_applepayrecharge_"
-    "show_req\"6\n$msg_notify_applepayrecharge_"
-    "show_rep\022\016\n\006status\030\001 \001(\r\"+\n)msg_notify_l"
-    "arge_ali_payrecharge_show_req\";\n)msg_not"
-    "ify_large_ali_payrecharge_show_rep\022\016\n\006st"
-    "atus\030\001 \001(\r\"|\n\025exclusive_alipay_info\022\017\n\007a"
-    "ccount\030\001 \001(\014\022\014\n\004name\030\002 \001(\014\022\r\n\005title\030\003 \001("
-    "\014\022\017\n\007min_pay\030\004 \001(\005\022\017\n\007max_pay\030\005 \001(\005\022\023\n\013l"
-    "ower_float\030\006 \001(\005\"e\n)msg_notify_exclusive"
-    "_alipay_recharge_show\022\016\n\006status\030\001 \001(\r\022(\n"
-    "\004info\030\002 \003(\0132\032.net.exclusive_alipay_info\""
-    "/\n-msg_notify_exclusive_alipay_recharge_"
-    "show_req\"+\n)msg_notify_fixed_alipay_rech"
-    "arge_show_req\";\n)msg_notify_fixed_alipay"
-    "_recharge_show_rep\022\016\n\006status\030\001 \001(\r\"+\n)ms"
-    "g_notify_fixed_wechat_recharge_show_req\""
-    ";\n)msg_notify_fixed_wechat_recharge_show"
-    "_rep\022\016\n\006status\030\001 \001(\r\"-\n+msg_notify_fixed"
-    "_unionpay_recharge_show_req\"=\n+msg_notif"
-    "y_fixed_unionpay_recharge_show_rep\022\016\n\006st"
-    "atus\030\001 \001(\r\".\n,msg_notify_exclusive_flash"
-    "_recharge_show_req\"j\n,msg_notify_exclusi"
-    "ve_flash_recharge_show_rep\022\016\n\006status\030\001 \001"
-    "(\r\022*\n\004info\030\002 \003(\0132\034.net.vip_recharge_wech"
-    "atinfo\"1\n\022bairen_jetton_info\022\014\n\004area\030\001 \001"
-    "(\r\022\r\n\005score\030\002 \001(\003\"P\n\'msg_continuous_pres"
-    "sure_jetton_info_rep\022%\n\004info\030\001 \003(\0132\027.net"
-    ".bairen_jetton_info\"R\n)msg_player_contin"
-    "uous_pressure_jetton_req\022%\n\004info\030\001 \003(\0132\027"
-    ".net.bairen_jetton_info\";\n)msg_player_co"
-    "ntinuous_pressure_jetton_rep\022\016\n\006result\030\001"
-    " \001(\r\"\201\003\n\021msg_game_play_log\022,\n\006bainiu\030\001 \001"
-    "(\0132\034.net.msg_bainiu_play_log_rep\0220\n\010bacc"
-    "arat\030\002 \001(\0132\036.net.msg_baccarat_play_log_r"
-    "ep\022,\n\006paijiu\030\003 \001(\0132\034.net.msg_paijiu_play"
-    "_log_rep\022(\n\004dice\030\004 \001(\0132\032.net.msg_dice_pl"
-    "ay_log_rep\022&\n\003war\030\005 \001(\0132\031.net.msg_war_pl"
-    "ay_log_rep\022*\n\005fight\030\006 \001(\0132\033.net.msg_figh"
-    "t_play_log_rep\0220\n\010twoeight\030\007 \001(\0132\036.net.m"
-    "sg_twoeight_play_log_rep\022.\n\007carcity\030\010 \001("
-    "\0132\035.net.msg_carcity_play_log_rep\"\027\n\025msg_"
-    "game_play_log_req\"\213\001\n\025msg_game_play_log_"
-    "rep\022\020\n\010gametype\030\001 \001(\r\022\016\n\006roomid\030\002 \001(\r\022\021\n"
-    "\tgamestate\030\003 \001(\r\022\023\n\013remain_time\030\004 \001(\r\022(\n"
-    "\010play_log\030\005 \001(\0132\026.net.msg_game_play_log\""
-    "\227\001\n\025msg_chat_info_forward\022\016\n\006fromid\030\001 \001("
-    "\r\022\014\n\004toid\030\002 \003(\r\022\016\n\006online\030\003 \003(\005\022\021\n\tmessa"
-    "gStr\030\004 \001(\014\022\020\n\010fromname\030\005 \001(\014\022\016\n\006toname\030\006"
-    " \003(\014\022\014\n\004time\030\007 \001(\004\022\r\n\005mtype\030\010 \001(\005\"I\n$msg"
-    "_brc_control_user_enter_table_req\022\017\n\007gam"
-    "e_id\030\001 \001(\r\022\020\n\010table_id\030\002 \001(\r\"S\n$msg_brc_"
-    "control_user_enter_table_rep\022\016\n\006result\030\001"
-    " \001(\r\022\014\n\004area\030\002 \003(\r\022\r\n\005times\030\003 \001(\r\"I\n$msg"
-    "_brc_control_user_leave_table_req\022\017\n\007gam"
-    "e_id\030\001 \001(\r\022\020\n\010table_id\030\002 \001(\r\"6\n$msg_brc_"
-    "control_user_leave_table_rep\022\016\n\006result\030\001"
-    " \001(\r\"5\n&msg_brc_control_force_leave_bank"
-    "er_req\022\013\n\003uid\030\001 \001(\r\"E\n&msg_brc_control_f"
-    "orce_leave_banker_rep\022\013\n\003uid\030\001 \001(\r\022\016\n\006re"
-    "sult\030\002 \001(\r\"I\n\035msg_brc_control_area_info_"
-    "req\022\013\n\003uid\030\001 \001(\r\022\014\n\004area\030\002 \003(\r\022\r\n\005times\030"
-    "\003 \001(\r\"L\n\035msg_brc_control_area_info_rep\022\016"
-    "\n\006result\030\001 \001(\r\022\014\n\004area\030\002 \003(\r\022\r\n\005times\030\003 "
-    "\001(\r\"9\n$msg_brc_control_total_robot_bet_i"
-    "nfo\022\021\n\tarea_info\030\001 \003(\003\":\n%msg_brc_contro"
-    "l_total_player_bet_info\022\021\n\tarea_info\030\001 \003"
-    "(\003\"\320\001\n\033brc_control_player_bet_info\022\013\n\003ui"
-    "d\030\001 \001(\r\022\021\n\tarea_info\030\002 \003(\003\022\021\n\ttotal_bet\030"
-    "\003 \001(\003\022\024\n\014curr_day_win\030\004 \001(\003\022\022\n\nwin_numbe"
-    "r\030\005 \001(\r\022\023\n\013lose_number\030\006 \001(\r\022\021\n\ttotal_wi"
-    "n\030\007 \001(\003\022\014\n\004coin\030\010 \001(\003\022\014\n\004name\030\t \001(\014\022\020\n\010i"
-    "smaster\030\n \001(\r\"c\n&msg_brc_control_single_"
-    "player_bet_info\0229\n\017player_bet_info\030\001 \001(\013"
-    "2 .net.brc_control_player_bet_info\"`\n#ms"
-    "g_brc_control_all_player_bet_info\0229\n\017pla"
-    "yer_bet_list\030\001 \003(\0132 .net.brc_control_pla"
-    "yer_bet_info\"N\n\034brc_control_player_coin_"
-    "info\022\013\n\003uid\030\001 \001(\r\022\014\n\004coin\030\002 \001(\003\022\023\n\013playe"
-    "r_type\030\003 \001(\r\"\217\001\n!msg_brc_control_apple_b"
-    "anker_list\0224\n\tbank_info\030\001 \001(\0132!.net.brc_"
-    "control_player_coin_info\0224\n\tuser_info\030\002 "
-    "\003(\0132!.net.brc_control_player_coin_info\"\?"
-    "\n\035msg_brc_control_game_end_info\022\013\n\003uid\030\001"
-    " \001(\r\022\021\n\tarea_info\030\002 \003(\r\"@\n msg_brc_contr"
-    "ol_game_status_info\022\016\n\006status\030\001 \001(\r\022\014\n\004t"
-    "ime\030\002 \001(\r\">\n\037msg_brc_control_flush_area_"
-    "info\022\014\n\004area\030\001 \003(\r\022\r\n\005times\030\002 \001(\r", 10513);
+    "rcity_logic_msg.proto\032\032sangongdou_logic_"
+    "msg.proto\"\"\n\016msg_heart_test\022\020\n\010svr_time\030"
+    "\001 \001(\r\"]\n\rmsg_login_req\022\013\n\003uid\030\001 \001(\r\022\013\n\003k"
+    "ey\030\002 \001(\014\022\020\n\010deviceid\030\003 \001(\014\022\014\n\004city\030\004 \001(\014"
+    "\022\022\n\ncheck_code\030\005 \001(\014\"4\n\rmsg_login_rep\022\016\n"
+    "\006result\030\001 \001(\r\022\023\n\013server_time\030\002 \001(\r\"&\n\024ms"
+    "g_notify_leave_rep\022\016\n\006result\030\001 \001(\r\"$\n\022ms"
+    "g_enter_game_rep\022\016\n\006result\030\001 \001(\r\"8\n\023msg_"
+    "player_data_rep\022!\n\tbase_data\030\001 \001(\0132\016.net"
+    ".base_info\"v\n\024msg_update_acc_value\022\017\n\007di"
+    "amond\030\001 \001(\003\022\014\n\004coin\030\002 \001(\003\022\r\n\005score\030\003 \001(\003"
+    "\022\r\n\005ingot\030\004 \001(\003\022\016\n\006cvalue\030\005 \001(\003\022\021\n\tsafe_"
+    "coin\030\006 \001(\003\"\212\001\n\025msg_update_base_value\022\024\n\014"
+    "safeboxstate\030\001 \001(\r\022\016\n\006clogin\030\002 \001(\r\022\021\n\twe"
+    "eklogin\030\003 \001(\r\022\016\n\006reward\030\004 \001(\r\022\020\n\010bankrup"
+    "t\030\005 \001(\r\022\026\n\016day_game_count\030\006 \001(\r\"<\n\023msg_s"
+    "end_base_value\022\016\n\006clogin\030\001 \001(\r\022\025\n\rclogin"
+    "_reward\030\002 \003(\r\"9\n\024msg_update_land_info\022!\n"
+    "\tland_data\030\001 \001(\0132\016.net.land_info\"*\n\025msg_"
+    "get_game_info_req\022\021\n\tgame_type\030\001 \001(\r\"9\n\024"
+    "msg_update_game_info\022!\n\004data\030\001 \001(\0132\023.net"
+    ".game_data_info\"&\n\021msg_svrs_info_req\022\021\n\t"
+    "game_type\030\001 \001(\r\"a\n\021msg_svrs_info_rep\022\033\n\004"
+    "svrs\030\001 \003(\0132\r.net.svr_info\022\021\n\tcur_svrid\030\002"
+    " \001(\r\022\034\n\003num\030\003 \003(\0132\017.net.player_num\"&\n\025ms"
+    "g_enter_gamesvr_req\022\r\n\005svrid\030\001 \001(\r\"I\n\025ms"
+    "g_enter_gamesvr_rep\022\016\n\006result\030\001 \001(\r\022\r\n\005s"
+    "vrid\030\002 \001(\r\022\021\n\tctrl_flag\030\003 \001(\r\",\n\035msg_con"
+    "trol_player_back_lobby\022\013\n\003uid\030\001 \001(\r\"\'\n\025m"
+    "sg_login_safebox_req\022\016\n\006passwd\030\001 \001(\014\"\'\n\025"
+    "msg_login_safebox_rep\022\016\n\006result\030\001 \001(\r\">\n"
+    "\032msg_change_safebox_pwd_req\022\017\n\007old_pwd\030\001"
+    " \001(\014\022\017\n\007new_pwd\030\002 \001(\014\",\n\032msg_change_safe"
+    "box_pwd_rep\022\016\n\006result\030\001 \001(\r\")\n\024msg_take_"
+    "safebox_req\022\021\n\ttake_coin\030\001 \001(\003\"9\n\024msg_ta"
+    "ke_safebox_rep\022\021\n\ttake_coin\030\001 \001(\003\022\016\n\006res"
+    "ult\030\002 \001(\r\"L\n\024msg_give_safebox_req\022\020\n\010giv"
+    "e_uid\030\001 \001(\r\022\021\n\tgive_coin\030\002 \001(\003\022\017\n\007own_ui"
+    "d\030\003 \001(\r\"K\n\024msg_give_safebox_rep\022\020\n\010give_"
+    "uid\030\001 \001(\r\022\021\n\tgive_coin\030\002 \001(\003\022\016\n\006result\030\003"
+    " \001(\r\"$\n\025msg_php_broadcast_rep\022\013\n\003msg\030\001 \001"
+    "(\014\"\'\n\030msg_system_broadcast_rep\022\013\n\003msg\030\001 "
+    "\001(\014\"\?\n\030msg_send_all_mission_rep\022#\n\010missi"
+    "ons\030\001 \003(\0132\021.net.mission_data\":\n\024msg_send"
+    "_mission_rep\022\"\n\007mission\030\001 \001(\0132\021.net.miss"
+    "ion_data\")\n\031msg_get_mission_prize_req\022\014\n"
+    "\004msid\030\001 \001(\r\"q\n\031msg_get_mission_prize_rep"
+    "\022\016\n\006result\030\001 \001(\r\022\"\n\007mission\030\002 \001(\0132\021.net."
+    "mission_data\022 \n\010baseinfo\030\003 \001(\0132\016.net.bas"
+    "e_info\"7\n!msg_get_login_vip_reward_info_"
+    "req\022\022\n\nhelp_count\030\001 \001(\r\"M\n!msg_get_login"
+    "_vip_reward_info_rep\022\023\n\013reward_coin\030\001 \003("
+    "\r\022\023\n\013reward_flag\030\002 \001(\r\"8\n\"msg_get_login_"
+    "vip_reward_total_req\022\022\n\nhelp_count\030\001 \001(\r"
+    "\"8\n\"msg_get_login_vip_reward_total_rep\022\022"
+    "\n\ntotal_coin\030\001 \003(\r\"/\n\030msg_get_login_rewa"
+    "rd_req\022\023\n\013reward_flag\030\001 \001(\r\"T\n\030msg_get_l"
+    "ogin_reward_rep\022\023\n\013reward_flag\030\001 \001(\r\022\016\n\006"
+    "result\030\002 \001(\r\022\023\n\013reward_coin\030\003 \001(\r\"/\n\031msg"
+    "_get_bankrupt_help_req\022\022\n\nhelp_count\030\001 \001"
+    "(\r\"Z\n\031msg_get_bankrupt_help_rep\022\016\n\006resul"
+    "t\030\001 \001(\r\022\026\n\016bankrupt_count\030\002 \001(\r\022\025\n\rbankr"
+    "upt_coin\030\003 \001(\r\"/\n\031msg_get_bankrupt_info_"
+    "req\022\022\n\nhelp_count\030\001 \001(\r\"d\n\031msg_get_bankr"
+    "upt_info_rep\022\014\n\004base\030\001 \001(\r\022\021\n\tlast_coin\030"
+    "\002 \001(\r\022\022\n\nlast_count\030\003 \001(\r\022\022\n\naward_coin\030"
+    "\004 \001(\r\"D\n\026msg_exchange_score_req\022\025\n\rexcha"
+    "nge_type\030\001 \001(\r\022\023\n\013exchange_id\030\002 \001(\r\"T\n\026m"
+    "sg_exchange_score_rep\022\025\n\rexchange_type\030\001"
+    " \001(\r\022\023\n\013exchange_id\030\002 \001(\r\022\016\n\006result\030\003 \001("
+    "\r\"&\n\027msg_speak_broadcast_req\022\013\n\003msg\030\001 \001("
+    "\014\"J\n\027msg_speak_broadcast_rep\022\017\n\007send_id\030"
+    "\001 \001(\r\022\021\n\tsend_name\030\002 \001(\014\022\013\n\003msg\030\003 \001(\014\")\n"
+    "\025msg_get_history_speak\022\020\n\010get_time\030\001 \001(\r"
+    "\"D\n\026msg_send_history_speak\022*\n\004msgs\030\001 \003(\013"
+    "2\034.net.msg_speak_broadcast_rep\"4\n\022msg_sp"
+    "eak_oper_rep\022\016\n\006result\030\001 \001(\r\022\016\n\006cdtime\030\002"
+    " \001(\r\"\025\n\023msg_get_server_info\"V\n\013server_in"
+    "fo\022\r\n\005svrid\030\001 \001(\r\022\022\n\nplayer_num\030\002 \001(\r\022\021\n"
+    "\trobot_num\030\003 \001(\r\022\021\n\tgame_type\030\004 \001(\r\"9\n\024m"
+    "sg_send_server_info\022!\n\007servers\030\001 \003(\0132\020.n"
+    "et.server_info\"\'\n\022msg_rooms_info_req\022\021\n\t"
+    "game_type\030\001 \001(\r\"G\n\022msg_rooms_info_rep\022\035\n"
+    "\005rooms\030\001 \003(\0132\016.net.room_info\022\022\n\ncur_room"
+    "id\030\002 \001(\r\"!\n\022msg_back_lobby_req\022\013\n\003uid\030\001 "
+    "\001(\r\"$\n\022msg_back_lobby_rep\022\016\n\006result\030\001 \001("
+    "\r\"%\n\024msg_goto_gamesvr_req\022\r\n\005svrid\030\001 \001(\r"
+    "\"5\n\024msg_goto_gamesvr_rep\022\016\n\006result\030\001 \001(\r"
+    "\022\r\n\005svrid\030\002 \001(\r\"%\n\022msg_enter_room_req\022\017\n"
+    "\007room_id\030\001 \001(\r\":\n!msg_enter_novice_welfa"
+    "re_room_req\022\025\n\rmaxjettonrate\030\001 \001(\005\"U\n\022ms"
+    "g_enter_room_rep\022\016\n\006result\030\001 \001(\r\022\034\n\004room"
+    "\030\002 \001(\0132\016.net.room_info\022\021\n\tcur_table\030\003 \001("
+    "\r\"/\n\031msg_notify_leave_room_rep\022\022\n\nleave_"
+    "type\030\001 \001(\r\":\n\022msg_table_list_req\022\020\n\010tabl"
+    "e_id\030\001 \001(\r\022\022\n\nseach_type\030\002 \001(\r\":\n\022msg_ta"
+    "ble_list_rep\022$\n\006tables\030\001 \003(\0132\024.net.table"
+    "_face_info\"\245\001\n\024msg_create_table_req\022\022\n\nt"
+    "able_name\030\001 \001(\014\022\016\n\006passwd\030\002 \001(\014\022\014\n\004deal\030"
+    "\003 \001(\r\022\022\n\nbase_score\030\004 \001(\003\022\017\n\007is_show\030\005 \001"
+    "(\r\022\020\n\010fee_type\030\006 \001(\r\022\021\n\tfee_value\030\007 \001(\003\022"
+    "\021\n\topen_days\030\010 \001(\r\"8\n\024msg_create_table_r"
+    "ep\022\016\n\006result\030\001 \001(\r\022\020\n\010table_id\030\002 \001(\r\";\n\023"
+    "msg_renew_table_req\022\020\n\010table_id\030\001 \001(\r\022\022\n"
+    "\nrenew_days\030\002 \001(\r\"K\n\023msg_renew_table_rep"
+    "\022\020\n\010table_id\030\001 \001(\r\022\022\n\nrenew_days\030\002 \001(\r\022\016"
+    "\n\006result\030\003 \001(\r\"\'\n\023msg_leave_table_req\022\020\n"
+    "\010table_id\030\001 \001(\r\"%\n\023msg_leave_table_rep\022\016"
+    "\n\006result\030\001 \001(\r\"7\n\023msg_enter_table_req\022\020\n"
+    "\010table_id\030\001 \001(\r\022\016\n\006passwd\030\002 \001(\014\"7\n\023msg_e"
+    "nter_table_rep\022\020\n\010table_id\030\001 \001(\r\022\016\n\006resu"
+    "lt\030\002 \001(\r\">\n\022msg_table_info_rep\022(\n\ntable_"
+    "info\030\001 \001(\0132\024.net.table_face_info\"4\n\021msg_"
+    "seat_info_rep\022\037\n\007players\030\001 \003(\0132\016.net.sea"
+    "t_info\"$\n\023msg_table_ready_req\022\r\n\005ready\030\001"
+    " \001(\r\":\n\023msg_table_ready_rep\022\016\n\006readys\030\001 "
+    "\003(\r\022\023\n\013auto_states\030\002 \003(\r\"&\n\022msg_table_ch"
+    "at_req\022\020\n\010chat_msg\030\001 \001(\014\"3\n\022msg_table_ch"
+    "at_rep\022\013\n\003uid\030\001 \001(\r\022\020\n\010chat_msg\030\002 \001(\014\"+\n"
+    "\026msg_table_set_auto_req\022\021\n\tauto_type\030\001 \001"
+    "(\r\"<\n\026msg_table_set_auto_rep\022\016\n\006result\030\001"
+    " \001(\r\022\022\n\nauto_state\030\002 \001(\r\"7\n\026msg_fast_joi"
+    "n_room_req\022\014\n\004deal\030\001 \001(\r\022\017\n\007consume\030\002 \001("
+    "\r\".\n\034msg_fast_join_by_room_id_req\022\016\n\006roo"
+    "mid\030\001 \001(\r\"(\n\026msg_fast_join_room_rep\022\016\n\006r"
+    "esult\030\001 \001(\r\"+\n\027msg_fast_join_table_req\022\020"
+    "\n\010table_id\030\001 \001(\r\")\n\027msg_fast_join_table_"
+    "rep\022\016\n\006result\030\001 \001(\r\"-\n\031msg_master_join_t"
+    "able_req\022\020\n\010table_id\030\001 \001(\r\"9\n\031msg_master"
+    "_join_table_rep\022\016\n\006result\030\001 \001(\r\022\014\n\004tuid\030"
+    "\002 \001(\r\":\n\030msg_query_table_list_req\022\017\n\007sta"
+    "rtid\030\001 \001(\r\022\r\n\005endid\030\002 \001(\r\"S\n\030msg_query_t"
+    "able_list_rep\022$\n\006tables\030\001 \003(\0132\024.net.tabl"
+    "e_face_info\022\021\n\ttable_num\030\002 \001(\r\"R\n\032msg_no"
+    "tify_player_join_rep\022\022\n\njoin_leave\030\001 \001(\r"
+    "\022 \n\006player\030\002 \001(\0132\020.net.looker_info\"O\n\030ms"
+    "g_looker_list_info_rep\022!\n\007lookers\030\001 \003(\0132"
+    "\020.net.looker_info\022\020\n\010is_reset\030\002 \001(\r\"<\n\027m"
+    "sg_sitdown_standup_req\022\017\n\007oper_id\030\001 \001(\r\022"
+    "\020\n\010chair_id\030\002 \001(\r\"L\n\027msg_sitdown_standup"
+    "_rep\022\017\n\007oper_id\030\001 \001(\r\022\020\n\010chair_id\030\002 \001(\r\022"
+    "\016\n\006result\030\003 \001(\r\"\\\n\022msg_items_user_req\022\r\n"
+    "\005meuid\030\001 \001(\r\022\022\n\nbechair_id\030\002 \001(\r\022\017\n\007item"
+    "_id\030\003 \001(\r\022\022\n\nitem_count\030\004 \001(\r\"a\n\022msg_ite"
+    "ms_user_rep\022\022\n\nmechair_id\030\001 \001(\r\022\022\n\nbecha"
+    "ir_id\030\002 \001(\r\022\017\n\007item_id\030\003 \001(\r\022\022\n\nitem_cou"
+    "nt\030\004 \001(\r\"M\n\027msg_ingame_update_score\022\013\n\003u"
+    "id\030\001 \001(\r\022\021\n\tgame_type\030\002 \001(\r\022\022\n\ndiff_scor"
+    "e\030\003 \001(\003\"o\n\027vip_recharge_wechatinfo\022\016\n\006so"
+    "rtid\030\001 \001(\r\022\r\n\005title\030\002 \001(\014\022\017\n\007account\030\003 \001"
+    "(\014\022\022\n\nlow_amount\030\004 \001(\r\022\020\n\010pay_type\030\005 \003(\005"
+    "\"\"\n msg_notify_vip_recharge_show_req\"Z\n\034"
+    "msg_notify_vip_recharge_show\022\016\n\006status\030\001"
+    " \001(\r\022*\n\004info\030\002 \003(\0132\034.net.vip_recharge_we"
+    "chatinfo\"&\n$msg_notify_unionpayrecharge_"
+    "show_req\"6\n$msg_notify_unionpayrecharge_"
+    "show_rep\022\016\n\006status\030\001 \001(\r\"\'\n%msg_notify_w"
+    "echatpayrecharge_show_req\"7\n%msg_notify_"
+    "wechatpayrecharge_show_rep\022\016\n\006status\030\001 \001"
+    "(\r\"$\n\"msg_notify_alipayrecharge_show_req"
+    "\"4\n\"msg_notify_alipayrecharge_show_rep\022\016"
+    "\n\006status\030\001 \001(\r\"&\n$msg_notify_otherpayrec"
+    "harge_show_req\"6\n$msg_notify_otherpayrec"
+    "harge_show_rep\022\016\n\006status\030\001 \001(\r\"#\n!msg_no"
+    "tify_qqpayrecharge_show_req\"3\n!msg_notif"
+    "y_qqpayrecharge_show_rep\022\016\n\006status\030\001 \001(\r"
+    "\"+\n)msg_notify_wechatscanpayrecharge_sho"
+    "w_req\";\n)msg_notify_wechatscanpayrecharg"
+    "e_show_rep\022\016\n\006status\030\001 \001(\r\"#\n!msg_notify"
+    "_jdpayrecharge_show_req\"3\n!msg_notify_jd"
+    "payrecharge_show_rep\022\016\n\006status\030\001 \001(\r\"&\n$"
+    "msg_notify_applepayrecharge_show_req\"6\n$"
+    "msg_notify_applepayrecharge_show_rep\022\016\n\006"
+    "status\030\001 \001(\r\"+\n)msg_notify_large_ali_pay"
+    "recharge_show_req\";\n)msg_notify_large_al"
+    "i_payrecharge_show_rep\022\016\n\006status\030\001 \001(\r\"|"
+    "\n\025exclusive_alipay_info\022\017\n\007account\030\001 \001(\014"
+    "\022\014\n\004name\030\002 \001(\014\022\r\n\005title\030\003 \001(\014\022\017\n\007min_pay"
+    "\030\004 \001(\005\022\017\n\007max_pay\030\005 \001(\005\022\023\n\013lower_float\030\006"
+    " \001(\005\"e\n)msg_notify_exclusive_alipay_rech"
+    "arge_show\022\016\n\006status\030\001 \001(\r\022(\n\004info\030\002 \003(\0132"
+    "\032.net.exclusive_alipay_info\"/\n-msg_notif"
+    "y_exclusive_alipay_recharge_show_req\"+\n)"
+    "msg_notify_fixed_alipay_recharge_show_re"
+    "q\";\n)msg_notify_fixed_alipay_recharge_sh"
+    "ow_rep\022\016\n\006status\030\001 \001(\r\"+\n)msg_notify_fix"
+    "ed_wechat_recharge_show_req\";\n)msg_notif"
+    "y_fixed_wechat_recharge_show_rep\022\016\n\006stat"
+    "us\030\001 \001(\r\"-\n+msg_notify_fixed_unionpay_re"
+    "charge_show_req\"=\n+msg_notify_fixed_unio"
+    "npay_recharge_show_rep\022\016\n\006status\030\001 \001(\r\"."
+    "\n,msg_notify_exclusive_flash_recharge_sh"
+    "ow_req\"j\n,msg_notify_exclusive_flash_rec"
+    "harge_show_rep\022\016\n\006status\030\001 \001(\r\022*\n\004info\030\002"
+    " \003(\0132\034.net.vip_recharge_wechatinfo\"1\n\022ba"
+    "iren_jetton_info\022\014\n\004area\030\001 \001(\r\022\r\n\005score\030"
+    "\002 \001(\003\"P\n\'msg_continuous_pressure_jetton_"
+    "info_rep\022%\n\004info\030\001 \003(\0132\027.net.bairen_jett"
+    "on_info\"R\n)msg_player_continuous_pressur"
+    "e_jetton_req\022%\n\004info\030\001 \003(\0132\027.net.bairen_"
+    "jetton_info\";\n)msg_player_continuous_pre"
+    "ssure_jetton_rep\022\016\n\006result\030\001 \001(\r\"\267\003\n\021msg"
+    "_game_play_log\022,\n\006bainiu\030\001 \001(\0132\034.net.msg"
+    "_bainiu_play_log_rep\0220\n\010baccarat\030\002 \001(\0132\036"
+    ".net.msg_baccarat_play_log_rep\022,\n\006paijiu"
+    "\030\003 \001(\0132\034.net.msg_paijiu_play_log_rep\022(\n\004"
+    "dice\030\004 \001(\0132\032.net.msg_dice_play_log_rep\022&"
+    "\n\003war\030\005 \001(\0132\031.net.msg_war_play_log_rep\022*"
+    "\n\005fight\030\006 \001(\0132\033.net.msg_fight_play_log_r"
+    "ep\0220\n\010twoeight\030\007 \001(\0132\036.net.msg_twoeight_"
+    "play_log_rep\022.\n\007carcity\030\010 \001(\0132\035.net.msg_"
+    "carcity_play_log_rep\0224\n\nsangongdou\030\t \001(\013"
+    "2 .net.msg_sangongdou_play_log_rep\"\027\n\025ms"
+    "g_game_play_log_req\"\213\001\n\025msg_game_play_lo"
+    "g_rep\022\020\n\010gametype\030\001 \001(\r\022\016\n\006roomid\030\002 \001(\r\022"
+    "\021\n\tgamestate\030\003 \001(\r\022\023\n\013remain_time\030\004 \001(\r\022"
+    "(\n\010play_log\030\005 \001(\0132\026.net.msg_game_play_lo"
+    "g\"\227\001\n\025msg_chat_info_forward\022\016\n\006fromid\030\001 "
+    "\001(\r\022\014\n\004toid\030\002 \003(\r\022\016\n\006online\030\003 \003(\005\022\021\n\tmes"
+    "sagStr\030\004 \001(\014\022\020\n\010fromname\030\005 \001(\014\022\016\n\006toname"
+    "\030\006 \003(\014\022\014\n\004time\030\007 \001(\004\022\r\n\005mtype\030\010 \001(\005\"I\n$m"
+    "sg_brc_control_user_enter_table_req\022\017\n\007g"
+    "ame_id\030\001 \001(\r\022\020\n\010table_id\030\002 \001(\r\"S\n$msg_br"
+    "c_control_user_enter_table_rep\022\016\n\006result"
+    "\030\001 \001(\r\022\014\n\004area\030\002 \003(\r\022\r\n\005times\030\003 \001(\r\"I\n$m"
+    "sg_brc_control_user_leave_table_req\022\017\n\007g"
+    "ame_id\030\001 \001(\r\022\020\n\010table_id\030\002 \001(\r\"6\n$msg_br"
+    "c_control_user_leave_table_rep\022\016\n\006result"
+    "\030\001 \001(\r\"5\n&msg_brc_control_force_leave_ba"
+    "nker_req\022\013\n\003uid\030\001 \001(\r\"E\n&msg_brc_control"
+    "_force_leave_banker_rep\022\013\n\003uid\030\001 \001(\r\022\016\n\006"
+    "result\030\002 \001(\r\"I\n\035msg_brc_control_area_inf"
+    "o_req\022\013\n\003uid\030\001 \001(\r\022\014\n\004area\030\002 \003(\r\022\r\n\005time"
+    "s\030\003 \001(\r\"L\n\035msg_brc_control_area_info_rep"
+    "\022\016\n\006result\030\001 \001(\r\022\014\n\004area\030\002 \003(\r\022\r\n\005times\030"
+    "\003 \001(\r\"9\n$msg_brc_control_total_robot_bet"
+    "_info\022\021\n\tarea_info\030\001 \003(\003\":\n%msg_brc_cont"
+    "rol_total_player_bet_info\022\021\n\tarea_info\030\001"
+    " \003(\003\"\320\001\n\033brc_control_player_bet_info\022\013\n\003"
+    "uid\030\001 \001(\r\022\021\n\tarea_info\030\002 \003(\003\022\021\n\ttotal_be"
+    "t\030\003 \001(\003\022\024\n\014curr_day_win\030\004 \001(\003\022\022\n\nwin_num"
+    "ber\030\005 \001(\r\022\023\n\013lose_number\030\006 \001(\r\022\021\n\ttotal_"
+    "win\030\007 \001(\003\022\014\n\004coin\030\010 \001(\003\022\014\n\004name\030\t \001(\014\022\020\n"
+    "\010ismaster\030\n \001(\r\"c\n&msg_brc_control_singl"
+    "e_player_bet_info\0229\n\017player_bet_info\030\001 \001"
+    "(\0132 .net.brc_control_player_bet_info\"`\n#"
+    "msg_brc_control_all_player_bet_info\0229\n\017p"
+    "layer_bet_list\030\001 \003(\0132 .net.brc_control_p"
+    "layer_bet_info\"N\n\034brc_control_player_coi"
+    "n_info\022\013\n\003uid\030\001 \001(\r\022\014\n\004coin\030\002 \001(\003\022\023\n\013pla"
+    "yer_type\030\003 \001(\r\"\217\001\n!msg_brc_control_apple"
+    "_banker_list\0224\n\tbank_info\030\001 \001(\0132!.net.br"
+    "c_control_player_coin_info\0224\n\tuser_info\030"
+    "\002 \003(\0132!.net.brc_control_player_coin_info"
+    "\"\?\n\035msg_brc_control_game_end_info\022\013\n\003uid"
+    "\030\001 \001(\r\022\021\n\tarea_info\030\002 \003(\r\"@\n msg_brc_con"
+    "trol_game_status_info\022\016\n\006status\030\001 \001(\r\022\014\n"
+    "\004time\030\002 \001(\r\">\n\037msg_brc_control_flush_are"
+    "a_info\022\014\n\004area\030\001 \003(\r\022\r\n\005times\030\002 \001(\r", 10595);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "client_logic_msg.proto", &protobuf_RegisterTypes);
   msg_heart_test::default_instance_ = new msg_heart_test();
@@ -34630,6 +34634,7 @@ const int msg_game_play_log::kWarFieldNumber;
 const int msg_game_play_log::kFightFieldNumber;
 const int msg_game_play_log::kTwoeightFieldNumber;
 const int msg_game_play_log::kCarcityFieldNumber;
+const int msg_game_play_log::kSangongdouFieldNumber;
 #endif  // !_MSC_VER
 
 msg_game_play_log::msg_game_play_log()
@@ -34646,6 +34651,7 @@ void msg_game_play_log::InitAsDefaultInstance() {
   fight_ = const_cast< ::net::msg_fight_play_log_rep*>(&::net::msg_fight_play_log_rep::default_instance());
   twoeight_ = const_cast< ::net::msg_twoeight_play_log_rep*>(&::net::msg_twoeight_play_log_rep::default_instance());
   carcity_ = const_cast< ::net::msg_carcity_play_log_rep*>(&::net::msg_carcity_play_log_rep::default_instance());
+  sangongdou_ = const_cast< ::net::msg_sangongdou_play_log_rep*>(&::net::msg_sangongdou_play_log_rep::default_instance());
 }
 
 msg_game_play_log::msg_game_play_log(const msg_game_play_log& from)
@@ -34664,6 +34670,7 @@ void msg_game_play_log::SharedCtor() {
   fight_ = NULL;
   twoeight_ = NULL;
   carcity_ = NULL;
+  sangongdou_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -34681,6 +34688,7 @@ void msg_game_play_log::SharedDtor() {
     delete fight_;
     delete twoeight_;
     delete carcity_;
+    delete sangongdou_;
   }
 }
 
@@ -34730,6 +34738,11 @@ void msg_game_play_log::Clear() {
     }
     if (has_carcity()) {
       if (carcity_ != NULL) carcity_->::net::msg_carcity_play_log_rep::Clear();
+    }
+  }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    if (has_sangongdou()) {
+      if (sangongdou_ != NULL) sangongdou_->::net::msg_sangongdou_play_log_rep::Clear();
     }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -34849,6 +34862,20 @@ bool msg_game_play_log::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(74)) goto parse_sangongdou;
+        break;
+      }
+
+      // optional .net.msg_sangongdou_play_log_rep sangongdou = 9;
+      case 9: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_sangongdou:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_sangongdou()));
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -34919,6 +34946,12 @@ void msg_game_play_log::SerializeWithCachedSizes(
       8, this->carcity(), output);
   }
 
+  // optional .net.msg_sangongdou_play_log_rep sangongdou = 9;
+  if (has_sangongdou()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      9, this->sangongdou(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -34981,6 +35014,13 @@ void msg_game_play_log::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         8, this->carcity(), target);
+  }
+
+  // optional .net.msg_sangongdou_play_log_rep sangongdou = 9;
+  if (has_sangongdou()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        9, this->sangongdou(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -35051,6 +35091,15 @@ int msg_game_play_log::ByteSize() const {
     }
 
   }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    // optional .net.msg_sangongdou_play_log_rep sangongdou = 9;
+    if (has_sangongdou()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->sangongdou());
+    }
+
+  }
   if (!unknown_fields().empty()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
@@ -35102,6 +35151,11 @@ void msg_game_play_log::MergeFrom(const msg_game_play_log& from) {
       mutable_carcity()->::net::msg_carcity_play_log_rep::MergeFrom(from.carcity());
     }
   }
+  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    if (from.has_sangongdou()) {
+      mutable_sangongdou()->::net::msg_sangongdou_play_log_rep::MergeFrom(from.sangongdou());
+    }
+  }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
@@ -35132,6 +35186,7 @@ void msg_game_play_log::Swap(msg_game_play_log* other) {
     std::swap(fight_, other->fight_);
     std::swap(twoeight_, other->twoeight_);
     std::swap(carcity_, other->carcity_);
+    std::swap(sangongdou_, other->sangongdou_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

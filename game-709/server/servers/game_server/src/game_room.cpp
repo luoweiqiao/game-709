@@ -131,6 +131,7 @@ bool    CGameRoom::CheckRoomCanGameStart()
 	case net::GAME_CATE_PAIJIU:
 	case net::GAME_CATE_TWOEIGHT:
 	case net::GAME_CATE_CARCITY:
+	case net::GAME_CATE_SANGONGDOU:
 	{
 		bIsNeewCheck = true;
 	}
@@ -1582,7 +1583,44 @@ int CGameRoom::CheckRoommParambyGameType(uint32 gametype, string param) {
 			if (!jvalue["pr6"].isIntegral()) { bflag = 1964 /*false*/; }
 			if (!jvalue["pr7"].isIntegral()) { bflag = 1965 /*false*/; }
 	    }
-	} else {
+	}
+	else if (gametype == net::GAME_CATE_SANGONGDOU) {
+		if (!jvalue.isMember("mp0")) { bflag = 2000 /*false*/; }
+		if (!jvalue.isMember("mp1")) { bflag = 2001 /*false*/; }
+		if (!jvalue.isMember("mp2")) { bflag = 2002 /*false*/; }
+		if (!jvalue.isMember("mp3")) { bflag = 2003 /*false*/; }
+		if (!jvalue.isMember("mp4")) { bflag = 2004 /*false*/; }
+		if (!jvalue.isMember("mp5")) { bflag = 2005 /*false*/; }
+		if (!jvalue.isMember("mp6")) { bflag = 2006 /*false*/; }
+		if (!jvalue.isMember("mp7")) { bflag = 2007 /*false*/; }
+		if (!jvalue.isMember("pr0")) { bflag = 2008 /*false*/; }
+		if (!jvalue.isMember("pr1")) { bflag = 2009 /*false*/; }
+		if (!jvalue.isMember("pr2")) { bflag = 2010 /*false*/; }
+		if (!jvalue.isMember("pr3")) { bflag = 2011 /*false*/; }
+		if (!jvalue.isMember("pr4")) { bflag = 2012 /*false*/; }
+		if (!jvalue.isMember("pr5")) { bflag = 2013 /*false*/; }
+		if (!jvalue.isMember("pr6")) { bflag = 2014 /*false*/; }
+		if (!jvalue.isMember("pr7")) { bflag = 2015 /*false*/; }
+		if (bflag == 0) {
+			if (!jvalue["mp0"].isIntegral()) { bflag = 2050 /*false*/; }
+			if (!jvalue["mp1"].isIntegral()) { bflag = 2051 /*false*/; }
+			if (!jvalue["mp2"].isIntegral()) { bflag = 2052 /*false*/; }
+			if (!jvalue["mp3"].isIntegral()) { bflag = 2053 /*false*/; }
+			if (!jvalue["mp4"].isIntegral()) { bflag = 2054 /*false*/; }
+			if (!jvalue["mp5"].isIntegral()) { bflag = 2055 /*false*/; }
+			if (!jvalue["mp6"].isIntegral()) { bflag = 2056 /*false*/; }
+			if (!jvalue["mp7"].isIntegral()) { bflag = 2057 /*false*/; }
+			if (!jvalue["pr0"].isIntegral()) { bflag = 2058 /*false*/; }
+			if (!jvalue["pr1"].isIntegral()) { bflag = 2059 /*false*/; }
+			if (!jvalue["pr2"].isIntegral()) { bflag = 2060 /*false*/; }
+			if (!jvalue["pr3"].isIntegral()) { bflag = 2061 /*false*/; }
+			if (!jvalue["pr4"].isIntegral()) { bflag = 2062 /*false*/; }
+			if (!jvalue["pr5"].isIntegral()) { bflag = 2063 /*false*/; }
+			if (!jvalue["pr6"].isIntegral()) { bflag = 2064 /*false*/; }
+			if (!jvalue["pr7"].isIntegral()) { bflag = 2065 /*false*/; }
+		}
+	}
+	else {
 		bflag = 1 /*false*/;
 	}
 	return bflag;

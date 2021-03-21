@@ -23,7 +23,7 @@ import "robniu_logic_msg.proto";
 import "fishing_logic_msg.proto";
 import "twoeight_logic_msg.proto";
 import "carcity_logic_msg.proto";
-
+import "sangongdou_logic_msg.proto";
 import "servers_msg.proto";
 
 
@@ -655,8 +655,7 @@ enum  CLIENT_MSG_ID
 	C2S_MSG_SLOT_UPDATE_MASTER_SHOW_INFO_REQ	= 4514;//更新水果机显示信息
 	S2C_MSG_SLOT_UPDATE_MASTER_SHOW_INFO_REP	= 4515;//更新水果机显示信息
 
-
-	//--------------游戏消息-----------------------------------------
+	//--------------红黑游戏消息-----------------------------------------
 	S2C_MSG_WAR_GAME_FREE_INFO					= 4550;// 游戏信息
 	S2C_MSG_WAR_GAME_PLAY_INFO					= 4551;// 游戏信息
 	S2C_MSG_WAR_START					   	    = 4552;// 游戏开始
@@ -668,7 +667,7 @@ enum  CLIENT_MSG_ID
 	C2S_MSG_WAR_CONTINUOUS_PRESSURE_REQ 	    = 4558;// 继续下注
 	S2C_MSG_WAR_CONTINUOUS_PRESSURE_REP	        = 4559;// 继续下注
 
-	//--------------游戏消息-----------------------------------------
+	//--------------龙虎斗消息-----------------------------------------
 	S2C_MSG_FIGHT_GAME_FREE_INFO				= 4580;// 游戏信息
 	S2C_MSG_FIGHT_GAME_PLAY_INFO				= 4581;// 游戏信息
 	S2C_MSG_FIGHT_START					   	    = 4582;// 游戏开始
@@ -699,7 +698,7 @@ enum  CLIENT_MSG_ID
 	S2C_MSG_ROBNIU_SCORE_LESS					= 4625;// 分数不足
 	S2C_MSG_ROBNIU_GAME_STATUS_ERROR			= 4626;// 游戏状态错误
 	
-	//--------------游戏消息--------------------------------------------
+	//--------------牛牛游戏消息--------------------------------------------
 	S2C_MSG_NIUNIU_GAME_FREE_INFO				= 4650;// 游戏信息
 	S2C_MSG_NIUNIU_GAME_PLAY_INFO				= 4651;// 游戏信息
 	S2C_MSG_NIUNIU_READY_START					= 4652;// 游戏开始
@@ -773,5 +772,17 @@ enum  CLIENT_MSG_ID
 	S2C_MSG_CARCITY_PLAY_LOG			    = 5107; // 游戏记录
 	C2S_MSG_CARCITY_CONTINUOUS_PRESSURE_REQ = 5108; // 续押
 	S2C_MSG_CARCITY_CONTINUOUS_PRESSURE_REP	= 5109; // 续押返回
+	
+	//--------------三公斗游戏消息-----------------------------------------
+	S2C_MSG_SANGONGDOU_GAME_FREE_INFO					= 5200;// 游戏信息
+	S2C_MSG_SANGONGDOU_GAME_PLAY_INFO					= 5201;// 游戏信息
+	S2C_MSG_SANGONGDOU_START					   	    = 5202;// 游戏开始
+	C2S_MSG_SANGONGDOU_PLACE_JETTON						= 5203;// 用户加注 
+	S2C_MSG_SANGONGDOU_PLACE_JETTON_REP					= 5204;// 用户加注返回
+	S2C_MSG_SANGONGDOU_PLACE_JETTON_BROADCAST		    = 5205;// 加注广播
+	S2C_MSG_SANGONGDOU_GAME_END							= 5206;// 游戏结束
+	S2C_MSG_SANGONGDOU_PLAY_LOG							= 5207;// 游戏记录
+	C2S_MSG_SANGONGDOU_CONTINUOUS_PRESSURE_REQ 	    	= 5208;// 继续下注
+	S2C_MSG_SANGONGDOU_CONTINUOUS_PRESSURE_REP	        = 5209;// 继续下注
 }
 

@@ -61,6 +61,7 @@ class table_face_info;
 class fishing_table_info;
 class twoeight_table_info;
 class carcity_table_info;
+class sangongdou_table_info;
 class mission_data;
 class item;
 class item_bag;
@@ -5729,6 +5730,15 @@ class table_face_info : public ::google::protobuf::Message {
   inline ::net::carcity_table_info* release_carcity();
   inline void set_allocated_carcity(::net::carcity_table_info* carcity);
 
+  // optional .net.sangongdou_table_info sangongdou = 20;
+  inline bool has_sangongdou() const;
+  inline void clear_sangongdou();
+  static const int kSangongdouFieldNumber = 20;
+  inline const ::net::sangongdou_table_info& sangongdou() const;
+  inline ::net::sangongdou_table_info* mutable_sangongdou();
+  inline ::net::sangongdou_table_info* release_sangongdou();
+  inline void set_allocated_sangongdou(::net::sangongdou_table_info* sangongdou);
+
   // @@protoc_insertion_point(class_scope:net.table_face_info)
  private:
   inline void set_has_land();
@@ -5769,6 +5779,8 @@ class table_face_info : public ::google::protobuf::Message {
   inline void clear_has_twoeight();
   inline void set_has_carcity();
   inline void clear_has_carcity();
+  inline void set_has_sangongdou();
+  inline void clear_has_sangongdou();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -5791,9 +5803,10 @@ class table_face_info : public ::google::protobuf::Message {
   ::net::fishing_table_info* fishing_;
   ::net::twoeight_table_info* twoeight_;
   ::net::carcity_table_info* carcity_;
+  ::net::sangongdou_table_info* sangongdou_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(19 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(20 + 31) / 32];
 
   friend void  protobuf_AddDesc_base_5fmsg_5fstruct_2eproto();
   friend void protobuf_AssignDesc_base_5fmsg_5fstruct_2eproto();
@@ -6402,6 +6415,231 @@ class carcity_table_info : public ::google::protobuf::Message {
 
   void InitAsDefaultInstance();
   static carcity_table_info* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class sangongdou_table_info : public ::google::protobuf::Message {
+ public:
+  sangongdou_table_info();
+  virtual ~sangongdou_table_info();
+
+  sangongdou_table_info(const sangongdou_table_info& from);
+
+  inline sangongdou_table_info& operator=(const sangongdou_table_info& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const sangongdou_table_info& default_instance();
+
+  void Swap(sangongdou_table_info* other);
+
+  // implements Message ----------------------------------------------
+
+  sangongdou_table_info* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const sangongdou_table_info& from);
+  void MergeFrom(const sangongdou_table_info& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint32 tableid = 1;
+  inline bool has_tableid() const;
+  inline void clear_tableid();
+  static const int kTableidFieldNumber = 1;
+  inline ::google::protobuf::uint32 tableid() const;
+  inline void set_tableid(::google::protobuf::uint32 value);
+
+  // optional bytes tablename = 2;
+  inline bool has_tablename() const;
+  inline void clear_tablename();
+  static const int kTablenameFieldNumber = 2;
+  inline const ::std::string& tablename() const;
+  inline void set_tablename(const ::std::string& value);
+  inline void set_tablename(const char* value);
+  inline void set_tablename(const void* value, size_t size);
+  inline ::std::string* mutable_tablename();
+  inline ::std::string* release_tablename();
+  inline void set_allocated_tablename(::std::string* tablename);
+
+  // optional uint32 is_passwd = 3;
+  inline bool has_is_passwd() const;
+  inline void clear_is_passwd();
+  static const int kIsPasswdFieldNumber = 3;
+  inline ::google::protobuf::uint32 is_passwd() const;
+  inline void set_is_passwd(::google::protobuf::uint32 value);
+
+  // optional int64 basescore = 4;
+  inline bool has_basescore() const;
+  inline void clear_basescore();
+  static const int kBasescoreFieldNumber = 4;
+  inline ::google::protobuf::int64 basescore() const;
+  inline void set_basescore(::google::protobuf::int64 value);
+
+  // optional uint32 consume = 5;
+  inline bool has_consume() const;
+  inline void clear_consume();
+  static const int kConsumeFieldNumber = 5;
+  inline ::google::protobuf::uint32 consume() const;
+  inline void set_consume(::google::protobuf::uint32 value);
+
+  // optional uint64 entermin = 6;
+  inline bool has_entermin() const;
+  inline void clear_entermin();
+  static const int kEnterminFieldNumber = 6;
+  inline ::google::protobuf::uint64 entermin() const;
+  inline void set_entermin(::google::protobuf::uint64 value);
+
+  // optional uint32 duetime = 7;
+  inline bool has_duetime() const;
+  inline void clear_duetime();
+  static const int kDuetimeFieldNumber = 7;
+  inline ::google::protobuf::uint32 duetime() const;
+  inline void set_duetime(::google::protobuf::uint32 value);
+
+  // optional uint32 feetype = 8;
+  inline bool has_feetype() const;
+  inline void clear_feetype();
+  static const int kFeetypeFieldNumber = 8;
+  inline ::google::protobuf::uint32 feetype() const;
+  inline void set_feetype(::google::protobuf::uint32 value);
+
+  // optional int64 feevalue = 9;
+  inline bool has_feevalue() const;
+  inline void clear_feevalue();
+  static const int kFeevalueFieldNumber = 9;
+  inline ::google::protobuf::int64 feevalue() const;
+  inline void set_feevalue(::google::protobuf::int64 value);
+
+  // optional bytes hostname = 10;
+  inline bool has_hostname() const;
+  inline void clear_hostname();
+  static const int kHostnameFieldNumber = 10;
+  inline const ::std::string& hostname() const;
+  inline void set_hostname(const ::std::string& value);
+  inline void set_hostname(const char* value);
+  inline void set_hostname(const void* value, size_t size);
+  inline ::std::string* mutable_hostname();
+  inline ::std::string* release_hostname();
+  inline void set_allocated_hostname(::std::string* hostname);
+
+  // optional uint32 card_time = 11;
+  inline bool has_card_time() const;
+  inline void clear_card_time();
+  static const int kCardTimeFieldNumber = 11;
+  inline ::google::protobuf::uint32 card_time() const;
+  inline void set_card_time(::google::protobuf::uint32 value);
+
+  // optional uint32 table_state = 12;
+  inline bool has_table_state() const;
+  inline void clear_table_state();
+  static const int kTableStateFieldNumber = 12;
+  inline ::google::protobuf::uint32 table_state() const;
+  inline void set_table_state(::google::protobuf::uint32 value);
+
+  // optional int64 sitdown = 13;
+  inline bool has_sitdown() const;
+  inline void clear_sitdown();
+  static const int kSitdownFieldNumber = 13;
+  inline ::google::protobuf::int64 sitdown() const;
+  inline void set_sitdown(::google::protobuf::int64 value);
+
+  // repeated uint32 chip = 14;
+  inline int chip_size() const;
+  inline void clear_chip();
+  static const int kChipFieldNumber = 14;
+  inline ::google::protobuf::uint32 chip(int index) const;
+  inline void set_chip(int index, ::google::protobuf::uint32 value);
+  inline void add_chip(::google::protobuf::uint32 value);
+  inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >&
+      chip() const;
+  inline ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
+      mutable_chip();
+
+  // @@protoc_insertion_point(class_scope:net.sangongdou_table_info)
+ private:
+  inline void set_has_tableid();
+  inline void clear_has_tableid();
+  inline void set_has_tablename();
+  inline void clear_has_tablename();
+  inline void set_has_is_passwd();
+  inline void clear_has_is_passwd();
+  inline void set_has_basescore();
+  inline void clear_has_basescore();
+  inline void set_has_consume();
+  inline void clear_has_consume();
+  inline void set_has_entermin();
+  inline void clear_has_entermin();
+  inline void set_has_duetime();
+  inline void clear_has_duetime();
+  inline void set_has_feetype();
+  inline void clear_has_feetype();
+  inline void set_has_feevalue();
+  inline void clear_has_feevalue();
+  inline void set_has_hostname();
+  inline void clear_has_hostname();
+  inline void set_has_card_time();
+  inline void clear_has_card_time();
+  inline void set_has_table_state();
+  inline void clear_has_table_state();
+  inline void set_has_sitdown();
+  inline void clear_has_sitdown();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::std::string* tablename_;
+  ::google::protobuf::uint32 tableid_;
+  ::google::protobuf::uint32 is_passwd_;
+  ::google::protobuf::int64 basescore_;
+  ::google::protobuf::uint64 entermin_;
+  ::google::protobuf::uint32 consume_;
+  ::google::protobuf::uint32 duetime_;
+  ::google::protobuf::int64 feevalue_;
+  ::google::protobuf::uint32 feetype_;
+  ::google::protobuf::uint32 card_time_;
+  ::std::string* hostname_;
+  ::google::protobuf::int64 sitdown_;
+  ::google::protobuf::RepeatedField< ::google::protobuf::uint32 > chip_;
+  ::google::protobuf::uint32 table_state_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(14 + 31) / 32];
+
+  friend void  protobuf_AddDesc_base_5fmsg_5fstruct_2eproto();
+  friend void protobuf_AssignDesc_base_5fmsg_5fstruct_2eproto();
+  friend void protobuf_ShutdownFile_base_5fmsg_5fstruct_2eproto();
+
+  void InitAsDefaultInstance();
+  static sangongdou_table_info* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -17233,6 +17471,44 @@ inline void table_face_info::set_allocated_carcity(::net::carcity_table_info* ca
   }
 }
 
+// optional .net.sangongdou_table_info sangongdou = 20;
+inline bool table_face_info::has_sangongdou() const {
+  return (_has_bits_[0] & 0x00080000u) != 0;
+}
+inline void table_face_info::set_has_sangongdou() {
+  _has_bits_[0] |= 0x00080000u;
+}
+inline void table_face_info::clear_has_sangongdou() {
+  _has_bits_[0] &= ~0x00080000u;
+}
+inline void table_face_info::clear_sangongdou() {
+  if (sangongdou_ != NULL) sangongdou_->::net::sangongdou_table_info::Clear();
+  clear_has_sangongdou();
+}
+inline const ::net::sangongdou_table_info& table_face_info::sangongdou() const {
+  return sangongdou_ != NULL ? *sangongdou_ : *default_instance_->sangongdou_;
+}
+inline ::net::sangongdou_table_info* table_face_info::mutable_sangongdou() {
+  set_has_sangongdou();
+  if (sangongdou_ == NULL) sangongdou_ = new ::net::sangongdou_table_info;
+  return sangongdou_;
+}
+inline ::net::sangongdou_table_info* table_face_info::release_sangongdou() {
+  clear_has_sangongdou();
+  ::net::sangongdou_table_info* temp = sangongdou_;
+  sangongdou_ = NULL;
+  return temp;
+}
+inline void table_face_info::set_allocated_sangongdou(::net::sangongdou_table_info* sangongdou) {
+  delete sangongdou_;
+  sangongdou_ = sangongdou;
+  if (sangongdou) {
+    set_has_sangongdou();
+  } else {
+    clear_has_sangongdou();
+  }
+}
+
 // -------------------------------------------------------------------
 
 // fishing_table_info
@@ -18275,6 +18551,417 @@ inline ::google::protobuf::uint32 carcity_table_info::table_state() const {
 inline void carcity_table_info::set_table_state(::google::protobuf::uint32 value) {
   set_has_table_state();
   table_state_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// sangongdou_table_info
+
+// optional uint32 tableid = 1;
+inline bool sangongdou_table_info::has_tableid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void sangongdou_table_info::set_has_tableid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void sangongdou_table_info::clear_has_tableid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void sangongdou_table_info::clear_tableid() {
+  tableid_ = 0u;
+  clear_has_tableid();
+}
+inline ::google::protobuf::uint32 sangongdou_table_info::tableid() const {
+  return tableid_;
+}
+inline void sangongdou_table_info::set_tableid(::google::protobuf::uint32 value) {
+  set_has_tableid();
+  tableid_ = value;
+}
+
+// optional bytes tablename = 2;
+inline bool sangongdou_table_info::has_tablename() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void sangongdou_table_info::set_has_tablename() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void sangongdou_table_info::clear_has_tablename() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void sangongdou_table_info::clear_tablename() {
+  if (tablename_ != &::google::protobuf::internal::kEmptyString) {
+    tablename_->clear();
+  }
+  clear_has_tablename();
+}
+inline const ::std::string& sangongdou_table_info::tablename() const {
+  return *tablename_;
+}
+inline void sangongdou_table_info::set_tablename(const ::std::string& value) {
+  set_has_tablename();
+  if (tablename_ == &::google::protobuf::internal::kEmptyString) {
+    tablename_ = new ::std::string;
+  }
+  tablename_->assign(value);
+}
+inline void sangongdou_table_info::set_tablename(const char* value) {
+  set_has_tablename();
+  if (tablename_ == &::google::protobuf::internal::kEmptyString) {
+    tablename_ = new ::std::string;
+  }
+  tablename_->assign(value);
+}
+inline void sangongdou_table_info::set_tablename(const void* value, size_t size) {
+  set_has_tablename();
+  if (tablename_ == &::google::protobuf::internal::kEmptyString) {
+    tablename_ = new ::std::string;
+  }
+  tablename_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* sangongdou_table_info::mutable_tablename() {
+  set_has_tablename();
+  if (tablename_ == &::google::protobuf::internal::kEmptyString) {
+    tablename_ = new ::std::string;
+  }
+  return tablename_;
+}
+inline ::std::string* sangongdou_table_info::release_tablename() {
+  clear_has_tablename();
+  if (tablename_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = tablename_;
+    tablename_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void sangongdou_table_info::set_allocated_tablename(::std::string* tablename) {
+  if (tablename_ != &::google::protobuf::internal::kEmptyString) {
+    delete tablename_;
+  }
+  if (tablename) {
+    set_has_tablename();
+    tablename_ = tablename;
+  } else {
+    clear_has_tablename();
+    tablename_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// optional uint32 is_passwd = 3;
+inline bool sangongdou_table_info::has_is_passwd() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void sangongdou_table_info::set_has_is_passwd() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void sangongdou_table_info::clear_has_is_passwd() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void sangongdou_table_info::clear_is_passwd() {
+  is_passwd_ = 0u;
+  clear_has_is_passwd();
+}
+inline ::google::protobuf::uint32 sangongdou_table_info::is_passwd() const {
+  return is_passwd_;
+}
+inline void sangongdou_table_info::set_is_passwd(::google::protobuf::uint32 value) {
+  set_has_is_passwd();
+  is_passwd_ = value;
+}
+
+// optional int64 basescore = 4;
+inline bool sangongdou_table_info::has_basescore() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void sangongdou_table_info::set_has_basescore() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void sangongdou_table_info::clear_has_basescore() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void sangongdou_table_info::clear_basescore() {
+  basescore_ = GOOGLE_LONGLONG(0);
+  clear_has_basescore();
+}
+inline ::google::protobuf::int64 sangongdou_table_info::basescore() const {
+  return basescore_;
+}
+inline void sangongdou_table_info::set_basescore(::google::protobuf::int64 value) {
+  set_has_basescore();
+  basescore_ = value;
+}
+
+// optional uint32 consume = 5;
+inline bool sangongdou_table_info::has_consume() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void sangongdou_table_info::set_has_consume() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void sangongdou_table_info::clear_has_consume() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void sangongdou_table_info::clear_consume() {
+  consume_ = 0u;
+  clear_has_consume();
+}
+inline ::google::protobuf::uint32 sangongdou_table_info::consume() const {
+  return consume_;
+}
+inline void sangongdou_table_info::set_consume(::google::protobuf::uint32 value) {
+  set_has_consume();
+  consume_ = value;
+}
+
+// optional uint64 entermin = 6;
+inline bool sangongdou_table_info::has_entermin() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void sangongdou_table_info::set_has_entermin() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void sangongdou_table_info::clear_has_entermin() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void sangongdou_table_info::clear_entermin() {
+  entermin_ = GOOGLE_ULONGLONG(0);
+  clear_has_entermin();
+}
+inline ::google::protobuf::uint64 sangongdou_table_info::entermin() const {
+  return entermin_;
+}
+inline void sangongdou_table_info::set_entermin(::google::protobuf::uint64 value) {
+  set_has_entermin();
+  entermin_ = value;
+}
+
+// optional uint32 duetime = 7;
+inline bool sangongdou_table_info::has_duetime() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void sangongdou_table_info::set_has_duetime() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void sangongdou_table_info::clear_has_duetime() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void sangongdou_table_info::clear_duetime() {
+  duetime_ = 0u;
+  clear_has_duetime();
+}
+inline ::google::protobuf::uint32 sangongdou_table_info::duetime() const {
+  return duetime_;
+}
+inline void sangongdou_table_info::set_duetime(::google::protobuf::uint32 value) {
+  set_has_duetime();
+  duetime_ = value;
+}
+
+// optional uint32 feetype = 8;
+inline bool sangongdou_table_info::has_feetype() const {
+  return (_has_bits_[0] & 0x00000080u) != 0;
+}
+inline void sangongdou_table_info::set_has_feetype() {
+  _has_bits_[0] |= 0x00000080u;
+}
+inline void sangongdou_table_info::clear_has_feetype() {
+  _has_bits_[0] &= ~0x00000080u;
+}
+inline void sangongdou_table_info::clear_feetype() {
+  feetype_ = 0u;
+  clear_has_feetype();
+}
+inline ::google::protobuf::uint32 sangongdou_table_info::feetype() const {
+  return feetype_;
+}
+inline void sangongdou_table_info::set_feetype(::google::protobuf::uint32 value) {
+  set_has_feetype();
+  feetype_ = value;
+}
+
+// optional int64 feevalue = 9;
+inline bool sangongdou_table_info::has_feevalue() const {
+  return (_has_bits_[0] & 0x00000100u) != 0;
+}
+inline void sangongdou_table_info::set_has_feevalue() {
+  _has_bits_[0] |= 0x00000100u;
+}
+inline void sangongdou_table_info::clear_has_feevalue() {
+  _has_bits_[0] &= ~0x00000100u;
+}
+inline void sangongdou_table_info::clear_feevalue() {
+  feevalue_ = GOOGLE_LONGLONG(0);
+  clear_has_feevalue();
+}
+inline ::google::protobuf::int64 sangongdou_table_info::feevalue() const {
+  return feevalue_;
+}
+inline void sangongdou_table_info::set_feevalue(::google::protobuf::int64 value) {
+  set_has_feevalue();
+  feevalue_ = value;
+}
+
+// optional bytes hostname = 10;
+inline bool sangongdou_table_info::has_hostname() const {
+  return (_has_bits_[0] & 0x00000200u) != 0;
+}
+inline void sangongdou_table_info::set_has_hostname() {
+  _has_bits_[0] |= 0x00000200u;
+}
+inline void sangongdou_table_info::clear_has_hostname() {
+  _has_bits_[0] &= ~0x00000200u;
+}
+inline void sangongdou_table_info::clear_hostname() {
+  if (hostname_ != &::google::protobuf::internal::kEmptyString) {
+    hostname_->clear();
+  }
+  clear_has_hostname();
+}
+inline const ::std::string& sangongdou_table_info::hostname() const {
+  return *hostname_;
+}
+inline void sangongdou_table_info::set_hostname(const ::std::string& value) {
+  set_has_hostname();
+  if (hostname_ == &::google::protobuf::internal::kEmptyString) {
+    hostname_ = new ::std::string;
+  }
+  hostname_->assign(value);
+}
+inline void sangongdou_table_info::set_hostname(const char* value) {
+  set_has_hostname();
+  if (hostname_ == &::google::protobuf::internal::kEmptyString) {
+    hostname_ = new ::std::string;
+  }
+  hostname_->assign(value);
+}
+inline void sangongdou_table_info::set_hostname(const void* value, size_t size) {
+  set_has_hostname();
+  if (hostname_ == &::google::protobuf::internal::kEmptyString) {
+    hostname_ = new ::std::string;
+  }
+  hostname_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* sangongdou_table_info::mutable_hostname() {
+  set_has_hostname();
+  if (hostname_ == &::google::protobuf::internal::kEmptyString) {
+    hostname_ = new ::std::string;
+  }
+  return hostname_;
+}
+inline ::std::string* sangongdou_table_info::release_hostname() {
+  clear_has_hostname();
+  if (hostname_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = hostname_;
+    hostname_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void sangongdou_table_info::set_allocated_hostname(::std::string* hostname) {
+  if (hostname_ != &::google::protobuf::internal::kEmptyString) {
+    delete hostname_;
+  }
+  if (hostname) {
+    set_has_hostname();
+    hostname_ = hostname;
+  } else {
+    clear_has_hostname();
+    hostname_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// optional uint32 card_time = 11;
+inline bool sangongdou_table_info::has_card_time() const {
+  return (_has_bits_[0] & 0x00000400u) != 0;
+}
+inline void sangongdou_table_info::set_has_card_time() {
+  _has_bits_[0] |= 0x00000400u;
+}
+inline void sangongdou_table_info::clear_has_card_time() {
+  _has_bits_[0] &= ~0x00000400u;
+}
+inline void sangongdou_table_info::clear_card_time() {
+  card_time_ = 0u;
+  clear_has_card_time();
+}
+inline ::google::protobuf::uint32 sangongdou_table_info::card_time() const {
+  return card_time_;
+}
+inline void sangongdou_table_info::set_card_time(::google::protobuf::uint32 value) {
+  set_has_card_time();
+  card_time_ = value;
+}
+
+// optional uint32 table_state = 12;
+inline bool sangongdou_table_info::has_table_state() const {
+  return (_has_bits_[0] & 0x00000800u) != 0;
+}
+inline void sangongdou_table_info::set_has_table_state() {
+  _has_bits_[0] |= 0x00000800u;
+}
+inline void sangongdou_table_info::clear_has_table_state() {
+  _has_bits_[0] &= ~0x00000800u;
+}
+inline void sangongdou_table_info::clear_table_state() {
+  table_state_ = 0u;
+  clear_has_table_state();
+}
+inline ::google::protobuf::uint32 sangongdou_table_info::table_state() const {
+  return table_state_;
+}
+inline void sangongdou_table_info::set_table_state(::google::protobuf::uint32 value) {
+  set_has_table_state();
+  table_state_ = value;
+}
+
+// optional int64 sitdown = 13;
+inline bool sangongdou_table_info::has_sitdown() const {
+  return (_has_bits_[0] & 0x00001000u) != 0;
+}
+inline void sangongdou_table_info::set_has_sitdown() {
+  _has_bits_[0] |= 0x00001000u;
+}
+inline void sangongdou_table_info::clear_has_sitdown() {
+  _has_bits_[0] &= ~0x00001000u;
+}
+inline void sangongdou_table_info::clear_sitdown() {
+  sitdown_ = GOOGLE_LONGLONG(0);
+  clear_has_sitdown();
+}
+inline ::google::protobuf::int64 sangongdou_table_info::sitdown() const {
+  return sitdown_;
+}
+inline void sangongdou_table_info::set_sitdown(::google::protobuf::int64 value) {
+  set_has_sitdown();
+  sitdown_ = value;
+}
+
+// repeated uint32 chip = 14;
+inline int sangongdou_table_info::chip_size() const {
+  return chip_.size();
+}
+inline void sangongdou_table_info::clear_chip() {
+  chip_.Clear();
+}
+inline ::google::protobuf::uint32 sangongdou_table_info::chip(int index) const {
+  return chip_.Get(index);
+}
+inline void sangongdou_table_info::set_chip(int index, ::google::protobuf::uint32 value) {
+  chip_.Set(index, value);
+}
+inline void sangongdou_table_info::add_chip(::google::protobuf::uint32 value) {
+  chip_.Add(value);
+}
+inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >&
+sangongdou_table_info::chip() const {
+  return chip_;
+}
+inline ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
+sangongdou_table_info::mutable_chip() {
+  return &chip_;
 }
 
 // -------------------------------------------------------------------

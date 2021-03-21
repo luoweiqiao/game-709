@@ -11,6 +11,7 @@ import "war_logic_msg.proto";
 import "fight_logic_msg.proto";
 import "twoeight_logic_msg.proto";
 import "carcity_logic_msg.proto";
+import "sangongdou_logic_msg.proto";
 
 //-----------------------------大厅服消息-------------------------------------------------------------------
 // 心跳包
@@ -790,14 +791,15 @@ message msg_player_continuous_pressure_jetton_rep
 // 游戏记录
 message msg_game_play_log
 {
-	optional msg_bainiu_play_log_rep   bainiu   = 1; // 百牛
-	optional msg_baccarat_play_log_rep baccarat = 2; // 百家乐
-	optional msg_paijiu_play_log_rep   paijiu   = 3; // 牌九
-	optional msg_dice_play_log_rep	   dice	    = 4; // 骰子
-	optional msg_war_play_log_rep	   war      = 5; // 红黑
-	optional msg_fight_play_log_rep    fight    = 6; // 龙虎斗
-	optional msg_twoeight_play_log_rep twoeight = 7; // 二八杠
-	optional msg_carcity_play_log_rep  carcity  = 8; // 奔驰宝马
+	optional msg_bainiu_play_log_rep		bainiu		= 1; // 百牛
+	optional msg_baccarat_play_log_rep		baccarat	= 2; // 百家乐
+	optional msg_paijiu_play_log_rep		paijiu		= 3; // 牌九
+	optional msg_dice_play_log_rep			dice	    = 4; // 骰子
+	optional msg_war_play_log_rep			war			= 5; // 红黑
+	optional msg_fight_play_log_rep			fight		= 6; // 龙虎斗
+	optional msg_twoeight_play_log_rep		twoeight	= 7; // 二八杠
+	optional msg_carcity_play_log_rep		carcity		= 8; // 奔驰宝马
+	optional msg_sangongdou_play_log_rep	sangongdou  = 9; // 三公斗
 }
 
 // 游戏记录

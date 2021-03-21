@@ -104,6 +104,9 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* carcity_table_info_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   carcity_table_info_reflection_ = NULL;
+const ::google::protobuf::Descriptor* sangongdou_table_info_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  sangongdou_table_info_reflection_ = NULL;
 const ::google::protobuf::Descriptor* mission_data_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   mission_data_reflection_ = NULL;
@@ -815,7 +818,7 @@ void protobuf_AssignDesc_base_5fmsg_5fstruct_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(robniu_table_info));
   table_face_info_descriptor_ = file->message_type(24);
-  static const int table_face_info_offsets_[19] = {
+  static const int table_face_info_offsets_[20] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(table_face_info, land_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(table_face_info, showhand_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(table_face_info, bainiu_),
@@ -835,6 +838,7 @@ void protobuf_AssignDesc_base_5fmsg_5fstruct_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(table_face_info, fishing_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(table_face_info, twoeight_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(table_face_info, carcity_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(table_face_info, sangongdou_),
   };
   table_face_info_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -925,7 +929,35 @@ void protobuf_AssignDesc_base_5fmsg_5fstruct_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(carcity_table_info));
-  mission_data_descriptor_ = file->message_type(28);
+  sangongdou_table_info_descriptor_ = file->message_type(28);
+  static const int sangongdou_table_info_offsets_[14] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(sangongdou_table_info, tableid_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(sangongdou_table_info, tablename_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(sangongdou_table_info, is_passwd_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(sangongdou_table_info, basescore_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(sangongdou_table_info, consume_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(sangongdou_table_info, entermin_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(sangongdou_table_info, duetime_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(sangongdou_table_info, feetype_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(sangongdou_table_info, feevalue_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(sangongdou_table_info, hostname_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(sangongdou_table_info, card_time_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(sangongdou_table_info, table_state_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(sangongdou_table_info, sitdown_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(sangongdou_table_info, chip_),
+  };
+  sangongdou_table_info_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      sangongdou_table_info_descriptor_,
+      sangongdou_table_info::default_instance_,
+      sangongdou_table_info_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(sangongdou_table_info, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(sangongdou_table_info, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(sangongdou_table_info));
+  mission_data_descriptor_ = file->message_type(29);
   static const int mission_data_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(mission_data, msid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(mission_data, rtimes_),
@@ -943,7 +975,7 @@ void protobuf_AssignDesc_base_5fmsg_5fstruct_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(mission_data));
-  item_descriptor_ = file->message_type(29);
+  item_descriptor_ = file->message_type(30);
   static const int item_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(item, item_id_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(item, item_num_),
@@ -959,7 +991,7 @@ void protobuf_AssignDesc_base_5fmsg_5fstruct_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(item));
-  item_bag_descriptor_ = file->message_type(30);
+  item_bag_descriptor_ = file->message_type(31);
   static const int item_bag_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(item_bag, items_),
   };
@@ -974,7 +1006,7 @@ void protobuf_AssignDesc_base_5fmsg_5fstruct_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(item_bag));
-  msg_cards_descriptor_ = file->message_type(31);
+  msg_cards_descriptor_ = file->message_type(32);
   static const int msg_cards_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(msg_cards, cards_),
   };
@@ -989,7 +1021,7 @@ void protobuf_AssignDesc_base_5fmsg_5fstruct_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(msg_cards));
-  player_num_descriptor_ = file->message_type(32);
+  player_num_descriptor_ = file->message_type(33);
   static const int player_num_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(player_num, svrid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(player_num, players_),
@@ -1075,6 +1107,8 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     carcity_table_info_descriptor_, &carcity_table_info::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    sangongdou_table_info_descriptor_, &sangongdou_table_info::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     mission_data_descriptor_, &mission_data::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     item_descriptor_, &item::default_instance());
@@ -1145,6 +1179,8 @@ void protobuf_ShutdownFile_base_5fmsg_5fstruct_2eproto() {
   delete twoeight_table_info_reflection_;
   delete carcity_table_info::default_instance_;
   delete carcity_table_info_reflection_;
+  delete sangongdou_table_info::default_instance_;
+  delete sangongdou_table_info_reflection_;
   delete mission_data::default_instance_;
   delete mission_data_reflection_;
   delete item::default_instance_;
@@ -1336,7 +1372,7 @@ void protobuf_AddDesc_base_5fmsg_5fstruct_2eproto() {
     "\010hostname\030\n \001(\014\022\023\n\013table_state\030\013 \001(\r\022\020\n\010"
     "seat_num\030\014 \001(\r\022\022\n\ncan_banker\030\r \001(\r\022\031\n\021ap"
     "ply_banker_time\030\016 \001(\r\022\021\n\tcard_time\030\017 \001(\r"
-    "\022\026\n\016show_card_time\030\020 \001(\r\"\223\006\n\017table_face_"
+    "\022\026\n\016show_card_time\030\020 \001(\r\"\303\006\n\017table_face_"
     "info\022\"\n\004land\030\001 \001(\0132\024.net.land_table_info"
     "\022*\n\010showhand\030\002 \001(\0132\030.net.showhand_table_"
     "info\022&\n\006bainiu\030\003 \001(\0132\026.net.bainiu_table_"
@@ -1356,32 +1392,40 @@ void protobuf_AddDesc_base_5fmsg_5fstruct_2eproto() {
     "e_info\022(\n\007fishing\030\021 \001(\0132\027.net.fishing_ta"
     "ble_info\022*\n\010twoeight\030\022 \001(\0132\030.net.twoeigh"
     "t_table_info\022(\n\007carcity\030\023 \001(\0132\027.net.carc"
-    "ity_table_info\"\225\001\n\022fishing_table_info\022\017\n"
-    "\007tableid\030\001 \001(\r\022\021\n\ttablename\030\002 \001(\014\022\021\n\tbas"
-    "escore\030\003 \001(\003\022\017\n\007consume\030\004 \001(\r\022\020\n\010entermi"
-    "n\030\005 \001(\004\022\020\n\010maplevel\030\006 \001(\004\022\023\n\013table_state"
-    "\030\007 \001(\r\"\362\002\n\023twoeight_table_info\022\017\n\007tablei"
-    "d\030\001 \001(\r\022\021\n\ttablename\030\002 \001(\014\022\021\n\tis_passwd\030"
-    "\003 \001(\r\022\021\n\tbasescore\030\004 \001(\003\022\017\n\007consume\030\005 \001("
-    "\r\022\020\n\010entermin\030\006 \001(\004\022\017\n\007duetime\030\007 \001(\r\022\017\n\007"
-    "feetype\030\010 \001(\r\022\020\n\010feevalue\030\t \001(\003\022\020\n\010hostn"
-    "ame\030\n \001(\014\022\021\n\tcard_time\030\013 \001(\r\022\023\n\013table_st"
-    "ate\030\014 \001(\r\022\017\n\007sitdown\030\r \001(\003\022\036\n\026apply_bank"
-    "er_condition\030\016 \001(\003\022\035\n\025apply_banker_maxsc"
-    "ore\030\017 \001(\003\022\027\n\017banker_max_time\030\020 \001(\r\022\027\n\017ma"
-    "x_jetton_rate\030\021 \001(\r\"\357\001\n\022carcity_table_in"
-    "fo\022\017\n\007tableid\030\001 \001(\r\022\021\n\ttablename\030\002 \001(\014\022\021"
-    "\n\tis_passwd\030\003 \001(\r\022\021\n\tbasescore\030\004 \001(\003\022\017\n\007"
-    "consume\030\005 \001(\r\022\020\n\010entermin\030\006 \001(\004\022\017\n\007dueti"
-    "me\030\007 \001(\r\022\017\n\007feetype\030\010 \001(\r\022\020\n\010feevalue\030\t "
-    "\001(\003\022\020\n\010hostname\030\n \001(\014\022\021\n\tcard_time\030\013 \001(\r"
-    "\022\023\n\013table_state\030\014 \001(\r\"L\n\014mission_data\022\014\n"
-    "\004msid\030\001 \001(\r\022\016\n\006rtimes\030\002 \001(\r\022\016\n\006ctimes\030\003 "
-    "\001(\r\022\016\n\006cptime\030\004 \001(\r\")\n\004item\022\017\n\007item_id\030\001"
-    " \001(\r\022\020\n\010item_num\030\002 \001(\r\"$\n\010item_bag\022\030\n\005it"
-    "ems\030\001 \003(\0132\t.net.item\"\032\n\tmsg_cards\022\r\n\005car"
-    "ds\030\001 \003(\r\"<\n\nplayer_num\022\r\n\005svrid\030\001 \001(\r\022\017\n"
-    "\007players\030\002 \001(\r\022\016\n\006robots\030\003 \001(\r", 8710);
+    "ity_table_info\022.\n\nsangongdou\030\024 \001(\0132\032.net"
+    ".sangongdou_table_info\"\225\001\n\022fishing_table"
+    "_info\022\017\n\007tableid\030\001 \001(\r\022\021\n\ttablename\030\002 \001("
+    "\014\022\021\n\tbasescore\030\003 \001(\003\022\017\n\007consume\030\004 \001(\r\022\020\n"
+    "\010entermin\030\005 \001(\004\022\020\n\010maplevel\030\006 \001(\004\022\023\n\013tab"
+    "le_state\030\007 \001(\r\"\362\002\n\023twoeight_table_info\022\017"
+    "\n\007tableid\030\001 \001(\r\022\021\n\ttablename\030\002 \001(\014\022\021\n\tis"
+    "_passwd\030\003 \001(\r\022\021\n\tbasescore\030\004 \001(\003\022\017\n\007cons"
+    "ume\030\005 \001(\r\022\020\n\010entermin\030\006 \001(\004\022\017\n\007duetime\030\007"
+    " \001(\r\022\017\n\007feetype\030\010 \001(\r\022\020\n\010feevalue\030\t \001(\003\022"
+    "\020\n\010hostname\030\n \001(\014\022\021\n\tcard_time\030\013 \001(\r\022\023\n\013"
+    "table_state\030\014 \001(\r\022\017\n\007sitdown\030\r \001(\003\022\036\n\026ap"
+    "ply_banker_condition\030\016 \001(\003\022\035\n\025apply_bank"
+    "er_maxscore\030\017 \001(\003\022\027\n\017banker_max_time\030\020 \001"
+    "(\r\022\027\n\017max_jetton_rate\030\021 \001(\r\"\357\001\n\022carcity_"
+    "table_info\022\017\n\007tableid\030\001 \001(\r\022\021\n\ttablename"
+    "\030\002 \001(\014\022\021\n\tis_passwd\030\003 \001(\r\022\021\n\tbasescore\030\004"
+    " \001(\003\022\017\n\007consume\030\005 \001(\r\022\020\n\010entermin\030\006 \001(\004\022"
+    "\017\n\007duetime\030\007 \001(\r\022\017\n\007feetype\030\010 \001(\r\022\020\n\010fee"
+    "value\030\t \001(\003\022\020\n\010hostname\030\n \001(\014\022\021\n\tcard_ti"
+    "me\030\013 \001(\r\022\023\n\013table_state\030\014 \001(\r\"\221\002\n\025sangon"
+    "gdou_table_info\022\017\n\007tableid\030\001 \001(\r\022\021\n\ttabl"
+    "ename\030\002 \001(\014\022\021\n\tis_passwd\030\003 \001(\r\022\021\n\tbasesc"
+    "ore\030\004 \001(\003\022\017\n\007consume\030\005 \001(\r\022\020\n\010entermin\030\006"
+    " \001(\004\022\017\n\007duetime\030\007 \001(\r\022\017\n\007feetype\030\010 \001(\r\022\020"
+    "\n\010feevalue\030\t \001(\003\022\020\n\010hostname\030\n \001(\014\022\021\n\tca"
+    "rd_time\030\013 \001(\r\022\023\n\013table_state\030\014 \001(\r\022\017\n\007si"
+    "tdown\030\r \001(\003\022\014\n\004chip\030\016 \003(\r\"L\n\014mission_dat"
+    "a\022\014\n\004msid\030\001 \001(\r\022\016\n\006rtimes\030\002 \001(\r\022\016\n\006ctime"
+    "s\030\003 \001(\r\022\016\n\006cptime\030\004 \001(\r\")\n\004item\022\017\n\007item_"
+    "id\030\001 \001(\r\022\020\n\010item_num\030\002 \001(\r\"$\n\010item_bag\022\030"
+    "\n\005items\030\001 \003(\0132\t.net.item\"\032\n\tmsg_cards\022\r\n"
+    "\005cards\030\001 \003(\r\"<\n\nplayer_num\022\r\n\005svrid\030\001 \001("
+    "\r\022\017\n\007players\030\002 \001(\r\022\016\n\006robots\030\003 \001(\r", 9034);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "base_msg_struct.proto", &protobuf_RegisterTypes);
   base_info::default_instance_ = new base_info();
@@ -1412,6 +1456,7 @@ void protobuf_AddDesc_base_5fmsg_5fstruct_2eproto() {
   fishing_table_info::default_instance_ = new fishing_table_info();
   twoeight_table_info::default_instance_ = new twoeight_table_info();
   carcity_table_info::default_instance_ = new carcity_table_info();
+  sangongdou_table_info::default_instance_ = new sangongdou_table_info();
   mission_data::default_instance_ = new mission_data();
   item::default_instance_ = new item();
   item_bag::default_instance_ = new item_bag();
@@ -1445,6 +1490,7 @@ void protobuf_AddDesc_base_5fmsg_5fstruct_2eproto() {
   fishing_table_info::default_instance_->InitAsDefaultInstance();
   twoeight_table_info::default_instance_->InitAsDefaultInstance();
   carcity_table_info::default_instance_->InitAsDefaultInstance();
+  sangongdou_table_info::default_instance_->InitAsDefaultInstance();
   mission_data::default_instance_->InitAsDefaultInstance();
   item::default_instance_->InitAsDefaultInstance();
   item_bag::default_instance_->InitAsDefaultInstance();
@@ -20005,6 +20051,7 @@ const int table_face_info::kRobniuFieldNumber;
 const int table_face_info::kFishingFieldNumber;
 const int table_face_info::kTwoeightFieldNumber;
 const int table_face_info::kCarcityFieldNumber;
+const int table_face_info::kSangongdouFieldNumber;
 #endif  // !_MSC_VER
 
 table_face_info::table_face_info()
@@ -20032,6 +20079,7 @@ void table_face_info::InitAsDefaultInstance() {
   fishing_ = const_cast< ::net::fishing_table_info*>(&::net::fishing_table_info::default_instance());
   twoeight_ = const_cast< ::net::twoeight_table_info*>(&::net::twoeight_table_info::default_instance());
   carcity_ = const_cast< ::net::carcity_table_info*>(&::net::carcity_table_info::default_instance());
+  sangongdou_ = const_cast< ::net::sangongdou_table_info*>(&::net::sangongdou_table_info::default_instance());
 }
 
 table_face_info::table_face_info(const table_face_info& from)
@@ -20061,6 +20109,7 @@ void table_face_info::SharedCtor() {
   fishing_ = NULL;
   twoeight_ = NULL;
   carcity_ = NULL;
+  sangongdou_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -20089,6 +20138,7 @@ void table_face_info::SharedDtor() {
     delete fishing_;
     delete twoeight_;
     delete carcity_;
+    delete sangongdou_;
   }
 }
 
@@ -20175,6 +20225,9 @@ void table_face_info::Clear() {
     }
     if (has_carcity()) {
       if (carcity_ != NULL) carcity_->::net::carcity_table_info::Clear();
+    }
+    if (has_sangongdou()) {
+      if (sangongdou_ != NULL) sangongdou_->::net::sangongdou_table_info::Clear();
     }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -20448,6 +20501,20 @@ bool table_face_info::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(162)) goto parse_sangongdou;
+        break;
+      }
+
+      // optional .net.sangongdou_table_info sangongdou = 20;
+      case 20: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_sangongdou:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_sangongdou()));
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -20582,6 +20649,12 @@ void table_face_info::SerializeWithCachedSizes(
   if (has_carcity()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       19, this->carcity(), output);
+  }
+
+  // optional .net.sangongdou_table_info sangongdou = 20;
+  if (has_sangongdou()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      20, this->sangongdou(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -20723,6 +20796,13 @@ void table_face_info::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         19, this->carcity(), target);
+  }
+
+  // optional .net.sangongdou_table_info sangongdou = 20;
+  if (has_sangongdou()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        20, this->sangongdou(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -20873,6 +20953,13 @@ int table_face_info::ByteSize() const {
           this->carcity());
     }
 
+    // optional .net.sangongdou_table_info sangongdou = 20;
+    if (has_sangongdou()) {
+      total_size += 2 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->sangongdou());
+    }
+
   }
   if (!unknown_fields().empty()) {
     total_size +=
@@ -20961,6 +21048,9 @@ void table_face_info::MergeFrom(const table_face_info& from) {
     if (from.has_carcity()) {
       mutable_carcity()->::net::carcity_table_info::MergeFrom(from.carcity());
     }
+    if (from.has_sangongdou()) {
+      mutable_sangongdou()->::net::sangongdou_table_info::MergeFrom(from.sangongdou());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -21003,6 +21093,7 @@ void table_face_info::Swap(table_face_info* other) {
     std::swap(fishing_, other->fishing_);
     std::swap(twoeight_, other->twoeight_);
     std::swap(carcity_, other->carcity_);
+    std::swap(sangongdou_, other->sangongdou_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
@@ -23016,6 +23107,764 @@ void carcity_table_info::Swap(carcity_table_info* other) {
   ::google::protobuf::Metadata metadata;
   metadata.descriptor = carcity_table_info_descriptor_;
   metadata.reflection = carcity_table_info_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int sangongdou_table_info::kTableidFieldNumber;
+const int sangongdou_table_info::kTablenameFieldNumber;
+const int sangongdou_table_info::kIsPasswdFieldNumber;
+const int sangongdou_table_info::kBasescoreFieldNumber;
+const int sangongdou_table_info::kConsumeFieldNumber;
+const int sangongdou_table_info::kEnterminFieldNumber;
+const int sangongdou_table_info::kDuetimeFieldNumber;
+const int sangongdou_table_info::kFeetypeFieldNumber;
+const int sangongdou_table_info::kFeevalueFieldNumber;
+const int sangongdou_table_info::kHostnameFieldNumber;
+const int sangongdou_table_info::kCardTimeFieldNumber;
+const int sangongdou_table_info::kTableStateFieldNumber;
+const int sangongdou_table_info::kSitdownFieldNumber;
+const int sangongdou_table_info::kChipFieldNumber;
+#endif  // !_MSC_VER
+
+sangongdou_table_info::sangongdou_table_info()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void sangongdou_table_info::InitAsDefaultInstance() {
+}
+
+sangongdou_table_info::sangongdou_table_info(const sangongdou_table_info& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void sangongdou_table_info::SharedCtor() {
+  _cached_size_ = 0;
+  tableid_ = 0u;
+  tablename_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  is_passwd_ = 0u;
+  basescore_ = GOOGLE_LONGLONG(0);
+  consume_ = 0u;
+  entermin_ = GOOGLE_ULONGLONG(0);
+  duetime_ = 0u;
+  feetype_ = 0u;
+  feevalue_ = GOOGLE_LONGLONG(0);
+  hostname_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  card_time_ = 0u;
+  table_state_ = 0u;
+  sitdown_ = GOOGLE_LONGLONG(0);
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+sangongdou_table_info::~sangongdou_table_info() {
+  SharedDtor();
+}
+
+void sangongdou_table_info::SharedDtor() {
+  if (tablename_ != &::google::protobuf::internal::kEmptyString) {
+    delete tablename_;
+  }
+  if (hostname_ != &::google::protobuf::internal::kEmptyString) {
+    delete hostname_;
+  }
+  if (this != default_instance_) {
+  }
+}
+
+void sangongdou_table_info::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* sangongdou_table_info::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return sangongdou_table_info_descriptor_;
+}
+
+const sangongdou_table_info& sangongdou_table_info::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_base_5fmsg_5fstruct_2eproto();
+  return *default_instance_;
+}
+
+sangongdou_table_info* sangongdou_table_info::default_instance_ = NULL;
+
+sangongdou_table_info* sangongdou_table_info::New() const {
+  return new sangongdou_table_info;
+}
+
+void sangongdou_table_info::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    tableid_ = 0u;
+    if (has_tablename()) {
+      if (tablename_ != &::google::protobuf::internal::kEmptyString) {
+        tablename_->clear();
+      }
+    }
+    is_passwd_ = 0u;
+    basescore_ = GOOGLE_LONGLONG(0);
+    consume_ = 0u;
+    entermin_ = GOOGLE_ULONGLONG(0);
+    duetime_ = 0u;
+    feetype_ = 0u;
+  }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    feevalue_ = GOOGLE_LONGLONG(0);
+    if (has_hostname()) {
+      if (hostname_ != &::google::protobuf::internal::kEmptyString) {
+        hostname_->clear();
+      }
+    }
+    card_time_ = 0u;
+    table_state_ = 0u;
+    sitdown_ = GOOGLE_LONGLONG(0);
+  }
+  chip_.Clear();
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool sangongdou_table_info::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional uint32 tableid = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &tableid_)));
+          set_has_tableid();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(18)) goto parse_tablename;
+        break;
+      }
+
+      // optional bytes tablename = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_tablename:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
+                input, this->mutable_tablename()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(24)) goto parse_is_passwd;
+        break;
+      }
+
+      // optional uint32 is_passwd = 3;
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_is_passwd:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &is_passwd_)));
+          set_has_is_passwd();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(32)) goto parse_basescore;
+        break;
+      }
+
+      // optional int64 basescore = 4;
+      case 4: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_basescore:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int64, ::google::protobuf::internal::WireFormatLite::TYPE_INT64>(
+                 input, &basescore_)));
+          set_has_basescore();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(40)) goto parse_consume;
+        break;
+      }
+
+      // optional uint32 consume = 5;
+      case 5: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_consume:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &consume_)));
+          set_has_consume();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(48)) goto parse_entermin;
+        break;
+      }
+
+      // optional uint64 entermin = 6;
+      case 6: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_entermin:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, &entermin_)));
+          set_has_entermin();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(56)) goto parse_duetime;
+        break;
+      }
+
+      // optional uint32 duetime = 7;
+      case 7: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_duetime:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &duetime_)));
+          set_has_duetime();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(64)) goto parse_feetype;
+        break;
+      }
+
+      // optional uint32 feetype = 8;
+      case 8: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_feetype:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &feetype_)));
+          set_has_feetype();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(72)) goto parse_feevalue;
+        break;
+      }
+
+      // optional int64 feevalue = 9;
+      case 9: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_feevalue:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int64, ::google::protobuf::internal::WireFormatLite::TYPE_INT64>(
+                 input, &feevalue_)));
+          set_has_feevalue();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(82)) goto parse_hostname;
+        break;
+      }
+
+      // optional bytes hostname = 10;
+      case 10: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_hostname:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
+                input, this->mutable_hostname()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(88)) goto parse_card_time;
+        break;
+      }
+
+      // optional uint32 card_time = 11;
+      case 11: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_card_time:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &card_time_)));
+          set_has_card_time();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(96)) goto parse_table_state;
+        break;
+      }
+
+      // optional uint32 table_state = 12;
+      case 12: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_table_state:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &table_state_)));
+          set_has_table_state();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(104)) goto parse_sitdown;
+        break;
+      }
+
+      // optional int64 sitdown = 13;
+      case 13: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_sitdown:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int64, ::google::protobuf::internal::WireFormatLite::TYPE_INT64>(
+                 input, &sitdown_)));
+          set_has_sitdown();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(112)) goto parse_chip;
+        break;
+      }
+
+      // repeated uint32 chip = 14;
+      case 14: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_chip:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 1, 112, input, this->mutable_chip())));
+        } else if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag)
+                   == ::google::protobuf::internal::WireFormatLite::
+                      WIRETYPE_LENGTH_DELIMITED) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitiveNoInline<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, this->mutable_chip())));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(112)) goto parse_chip;
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void sangongdou_table_info::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // optional uint32 tableid = 1;
+  if (has_tableid()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->tableid(), output);
+  }
+
+  // optional bytes tablename = 2;
+  if (has_tablename()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBytes(
+      2, this->tablename(), output);
+  }
+
+  // optional uint32 is_passwd = 3;
+  if (has_is_passwd()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->is_passwd(), output);
+  }
+
+  // optional int64 basescore = 4;
+  if (has_basescore()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt64(4, this->basescore(), output);
+  }
+
+  // optional uint32 consume = 5;
+  if (has_consume()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(5, this->consume(), output);
+  }
+
+  // optional uint64 entermin = 6;
+  if (has_entermin()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(6, this->entermin(), output);
+  }
+
+  // optional uint32 duetime = 7;
+  if (has_duetime()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(7, this->duetime(), output);
+  }
+
+  // optional uint32 feetype = 8;
+  if (has_feetype()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(8, this->feetype(), output);
+  }
+
+  // optional int64 feevalue = 9;
+  if (has_feevalue()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt64(9, this->feevalue(), output);
+  }
+
+  // optional bytes hostname = 10;
+  if (has_hostname()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBytes(
+      10, this->hostname(), output);
+  }
+
+  // optional uint32 card_time = 11;
+  if (has_card_time()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(11, this->card_time(), output);
+  }
+
+  // optional uint32 table_state = 12;
+  if (has_table_state()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(12, this->table_state(), output);
+  }
+
+  // optional int64 sitdown = 13;
+  if (has_sitdown()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt64(13, this->sitdown(), output);
+  }
+
+  // repeated uint32 chip = 14;
+  for (int i = 0; i < this->chip_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(
+      14, this->chip(i), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* sangongdou_table_info::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // optional uint32 tableid = 1;
+  if (has_tableid()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->tableid(), target);
+  }
+
+  // optional bytes tablename = 2;
+  if (has_tablename()) {
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
+        2, this->tablename(), target);
+  }
+
+  // optional uint32 is_passwd = 3;
+  if (has_is_passwd()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->is_passwd(), target);
+  }
+
+  // optional int64 basescore = 4;
+  if (has_basescore()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(4, this->basescore(), target);
+  }
+
+  // optional uint32 consume = 5;
+  if (has_consume()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(5, this->consume(), target);
+  }
+
+  // optional uint64 entermin = 6;
+  if (has_entermin()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(6, this->entermin(), target);
+  }
+
+  // optional uint32 duetime = 7;
+  if (has_duetime()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(7, this->duetime(), target);
+  }
+
+  // optional uint32 feetype = 8;
+  if (has_feetype()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(8, this->feetype(), target);
+  }
+
+  // optional int64 feevalue = 9;
+  if (has_feevalue()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(9, this->feevalue(), target);
+  }
+
+  // optional bytes hostname = 10;
+  if (has_hostname()) {
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
+        10, this->hostname(), target);
+  }
+
+  // optional uint32 card_time = 11;
+  if (has_card_time()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(11, this->card_time(), target);
+  }
+
+  // optional uint32 table_state = 12;
+  if (has_table_state()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(12, this->table_state(), target);
+  }
+
+  // optional int64 sitdown = 13;
+  if (has_sitdown()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(13, this->sitdown(), target);
+  }
+
+  // repeated uint32 chip = 14;
+  for (int i = 0; i < this->chip_size(); i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteUInt32ToArray(14, this->chip(i), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int sangongdou_table_info::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional uint32 tableid = 1;
+    if (has_tableid()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->tableid());
+    }
+
+    // optional bytes tablename = 2;
+    if (has_tablename()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::BytesSize(
+          this->tablename());
+    }
+
+    // optional uint32 is_passwd = 3;
+    if (has_is_passwd()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->is_passwd());
+    }
+
+    // optional int64 basescore = 4;
+    if (has_basescore()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int64Size(
+          this->basescore());
+    }
+
+    // optional uint32 consume = 5;
+    if (has_consume()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->consume());
+    }
+
+    // optional uint64 entermin = 6;
+    if (has_entermin()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt64Size(
+          this->entermin());
+    }
+
+    // optional uint32 duetime = 7;
+    if (has_duetime()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->duetime());
+    }
+
+    // optional uint32 feetype = 8;
+    if (has_feetype()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->feetype());
+    }
+
+  }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    // optional int64 feevalue = 9;
+    if (has_feevalue()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int64Size(
+          this->feevalue());
+    }
+
+    // optional bytes hostname = 10;
+    if (has_hostname()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::BytesSize(
+          this->hostname());
+    }
+
+    // optional uint32 card_time = 11;
+    if (has_card_time()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->card_time());
+    }
+
+    // optional uint32 table_state = 12;
+    if (has_table_state()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->table_state());
+    }
+
+    // optional int64 sitdown = 13;
+    if (has_sitdown()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int64Size(
+          this->sitdown());
+    }
+
+  }
+  // repeated uint32 chip = 14;
+  {
+    int data_size = 0;
+    for (int i = 0; i < this->chip_size(); i++) {
+      data_size += ::google::protobuf::internal::WireFormatLite::
+        UInt32Size(this->chip(i));
+    }
+    total_size += 1 * this->chip_size() + data_size;
+  }
+
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void sangongdou_table_info::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const sangongdou_table_info* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const sangongdou_table_info*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void sangongdou_table_info::MergeFrom(const sangongdou_table_info& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  chip_.MergeFrom(from.chip_);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_tableid()) {
+      set_tableid(from.tableid());
+    }
+    if (from.has_tablename()) {
+      set_tablename(from.tablename());
+    }
+    if (from.has_is_passwd()) {
+      set_is_passwd(from.is_passwd());
+    }
+    if (from.has_basescore()) {
+      set_basescore(from.basescore());
+    }
+    if (from.has_consume()) {
+      set_consume(from.consume());
+    }
+    if (from.has_entermin()) {
+      set_entermin(from.entermin());
+    }
+    if (from.has_duetime()) {
+      set_duetime(from.duetime());
+    }
+    if (from.has_feetype()) {
+      set_feetype(from.feetype());
+    }
+  }
+  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    if (from.has_feevalue()) {
+      set_feevalue(from.feevalue());
+    }
+    if (from.has_hostname()) {
+      set_hostname(from.hostname());
+    }
+    if (from.has_card_time()) {
+      set_card_time(from.card_time());
+    }
+    if (from.has_table_state()) {
+      set_table_state(from.table_state());
+    }
+    if (from.has_sitdown()) {
+      set_sitdown(from.sitdown());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void sangongdou_table_info::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void sangongdou_table_info::CopyFrom(const sangongdou_table_info& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool sangongdou_table_info::IsInitialized() const {
+
+  return true;
+}
+
+void sangongdou_table_info::Swap(sangongdou_table_info* other) {
+  if (other != this) {
+    std::swap(tableid_, other->tableid_);
+    std::swap(tablename_, other->tablename_);
+    std::swap(is_passwd_, other->is_passwd_);
+    std::swap(basescore_, other->basescore_);
+    std::swap(consume_, other->consume_);
+    std::swap(entermin_, other->entermin_);
+    std::swap(duetime_, other->duetime_);
+    std::swap(feetype_, other->feetype_);
+    std::swap(feevalue_, other->feevalue_);
+    std::swap(hostname_, other->hostname_);
+    std::swap(card_time_, other->card_time_);
+    std::swap(table_state_, other->table_state_);
+    std::swap(sitdown_, other->sitdown_);
+    chip_.Swap(&other->chip_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata sangongdou_table_info::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = sangongdou_table_info_descriptor_;
+  metadata.reflection = sangongdou_table_info_reflection_;
   return metadata;
 }
 

@@ -484,6 +484,7 @@ message table_face_info
 	optional fishing_table_info    fishing    = 17; // 捕鱼桌子信息
 	optional twoeight_table_info   twoeight   = 18; // 二八杠桌子信息
 	optional carcity_table_info    carcity    = 19; // 奔驰宝马桌子信息
+	optional sangongdou_table_info sangongdou = 20; // 三公斗桌子信息
 }
 
 // 捕鱼桌子信息
@@ -535,6 +536,25 @@ message carcity_table_info
 	optional bytes	hostname		= 10; // 房主名字	
 	optional uint32 card_time		= 11; // 加注时间
 	optional uint32 table_state		= 12; // 桌子状态
+}
+
+// 三公斗桌子信息
+message sangongdou_table_info
+{
+	optional uint32 tableid 		= 1;  // 桌子ID
+	optional bytes  tablename		= 2;  // 桌子名字
+	optional uint32 is_passwd		= 3;  // 是否带密码
+	optional int64  basescore		= 4;  // 底分
+	optional uint32 consume			= 5;  // 消费类型
+	optional uint64 entermin		= 6;  // 最小进入
+	optional uint32 duetime			= 7;  // 过期时间
+	optional uint32 feetype			= 8;  // 台费类型
+	optional int64  feevalue		= 9;  // 台费比值
+	optional bytes	hostname		= 10; // 房主名字	
+	optional uint32 card_time		= 11; // 加注时间
+	optional uint32 table_state		= 12; // 桌子状态
+	optional int64  sitdown			= 13; // 坐下条件
+	repeated uint32 chip			= 14; // 筹码范围
 }
 
 // 任务数据

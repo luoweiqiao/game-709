@@ -524,6 +524,7 @@ bool    CGameTable::NeedSitDown()
 	case net::GAME_CATE_FIGHT:
 	case net::GAME_CATE_TWOEIGHT:
 	case net::GAME_CATE_CARCITY:
+	case net::GAME_CATE_SANGONGDOU:
         return true;
     default:
         return false;
@@ -1860,6 +1861,7 @@ int64 CGameTable::GetBankruptScore()
 		case net::GAME_CATE_FRUIT_MACHINE:
 		case net::GAME_CATE_TWOEIGHT:
 		case net::GAME_CATE_CARCITY:
+		case net::GAME_CATE_SANGONGDOU:
 		{
 			lBankruptScore = m_pHostRoom->GetJettonMin();
 		}break;
@@ -2283,6 +2285,7 @@ bool CGameTable::GetControlPalyerGame(uint16 gameType)
 	case net::GAME_CATE_BULLFIGHT:
 	case net::GAME_CATE_TWOEIGHT:
 	case net::GAME_CATE_CARCITY:
+	case net::GAME_CATE_SANGONGDOU:
 	{
 		return true;
 	}break;
@@ -2515,6 +2518,7 @@ bool CGameTable::ContinuousPressureBaiRenGame()
 	case net::GAME_CATE_FIGHT:
 	case net::GAME_CATE_TWOEIGHT:
 	case net::GAME_CATE_CARCITY:
+	case net::GAME_CATE_SANGONGDOU:
 	{
 		return true;
 	}break;

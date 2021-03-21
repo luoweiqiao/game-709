@@ -164,7 +164,8 @@ enum GAME_CATE_TYPE {
   GAME_CATE_FISHING = 17,
   GAME_CATE_TWOEIGHT = 18,
   GAME_CATE_CARCITY = 19,
-  GAME_CATE_MAX_TYPE = 20
+  GAME_CATE_SANGONGDOU = 20,
+  GAME_CATE_MAX_TYPE = 21
 };
 bool GAME_CATE_TYPE_IsValid(int value);
 const GAME_CATE_TYPE GAME_CATE_TYPE_MIN = GAME_CATE_LOBBY;
@@ -514,6 +515,26 @@ inline bool TABLE_STATE_CARCITY_Parse(
   return ::google::protobuf::internal::ParseNamedEnum<TABLE_STATE_CARCITY>(
     TABLE_STATE_CARCITY_descriptor(), name, value);
 }
+enum TABLE_STATE_SANGONGDOU {
+  TABLE_STATE_SANGONGDOU_FREE = 1,
+  TABLE_STATE_SANGONGDOU_PLACE_JETTON = 2,
+  TABLE_STATE_SANGONGDOU_GAME_END = 3
+};
+bool TABLE_STATE_SANGONGDOU_IsValid(int value);
+const TABLE_STATE_SANGONGDOU TABLE_STATE_SANGONGDOU_MIN = TABLE_STATE_SANGONGDOU_FREE;
+const TABLE_STATE_SANGONGDOU TABLE_STATE_SANGONGDOU_MAX = TABLE_STATE_SANGONGDOU_GAME_END;
+const int TABLE_STATE_SANGONGDOU_ARRAYSIZE = TABLE_STATE_SANGONGDOU_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* TABLE_STATE_SANGONGDOU_descriptor();
+inline const ::std::string& TABLE_STATE_SANGONGDOU_Name(TABLE_STATE_SANGONGDOU value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    TABLE_STATE_SANGONGDOU_descriptor(), value);
+}
+inline bool TABLE_STATE_SANGONGDOU_Parse(
+    const ::std::string& name, TABLE_STATE_SANGONGDOU* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<TABLE_STATE_SANGONGDOU>(
+    TABLE_STATE_SANGONGDOU_descriptor(), name, value);
+}
 // ===================================================================
 
 
@@ -614,6 +635,10 @@ inline const EnumDescriptor* GetEnumDescriptor< ::net::TABLE_STATE_TWOEIGHT>() {
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::net::TABLE_STATE_CARCITY>() {
   return ::net::TABLE_STATE_CARCITY_descriptor();
+}
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::net::TABLE_STATE_SANGONGDOU>() {
+  return ::net::TABLE_STATE_SANGONGDOU_descriptor();
 }
 
 }  // namespace google

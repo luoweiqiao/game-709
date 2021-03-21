@@ -159,6 +159,7 @@
     <Text Include="..\..\servers\niuniu_server\build\CMakeLists.txt" />
     <Text Include="..\..\servers\paijiu_server\build\CMakeLists.txt" />
     <Text Include="..\..\servers\robniu_server\build\CMakeLists.txt" />
+    <Text Include="..\..\servers\sangangdou_server\build\CMakeLists.txt" />
     <Text Include="..\..\servers\sangong_server\build\CMakeLists.txt" />
     <Text Include="..\..\servers\showhand_server\build\CMakeLists.txt" />
     <Text Include="..\..\servers\slot_server\build\CMakeLists.txt" />
@@ -223,6 +224,7 @@
     <None Include="..\..\servers\niuniu_server\build\rebuild.sh" />
     <None Include="..\..\servers\paijiu_server\build\rebuild.sh" />
     <None Include="..\..\servers\robniu_server\build\rebuild.sh" />
+    <None Include="..\..\servers\sangangdou_server\build\rebuild.sh" />
     <None Include="..\..\servers\sangong_server\build\rebuild.sh" />
     <None Include="..\..\servers\showhand_server\build\rebuild.sh" />
     <None Include="..\..\servers\slot_server\build\rebuild.sh" />
@@ -405,6 +407,11 @@
     <ClCompile Include="..\..\servers\robniu_server\src\msg_imple_handle.cpp" />
     <ClCompile Include="..\..\servers\robniu_server\src\robniu_logic.cpp" />
     <ClCompile Include="..\..\servers\robniu_server\src\robot_oper_mgr.cpp" />
+    <ClCompile Include="..\..\servers\sangangdou_server\src\game_imple_table.cpp" />
+    <ClCompile Include="..\..\servers\sangangdou_server\src\game_server.cpp" />
+    <ClCompile Include="..\..\servers\sangangdou_server\src\msg_imple_handle.cpp" />
+    <ClCompile Include="..\..\servers\sangangdou_server\src\robot_oper_mgr.cpp" />
+    <ClCompile Include="..\..\servers\sangangdou_server\src\sangongdou_logic.cpp" />
     <ClCompile Include="..\..\servers\sangong_server\src\game_imple_table.cpp" />
     <ClCompile Include="..\..\servers\sangong_server\src\game_server.cpp" />
     <ClCompile Include="..\..\servers\sangong_server\src\msg_imple_handle.cpp" />
@@ -570,6 +577,10 @@
     <ClInclude Include="..\..\servers\robniu_server\src\msg_imple_handle.h" />
     <ClInclude Include="..\..\servers\robniu_server\src\robniu_logic.h" />
     <ClInclude Include="..\..\servers\robniu_server\src\robot_oper_mgr.h" />
+    <ClInclude Include="..\..\servers\sangangdou_server\src\game_imple_table.h" />
+    <ClInclude Include="..\..\servers\sangangdou_server\src\msg_imple_handle.h" />
+    <ClInclude Include="..\..\servers\sangangdou_server\src\robot_oper_mgr.h" />
+    <ClInclude Include="..\..\servers\sangangdou_server\src\sangongdou_logic.h" />
     <ClInclude Include="..\..\servers\sangong_server\src\game_imple_table.h" />
     <ClInclude Include="..\..\servers\sangong_server\src\msg_imple_handle.h" />
     <ClInclude Include="..\..\servers\showhand_server\src\game_imple_table.h" />

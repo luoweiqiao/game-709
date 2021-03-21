@@ -34,6 +34,7 @@
 #include "fight_logic_msg.pb.h"
 #include "twoeight_logic_msg.pb.h"
 #include "carcity_logic_msg.pb.h"
+#include "sangongdou_logic_msg.pb.h"
 // @@protoc_insertion_point(includes)
 
 namespace net {
@@ -12058,6 +12059,15 @@ class msg_game_play_log : public ::google::protobuf::Message {
   inline ::net::msg_carcity_play_log_rep* release_carcity();
   inline void set_allocated_carcity(::net::msg_carcity_play_log_rep* carcity);
 
+  // optional .net.msg_sangongdou_play_log_rep sangongdou = 9;
+  inline bool has_sangongdou() const;
+  inline void clear_sangongdou();
+  static const int kSangongdouFieldNumber = 9;
+  inline const ::net::msg_sangongdou_play_log_rep& sangongdou() const;
+  inline ::net::msg_sangongdou_play_log_rep* mutable_sangongdou();
+  inline ::net::msg_sangongdou_play_log_rep* release_sangongdou();
+  inline void set_allocated_sangongdou(::net::msg_sangongdou_play_log_rep* sangongdou);
+
   // @@protoc_insertion_point(class_scope:net.msg_game_play_log)
  private:
   inline void set_has_bainiu();
@@ -12076,6 +12086,8 @@ class msg_game_play_log : public ::google::protobuf::Message {
   inline void clear_has_twoeight();
   inline void set_has_carcity();
   inline void clear_has_carcity();
+  inline void set_has_sangongdou();
+  inline void clear_has_sangongdou();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -12087,9 +12099,10 @@ class msg_game_play_log : public ::google::protobuf::Message {
   ::net::msg_fight_play_log_rep* fight_;
   ::net::msg_twoeight_play_log_rep* twoeight_;
   ::net::msg_carcity_play_log_rep* carcity_;
+  ::net::msg_sangongdou_play_log_rep* sangongdou_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(8 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(9 + 31) / 32];
 
   friend void  protobuf_AddDesc_client_5flogic_5fmsg_2eproto();
   friend void protobuf_AssignDesc_client_5flogic_5fmsg_2eproto();
@@ -20961,6 +20974,44 @@ inline void msg_game_play_log::set_allocated_carcity(::net::msg_carcity_play_log
     set_has_carcity();
   } else {
     clear_has_carcity();
+  }
+}
+
+// optional .net.msg_sangongdou_play_log_rep sangongdou = 9;
+inline bool msg_game_play_log::has_sangongdou() const {
+  return (_has_bits_[0] & 0x00000100u) != 0;
+}
+inline void msg_game_play_log::set_has_sangongdou() {
+  _has_bits_[0] |= 0x00000100u;
+}
+inline void msg_game_play_log::clear_has_sangongdou() {
+  _has_bits_[0] &= ~0x00000100u;
+}
+inline void msg_game_play_log::clear_sangongdou() {
+  if (sangongdou_ != NULL) sangongdou_->::net::msg_sangongdou_play_log_rep::Clear();
+  clear_has_sangongdou();
+}
+inline const ::net::msg_sangongdou_play_log_rep& msg_game_play_log::sangongdou() const {
+  return sangongdou_ != NULL ? *sangongdou_ : *default_instance_->sangongdou_;
+}
+inline ::net::msg_sangongdou_play_log_rep* msg_game_play_log::mutable_sangongdou() {
+  set_has_sangongdou();
+  if (sangongdou_ == NULL) sangongdou_ = new ::net::msg_sangongdou_play_log_rep;
+  return sangongdou_;
+}
+inline ::net::msg_sangongdou_play_log_rep* msg_game_play_log::release_sangongdou() {
+  clear_has_sangongdou();
+  ::net::msg_sangongdou_play_log_rep* temp = sangongdou_;
+  sangongdou_ = NULL;
+  return temp;
+}
+inline void msg_game_play_log::set_allocated_sangongdou(::net::msg_sangongdou_play_log_rep* sangongdou) {
+  delete sangongdou_;
+  sangongdou_ = sangongdou;
+  if (sangongdou) {
+    set_has_sangongdou();
+  } else {
+    clear_has_sangongdou();
   }
 }
 

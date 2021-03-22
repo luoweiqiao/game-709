@@ -154,7 +154,7 @@ private:
 
 	//游戏统计
 private:
-	void GetAreaInfo(WORD iLostIndex, WORD iWinIndex, BYTE cbType[], BYTE cbWinArea[], int64 lWinMultiple[]);
+	void	GetAreaInfo(WORD iLostIndex, WORD iWinIndex, BYTE cbType[], BYTE cbWinArea[], int64 lWinMultiple[]);
 
 	//计算得分
 	int64   CalculateScore();    
@@ -175,7 +175,7 @@ protected:
 
     //游戏变量
 protected:
-	bool	m_bInitTableSuccess;
+	bool							m_bInitTableSuccess;
 
     //总下注数
 protected:
@@ -189,20 +189,22 @@ protected:
 	
 	//扑克信息
 protected:
-    BYTE							m_cbTableCardArray[SHOW_CARD_COUNT][MAX_CARD_COUNT];	//桌面扑克
-    BYTE                            m_cbTableCardType[SHOW_CARD_COUNT];						//桌面牌型
-    int32                           m_winMultiple[JETTON_INDEX_COUNT];                      //输赢倍数
-    int32							m_winIndex[JETTON_INDEX_COUNT];
+    BYTE			m_cbTableCardArray[SHOW_CARD_COUNT][MAX_CARD_COUNT];	//桌面扑克
+    BYTE            m_cbTableCardType[SHOW_CARD_COUNT];						//桌面牌型
+    int32           m_winMultiple[JETTON_INDEX_COUNT];                      //输赢倍数
+    int32			m_winIndex[JETTON_INDEX_COUNT];
 
 	//控制变量
 protected:
-	CGamePlayer *					m_pCurBanker;
-	uint32							m_sysBankerWinPro;						//系统庄家赢概率
-	uint32                          m_robotBankerWinPro;                    //机器人庄家赢概率
-	uint32                          m_robotBankerMaxCardPro;                //机器人庄家最大牌概率
-	uint32                          m_robotApplySize;                       //机器人申请人数
-	uint32                          m_robotChairSize;                       //机器人座位数    
-	int								m_iArrDispatchCardPro[Pro_Index_MAX];
+	CGamePlayer *	m_pCurBanker;
+	uint32			m_sysBankerWinPro;						//系统庄家赢概率
+	uint32          m_robotBankerWinPro;                    //机器人庄家赢概率
+	uint32          m_robotBankerMaxCardPro;                //机器人庄家最大牌概率
+	uint32          m_robotApplySize;                       //机器人申请人数
+	uint32          m_robotChairSize;                       //机器人座位数    
+	int				m_iArrDispatchCardPro[Pro_Index_MAX];
+	uint32			m_draw_odds;							//开和的赔率
+	uint32          m_sangong_odds;							//三公的赔率
 
 public:
 	bool	SetSystemBrankerWinPlayerScore();
@@ -246,8 +248,7 @@ public:
 	vector<tagRobotPlaceJetton>				m_chairRobotPlaceJetton;				//下注的机器人
 	bool									m_bIsRobotAlreadyJetton;
 	vector<tagRobotPlaceJetton>				m_RobotPlaceJetton;						//下注的机器人
-	uint8									m_cbFrontRobotJettonArea;
-	
+	uint8									m_cbFrontRobotJettonArea;	
 
 	//百人场精准控制
 public:

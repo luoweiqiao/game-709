@@ -6,14 +6,13 @@
 #include "poker/poker_logic.h"
 
 //区域索引
-#define JETTON_INDEX_TIGER			0
-#define JETTON_INDEX_LEOPARD		1
-#define JETTON_INDEX_OTHER			2
+#define JETTON_INDEX_DRAGON			0				//龙
+#define JETTON_INDEX_PHOENIX		1				//凤
+#define JETTON_INDEX_DRAW			2				//和
 
-#define JETTON_INDEX_COUNT			3				//区域数目
-#define SHOW_CARD_COUNT				2
+#define JETTON_INDEX_COUNT			3				//下注区域数目(龙，凤，和)
+#define SHOW_CARD_COUNT				2				//开牌区域数目(龙，凤)
 #define MAX_CARD_COUNT				3
-
 
 namespace game_sangongdou
 {

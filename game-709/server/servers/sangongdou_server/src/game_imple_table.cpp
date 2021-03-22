@@ -214,6 +214,16 @@ bool CGameSanGongDouTable::ReAnalysisParam()
 		m_sysBankerWinPro = jvalue["sbw"].asInt();
 	}
 
+	if (jvalue.isMember("draw_odds") && jvalue["draw_odds"].isIntegral())
+	{
+		m_draw_odds = jvalue["draw_odds"].asInt();
+	}
+
+	if (jvalue.isMember("sangong_odds") && jvalue["sangong_odds"].isIntegral())
+	{
+		m_sangong_odds = jvalue["sangong_odds"].asInt();
+	}
+
 	//解析筹码范围
 	if (jvalue.isMember("chip_range"))
 	{		
@@ -237,8 +247,8 @@ bool CGameSanGongDouTable::ReAnalysisParam()
 			}			
 		}		
 	}
-	LOG_DEBUG("reader_json -  roomid:%d,tableid:%d,m_sysBankerWinPro:%d,m_iArrDispatchCardPro:%d %d %d %d %d %d",
-		GetRoomID(), GetTableID(), m_sysBankerWinPro, m_iArrDispatchCardPro[0], m_iArrDispatchCardPro[1], m_iArrDispatchCardPro[2], m_iArrDispatchCardPro[3], m_iArrDispatchCardPro[4], m_iArrDispatchCardPro[5]);
+	LOG_DEBUG("reader_json-roomid:%d,tableid:%d,m_sysBankerWinPro:%d,m_iArrDispatchCardPro:%d %d %d %d,draw_odds:%d,sangong_odds:%d",
+		GetRoomID(), GetTableID(), m_sysBankerWinPro, m_iArrDispatchCardPro[0], m_iArrDispatchCardPro[1], m_iArrDispatchCardPro[2], m_iArrDispatchCardPro[3], m_draw_odds, m_sangong_odds);
 
 	return true;
 }
@@ -463,7 +473,6 @@ bool CGameSanGongDouTable::OnActionUserSitDown(WORD wChairID,CGamePlayer* pPlaye
 //用户起立
 bool CGameSanGongDouTable::OnActionUserStandUp(WORD wChairID,CGamePlayer* pPlayer)
 {
-
     SendSeatInfoToClient();
     return true;
 }
@@ -578,7 +587,7 @@ bool CGameSanGongDouTable::OnGameEnd(uint16 chairID,uint8 reason)
 				if (pPlayer == NULL)
 					continue;
 				msg.set_user_score(m_mpUserWinScore[pPlayer->GetUID()]);
-				pPlayer->SendMsgToClient(&msg, net::S2C_MSG_WAR_GAME_END);
+				pPlayer->SendMsgToClient(&msg, net::S2C_MSG_SANGONGDOU_GAME_END);
 
 				//精准控制统计
 				OnBrcControlSetResultInfo(pPlayer->GetUID(), m_mpUserWinScore[pPlayer->GetUID()]);
@@ -964,7 +973,7 @@ bool    CGameSanGongDouTable:: OnUserPlaceJetton(CGamePlayer* pPlayer, BYTE cbJe
 			GetRoomID(), GetTableID(), pPlayer->GetUID(), GetGameState(), cbJettonArea, lJettonScore);
 	}
 	
-	if(cbJettonArea > JETTON_INDEX_OTHER || lJettonScore <= 0)
+	if(cbJettonArea > JETTON_INDEX_DRAW || lJettonScore <= 0)
 	{
 		if (pPlayer->IsRobot() == false)
 		{
@@ -1229,7 +1238,7 @@ void CGameSanGongDouTable::GetAreaInfo(WORD iLostIndex, WORD iWinIndex,BYTE cbTy
 {
 	for (int iJettonIndex = 0; iJettonIndex < JETTON_INDEX_COUNT; iJettonIndex++)
 	{
-		if (iJettonIndex == JETTON_INDEX_TIGER || iJettonIndex == JETTON_INDEX_LEOPARD)
+		if (iJettonIndex == JETTON_INDEX_DRAGON || iJettonIndex == JETTON_INDEX_PHOENIX)
 		{
 			if (iJettonIndex == iWinIndex)
 			{
@@ -1237,7 +1246,7 @@ void CGameSanGongDouTable::GetAreaInfo(WORD iLostIndex, WORD iWinIndex,BYTE cbTy
 				lWinMultiple[iJettonIndex] = 1;
 			}
 		}
-		else if (iJettonIndex == JETTON_INDEX_OTHER)
+		else if (iJettonIndex == JETTON_INDEX_DRAW)
 		{
 			int switch_on = cbType[iWinIndex];
 			switch (switch_on)
@@ -1247,7 +1256,7 @@ void CGameSanGongDouTable::GetAreaInfo(WORD iLostIndex, WORD iWinIndex,BYTE cbTy
 				case CT_DASANGONG:
 				{
 					cbWinArea[iJettonIndex] = TRUE;
-					lWinMultiple[iJettonIndex] = 42;
+					lWinMultiple[iJettonIndex] = m_sangong_odds;
 				}break;			
 			}
 		}
@@ -1271,20 +1280,20 @@ bool    CGameSanGongDouTable::SetControlPlayerWin(uint32 control_uid)
 		memcpy(cbTableCardArray, m_cbTableCardArray, sizeof(cbTableCardArray));
 
 
-		cbTableCardType[JETTON_INDEX_TIGER] = m_GameLogic.GetCardType(cbTableCardArray[JETTON_INDEX_TIGER], MAX_CARD_COUNT);
-		cbTableCardType[JETTON_INDEX_LEOPARD] = m_GameLogic.GetCardType(cbTableCardArray[JETTON_INDEX_LEOPARD], MAX_CARD_COUNT);
-		BYTE result = m_GameLogic.CompareCard(cbTableCardArray[JETTON_INDEX_TIGER], cbTableCardArray[JETTON_INDEX_LEOPARD], MAX_CARD_COUNT);
+		cbTableCardType[JETTON_INDEX_DRAGON] = m_GameLogic.GetCardType(cbTableCardArray[JETTON_INDEX_DRAGON], MAX_CARD_COUNT);
+		cbTableCardType[JETTON_INDEX_PHOENIX] = m_GameLogic.GetCardType(cbTableCardArray[JETTON_INDEX_PHOENIX], MAX_CARD_COUNT);
+		BYTE result = m_GameLogic.CompareCard(cbTableCardArray[JETTON_INDEX_DRAGON], cbTableCardArray[JETTON_INDEX_PHOENIX], MAX_CARD_COUNT);
 
 		WORD iLostIndex = 0, iWinIndex = 0;
 		if (result == TRUE)
 		{
-			iWinIndex = JETTON_INDEX_TIGER;
-			iLostIndex = JETTON_INDEX_LEOPARD;
+			iWinIndex = JETTON_INDEX_DRAGON;
+			iLostIndex = JETTON_INDEX_PHOENIX;
 		}
 		else
 		{
-			iWinIndex = JETTON_INDEX_LEOPARD;
-			iLostIndex = JETTON_INDEX_TIGER;
+			iWinIndex = JETTON_INDEX_PHOENIX;
+			iLostIndex = JETTON_INDEX_DRAGON;
 		}
 
 		GetAreaInfo(iLostIndex, iWinIndex, cbTableCardType, cbWinArea, lWinMultiple);
@@ -1354,20 +1363,20 @@ bool    CGameSanGongDouTable::SetControlPlayerLost(uint32 control_uid)
 		memcpy(cbTableCardArray, m_cbTableCardArray, sizeof(cbTableCardArray));
 
 
-		cbTableCardType[JETTON_INDEX_TIGER] = m_GameLogic.GetCardType(cbTableCardArray[JETTON_INDEX_TIGER], MAX_CARD_COUNT);
-		cbTableCardType[JETTON_INDEX_LEOPARD] = m_GameLogic.GetCardType(cbTableCardArray[JETTON_INDEX_LEOPARD], MAX_CARD_COUNT);
-		BYTE result = m_GameLogic.CompareCard(cbTableCardArray[JETTON_INDEX_TIGER], cbTableCardArray[JETTON_INDEX_LEOPARD], MAX_CARD_COUNT);
+		cbTableCardType[JETTON_INDEX_DRAGON] = m_GameLogic.GetCardType(cbTableCardArray[JETTON_INDEX_DRAGON], MAX_CARD_COUNT);
+		cbTableCardType[JETTON_INDEX_PHOENIX] = m_GameLogic.GetCardType(cbTableCardArray[JETTON_INDEX_PHOENIX], MAX_CARD_COUNT);
+		BYTE result = m_GameLogic.CompareCard(cbTableCardArray[JETTON_INDEX_DRAGON], cbTableCardArray[JETTON_INDEX_PHOENIX], MAX_CARD_COUNT);
 
 		WORD iLostIndex = 0, iWinIndex = 0;
 		if (result == TRUE)
 		{
-			iWinIndex = JETTON_INDEX_TIGER;
-			iLostIndex = JETTON_INDEX_LEOPARD;
+			iWinIndex = JETTON_INDEX_DRAGON;
+			iLostIndex = JETTON_INDEX_PHOENIX;
 		}
 		else
 		{
-			iWinIndex = JETTON_INDEX_LEOPARD;
-			iLostIndex = JETTON_INDEX_TIGER;
+			iWinIndex = JETTON_INDEX_PHOENIX;
+			iLostIndex = JETTON_INDEX_DRAGON;
 		}
 
 		GetAreaInfo(iLostIndex, iWinIndex, cbTableCardType, cbWinArea, lWinMultiple);
@@ -1440,20 +1449,20 @@ bool CGameSanGongDouTable::SetSystemBrankerWinPlayerScore()
 		BYTE cbTableCardArray[SHOW_CARD_COUNT][MAX_CARD_COUNT] = { 0 };
 		memcpy(cbTableCardArray, m_cbTableCardArray, sizeof(cbTableCardArray));
 		
-		cbTableCardType[JETTON_INDEX_TIGER] = m_GameLogic.GetCardType(cbTableCardArray[JETTON_INDEX_TIGER], MAX_CARD_COUNT);
-		cbTableCardType[JETTON_INDEX_LEOPARD] = m_GameLogic.GetCardType(cbTableCardArray[JETTON_INDEX_LEOPARD], MAX_CARD_COUNT);
-		BYTE result = m_GameLogic.CompareCard(cbTableCardArray[JETTON_INDEX_TIGER], cbTableCardArray[JETTON_INDEX_LEOPARD], MAX_CARD_COUNT);
+		cbTableCardType[JETTON_INDEX_DRAGON] = m_GameLogic.GetCardType(cbTableCardArray[JETTON_INDEX_DRAGON], MAX_CARD_COUNT);
+		cbTableCardType[JETTON_INDEX_PHOENIX] = m_GameLogic.GetCardType(cbTableCardArray[JETTON_INDEX_PHOENIX], MAX_CARD_COUNT);
+		BYTE result = m_GameLogic.CompareCard(cbTableCardArray[JETTON_INDEX_DRAGON], cbTableCardArray[JETTON_INDEX_PHOENIX], MAX_CARD_COUNT);
 
 		WORD iLostIndex = 0, iWinIndex = 0;
 		if (result == TRUE)
 		{
-			iWinIndex = JETTON_INDEX_TIGER;
-			iLostIndex = JETTON_INDEX_LEOPARD;
+			iWinIndex = JETTON_INDEX_DRAGON;
+			iLostIndex = JETTON_INDEX_PHOENIX;
 		}
 		else
 		{
-			iWinIndex = JETTON_INDEX_LEOPARD;
-			iLostIndex = JETTON_INDEX_TIGER;
+			iWinIndex = JETTON_INDEX_PHOENIX;
+			iLostIndex = JETTON_INDEX_DRAGON;
 		}
 
 		GetAreaInfo(iLostIndex, iWinIndex, cbTableCardType, cbWinArea, lWinMultiple);
@@ -1807,16 +1816,16 @@ bool    CGameSanGongDouTable::IsSetJetton(uint32 uid)
 int64	CGameSanGongDouTable::GetAreaMultiple(int nAreaIndex, int iLostIndex, int iWinIndex)
 {
 	int64 lMultiple = 0;
-	if (nAreaIndex == JETTON_INDEX_TIGER || nAreaIndex == JETTON_INDEX_LEOPARD)
+	if (nAreaIndex == JETTON_INDEX_DRAGON || nAreaIndex == JETTON_INDEX_PHOENIX)
 	{
 		if (nAreaIndex == iWinIndex)
 		{
 			lMultiple = 1;
 		}
 	}
-	else if (nAreaIndex == JETTON_INDEX_OTHER)
+	else if (nAreaIndex == JETTON_INDEX_DRAW)
 	{
-		lMultiple = 123;			
+		lMultiple = m_draw_odds;
 	}
 	return lMultiple;
 }
@@ -1838,19 +1847,19 @@ int64   CGameSanGongDouTable::CalculateScore()
 	memset(lWinMultiple, 0, sizeof(lWinMultiple));
 	BYTE cbTableCardArray[SHOW_CARD_COUNT][MAX_CARD_COUNT] = {0};
 	memcpy(cbTableCardArray, m_cbTableCardArray, sizeof(cbTableCardArray));
-	m_cbTableCardType[JETTON_INDEX_TIGER] = m_GameLogic.GetCardType(cbTableCardArray[JETTON_INDEX_TIGER], MAX_CARD_COUNT);
-	m_cbTableCardType[JETTON_INDEX_LEOPARD] = m_GameLogic.GetCardType(cbTableCardArray[JETTON_INDEX_LEOPARD], MAX_CARD_COUNT);
-	BYTE result = m_GameLogic.CompareCard(cbTableCardArray[JETTON_INDEX_TIGER], cbTableCardArray[JETTON_INDEX_LEOPARD], MAX_CARD_COUNT);
+	m_cbTableCardType[JETTON_INDEX_DRAGON] = m_GameLogic.GetCardType(cbTableCardArray[JETTON_INDEX_DRAGON], MAX_CARD_COUNT);
+	m_cbTableCardType[JETTON_INDEX_PHOENIX] = m_GameLogic.GetCardType(cbTableCardArray[JETTON_INDEX_PHOENIX], MAX_CARD_COUNT);
+	BYTE result = m_GameLogic.CompareCard(cbTableCardArray[JETTON_INDEX_DRAGON], cbTableCardArray[JETTON_INDEX_PHOENIX], MAX_CARD_COUNT);
 	WORD iLostIndex = 0, iWinIndex = 0;
 	if (result == TRUE)
 	{
-		iWinIndex = JETTON_INDEX_TIGER;
-		iLostIndex = JETTON_INDEX_LEOPARD;
+		iWinIndex = JETTON_INDEX_DRAGON;
+		iLostIndex = JETTON_INDEX_PHOENIX;
 	}
 	else
 	{
-		iWinIndex = JETTON_INDEX_LEOPARD;
-		iLostIndex = JETTON_INDEX_TIGER;
+		iWinIndex = JETTON_INDEX_PHOENIX;
+		iLostIndex = JETTON_INDEX_DRAGON;
 	}
 
 	GetAreaInfo(iLostIndex, iWinIndex, m_cbTableCardType, cbWinArea, lWinMultiple);
@@ -2325,7 +2334,7 @@ bool CGameSanGongDouTable::OnChairRobotJetton()
 			{
 				if (g_RandGen.RandRatio(10, PRO_DENO_100))
 				{
-					cbJettonArea = JETTON_INDEX_OTHER;
+					cbJettonArea = JETTON_INDEX_DRAW;
 				}
 				else
 				{
@@ -2355,7 +2364,7 @@ bool CGameSanGongDouTable::OnChairRobotJetton()
 			{
 				continue;
 			}
-			if (cbJettonArea == JETTON_INDEX_OTHER)
+			if (cbJettonArea == JETTON_INDEX_DRAW)
 			{
 				if (lUserRealJetton == 50000 || lUserRealJetton == 200000)
 				{
@@ -2525,7 +2534,7 @@ bool CGameSanGongDouTable::OnRobotJetton()
 			{
 				if (g_RandGen.RandRatio(10, PRO_DENO_100))
 				{
-					cbJettonArea = JETTON_INDEX_OTHER;
+					cbJettonArea = JETTON_INDEX_DRAW;
 				}
 				else
 				{
@@ -2555,7 +2564,7 @@ bool CGameSanGongDouTable::OnRobotJetton()
 			{
 				continue;
 			}
-			if (cbJettonArea == JETTON_INDEX_OTHER)
+			if (cbJettonArea == JETTON_INDEX_DRAW)
 			{
 				if (lUserRealJetton == 50000 || lUserRealJetton == 200000)
 				{
@@ -2668,24 +2677,24 @@ void	CGameSanGongDouTable::OnRobotPlaceJetton()
 
 uint8 CGameSanGongDouTable::GetRobotJettonArea()
 {
-	uint8 cbJettonArea = g_RandGen.RandRange(JETTON_INDEX_TIGER, JETTON_INDEX_OTHER);
+	uint8 cbJettonArea = g_RandGen.RandRange(JETTON_INDEX_DRAGON, JETTON_INDEX_DRAW);
 	if (g_RandGen.RandRatio(50, PRO_DENO_100))
 	{
-		cbJettonArea = JETTON_INDEX_TIGER;
+		cbJettonArea = JETTON_INDEX_DRAGON;
 	}
 	else
 	{
-		cbJettonArea = JETTON_INDEX_LEOPARD;
+		cbJettonArea = JETTON_INDEX_PHOENIX;
 	}
 
 	if (g_RandGen.RandRatio(5, PRO_DENO_100))
 	{
-		cbJettonArea = JETTON_INDEX_OTHER;
+		cbJettonArea = JETTON_INDEX_DRAW;
 	}
 
-	if (cbJettonArea > JETTON_INDEX_OTHER)
+	if (cbJettonArea > JETTON_INDEX_DRAW)
 	{
-		cbJettonArea = g_RandGen.RandRange(JETTON_INDEX_TIGER, JETTON_INDEX_OTHER);
+		cbJettonArea = g_RandGen.RandRange(JETTON_INDEX_DRAGON, JETTON_INDEX_DRAW);
 	}
 	m_cbFrontRobotJettonArea = cbJettonArea;
 	return cbJettonArea;
@@ -2745,20 +2754,20 @@ bool    CGameSanGongDouTable::SetControlPlayerWinForAW(uint32 control_uid, int64
         BYTE cbTableCardArray[SHOW_CARD_COUNT][MAX_CARD_COUNT] = { 0 };
         memcpy(cbTableCardArray, m_cbTableCardArray, sizeof(cbTableCardArray));
 
-        cbTableCardType[JETTON_INDEX_TIGER] = m_GameLogic.GetCardType(cbTableCardArray[JETTON_INDEX_TIGER], MAX_CARD_COUNT);
-        cbTableCardType[JETTON_INDEX_LEOPARD] = m_GameLogic.GetCardType(cbTableCardArray[JETTON_INDEX_LEOPARD], MAX_CARD_COUNT);
-        BYTE result = m_GameLogic.CompareCard(cbTableCardArray[JETTON_INDEX_TIGER], cbTableCardArray[JETTON_INDEX_LEOPARD], MAX_CARD_COUNT);
+        cbTableCardType[JETTON_INDEX_DRAGON] = m_GameLogic.GetCardType(cbTableCardArray[JETTON_INDEX_DRAGON], MAX_CARD_COUNT);
+        cbTableCardType[JETTON_INDEX_PHOENIX] = m_GameLogic.GetCardType(cbTableCardArray[JETTON_INDEX_PHOENIX], MAX_CARD_COUNT);
+        BYTE result = m_GameLogic.CompareCard(cbTableCardArray[JETTON_INDEX_DRAGON], cbTableCardArray[JETTON_INDEX_PHOENIX], MAX_CARD_COUNT);
 
         WORD iLostIndex = 0, iWinIndex = 0;
         if (result == TRUE)
         {
-            iWinIndex = JETTON_INDEX_TIGER;
-            iLostIndex = JETTON_INDEX_LEOPARD;
+            iWinIndex = JETTON_INDEX_DRAGON;
+            iLostIndex = JETTON_INDEX_PHOENIX;
         }
         else
         {
-            iWinIndex = JETTON_INDEX_LEOPARD;
-            iLostIndex = JETTON_INDEX_TIGER;
+            iWinIndex = JETTON_INDEX_PHOENIX;
+            iLostIndex = JETTON_INDEX_DRAGON;
         }
 
         GetAreaInfo(iLostIndex, iWinIndex, cbTableCardType, cbWinArea, lWinMultiple);
@@ -3142,27 +3151,27 @@ bool CGameSanGongDouTable::OnBrcAreaControl()
 		BYTE cbTableCardArray[SHOW_CARD_COUNT][MAX_CARD_COUNT] = { 0 };
 		memcpy(cbTableCardArray, m_cbTableCardArray, sizeof(cbTableCardArray));
 
-		cbTableCardType[JETTON_INDEX_TIGER] = m_GameLogic.GetCardType(cbTableCardArray[JETTON_INDEX_TIGER], MAX_CARD_COUNT);
-		cbTableCardType[JETTON_INDEX_LEOPARD] = m_GameLogic.GetCardType(cbTableCardArray[JETTON_INDEX_LEOPARD], MAX_CARD_COUNT);
-		BYTE result = m_GameLogic.CompareCard(cbTableCardArray[JETTON_INDEX_TIGER], cbTableCardArray[JETTON_INDEX_LEOPARD], MAX_CARD_COUNT);
+		cbTableCardType[JETTON_INDEX_DRAGON] = m_GameLogic.GetCardType(cbTableCardArray[JETTON_INDEX_DRAGON], MAX_CARD_COUNT);
+		cbTableCardType[JETTON_INDEX_PHOENIX] = m_GameLogic.GetCardType(cbTableCardArray[JETTON_INDEX_PHOENIX], MAX_CARD_COUNT);
+		BYTE result = m_GameLogic.CompareCard(cbTableCardArray[JETTON_INDEX_DRAGON], cbTableCardArray[JETTON_INDEX_PHOENIX], MAX_CARD_COUNT);
 
 		WORD iLostIndex = 0, iWinIndex = 0;
 		if (result == TRUE)
 		{
-			iWinIndex = JETTON_INDEX_TIGER;
-			iLostIndex = JETTON_INDEX_LEOPARD;
+			iWinIndex = JETTON_INDEX_DRAGON;
+			iLostIndex = JETTON_INDEX_PHOENIX;
 		}
 		else
 		{
-			iWinIndex = JETTON_INDEX_LEOPARD;
-			iLostIndex = JETTON_INDEX_TIGER;
+			iWinIndex = JETTON_INDEX_PHOENIX;
+			iLostIndex = JETTON_INDEX_DRAGON;
 		}
 
 		//先判断区域，再判断牌型
 		bool find_flag = false;
 
 		//设置龙方赢
-		if (ctrl_area_type == AREA_DRAGON && iWinIndex == JETTON_INDEX_TIGER)
+		if (ctrl_area_type == AREA_DRAGON && iWinIndex == JETTON_INDEX_DRAGON)
 		{
 			if (ctrl_card_type == AREA_MAX)
 			{
@@ -3170,7 +3179,7 @@ bool CGameSanGongDouTable::OnBrcAreaControl()
 			}
 			else
 			{
-				if (cbTableCardType[JETTON_INDEX_TIGER] == ctrl_card_type)
+				if (cbTableCardType[JETTON_INDEX_DRAGON] == ctrl_card_type)
 				{
 					find_flag = true;
 				}
@@ -3178,7 +3187,7 @@ bool CGameSanGongDouTable::OnBrcAreaControl()
 		}
 
 		//设置凤方赢
-		if (ctrl_area_type == AREA_PHOENIX && iWinIndex == JETTON_INDEX_LEOPARD)
+		if (ctrl_area_type == AREA_PHOENIX && iWinIndex == JETTON_INDEX_PHOENIX)
 		{
 			if (ctrl_card_type == AREA_MAX)
 			{
@@ -3186,7 +3195,7 @@ bool CGameSanGongDouTable::OnBrcAreaControl()
 			}
 			else
 			{
-				if (cbTableCardType[JETTON_INDEX_LEOPARD] == ctrl_card_type)
+				if (cbTableCardType[JETTON_INDEX_PHOENIX] == ctrl_card_type)
 				{
 					find_flag = true;
 				}
@@ -3196,11 +3205,11 @@ bool CGameSanGongDouTable::OnBrcAreaControl()
 		//只设置赢取方的牌型
 		if (ctrl_area_type == AREA_MAX && ctrl_card_type != AREA_MAX)
 		{
-			if (iWinIndex == JETTON_INDEX_TIGER && cbTableCardType[JETTON_INDEX_TIGER] == ctrl_card_type)
+			if (iWinIndex == JETTON_INDEX_DRAGON && cbTableCardType[JETTON_INDEX_DRAGON] == ctrl_card_type)
 			{
 				find_flag = true;
 			}
-			if (iWinIndex == JETTON_INDEX_LEOPARD && cbTableCardType[JETTON_INDEX_LEOPARD] == ctrl_card_type)
+			if (iWinIndex == JETTON_INDEX_PHOENIX && cbTableCardType[JETTON_INDEX_PHOENIX] == ctrl_card_type)
 			{
 				find_flag = true;
 			}
@@ -3383,18 +3392,18 @@ int64 CGameSanGongDouTable::GetBankerAndPlayerWinScore()
 	uint8 cbTableCardArray[SHOW_CARD_COUNT][MAX_CARD_COUNT] = { 0 };
 	memcpy(cbTableCardArray, m_cbTableCardArray, sizeof(cbTableCardArray));
 
-	cbTableCardType[JETTON_INDEX_TIGER] = m_GameLogic.GetCardType(cbTableCardArray[JETTON_INDEX_TIGER], MAX_CARD_COUNT);
-	cbTableCardType[JETTON_INDEX_LEOPARD] = m_GameLogic.GetCardType(cbTableCardArray[JETTON_INDEX_LEOPARD], MAX_CARD_COUNT);
-	uint8 result = m_GameLogic.CompareCard(cbTableCardArray[JETTON_INDEX_TIGER], cbTableCardArray[JETTON_INDEX_LEOPARD], MAX_CARD_COUNT);
+	cbTableCardType[JETTON_INDEX_DRAGON] = m_GameLogic.GetCardType(cbTableCardArray[JETTON_INDEX_DRAGON], MAX_CARD_COUNT);
+	cbTableCardType[JETTON_INDEX_PHOENIX] = m_GameLogic.GetCardType(cbTableCardArray[JETTON_INDEX_PHOENIX], MAX_CARD_COUNT);
+	uint8 result = m_GameLogic.CompareCard(cbTableCardArray[JETTON_INDEX_DRAGON], cbTableCardArray[JETTON_INDEX_PHOENIX], MAX_CARD_COUNT);
 
 	uint16 iLostIndex = 0, iWinIndex = 0;
 	if (result == TRUE) {
-		iWinIndex = JETTON_INDEX_TIGER;
-		iLostIndex = JETTON_INDEX_LEOPARD;
+		iWinIndex = JETTON_INDEX_DRAGON;
+		iLostIndex = JETTON_INDEX_PHOENIX;
 	}
 	else {
-		iWinIndex = JETTON_INDEX_LEOPARD;
-		iLostIndex = JETTON_INDEX_TIGER;
+		iWinIndex = JETTON_INDEX_PHOENIX;
+		iLostIndex = JETTON_INDEX_DRAGON;
 	}
 
 	GetAreaInfo(iLostIndex, iWinIndex, cbTableCardType, cbWinArea, lWinMultiple);

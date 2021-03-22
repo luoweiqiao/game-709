@@ -147,9 +147,9 @@ void CSanGongDouLogic::RandGongCardList(BYTE cbCardBuffer[], BYTE cbBufferCount)
 	BYTE bRandCount = 0, bPosition = 0;
 	do
 	{
-		bPosition = rand() % (getArrayLen(m_cbCardListData) - bRandCount);
+		bPosition = rand() % (getArrayLen(m_cbArGongPai) - bRandCount);
 		cbCardBuffer[bRandCount++] = cbCardData[bPosition];
-		cbCardData[bPosition] = cbCardData[getArrayLen(m_cbCardListData) - bRandCount];
+		cbCardData[bPosition] = cbCardData[getArrayLen(m_cbArGongPai) - bRandCount];
 	} while (bRandCount < cbBufferCount);
 
 	return;
